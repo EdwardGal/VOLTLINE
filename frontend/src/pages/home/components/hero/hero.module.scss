@@ -1,0 +1,34 @@
+.hero {
+  padding: toRem(40) 0 toRem(60);
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: toRem(52);
+  }
+  &__info {
+    flex-basis: toRem(616);
+  }
+  &__picture {
+    flex-basis: toRem(800);
+    border-radius: toRem(20);
+    overflow: hidden;
+  }
+  &__title {
+    font-size: toRem(100);
+    margin-bottom: toRem(16);
+  }
+  &__subtitle {
+    font-size: toRem(18);
+    line-height: 130%;
+    margin-bottom: toRem(30);
+  }
+  &__actions {
+    display: flex;
+    gap: toRem(12);
+    margin-bottom: toRem(20);
+  }
+  &__tags {
+    display: flex;
+    gap: toRem(8);
+  }
+}

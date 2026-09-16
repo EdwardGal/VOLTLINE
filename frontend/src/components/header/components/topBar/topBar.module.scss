@@ -1,0 +1,15 @@
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: toRem(8) toRem(16);
+  background: rgba(139, 154, 192, 0.08);
+  border-radius: 0 0 toRem(20) toRem(20);
+  &__contacts {
+    display: flex;
+    gap: toRem(28);
+  }
+  &__tel {
+    color: var(--heading-color);
+  }
+}

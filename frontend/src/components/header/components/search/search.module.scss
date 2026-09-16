@@ -1,0 +1,14 @@
+.search {
+  display: flex;
+  justify-content: flex-end;
+  input {
+    max-width: toRem(478);
+    width: 100%;
+    min-height: toRem(32);
+    padding: 0 toRem(16);
+    font-size: toRem(14);
+    border-radius: toRem(100);
+    border: 1px solid var(--border);
+    background: var(--background-2);
+  }
+}

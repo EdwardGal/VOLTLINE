@@ -1,0 +1,22 @@
+@use 'sass:math';
+@use '../../styles/variables' as *;
+
+.container {
+  width: 100%;
+  max-width: toRem($maxWidthContainer);
+  margin: 0 auto;
+  padding: 0 toRem(math.div($containerPadding, 2));
+
+  @media (max-width: $pc) {
+    max-width: $tablet;
+  }
+
+  @media (max-width: $tablet) {
+    max-width: $mobile;
+  }
+
+  @media (max-width: $mobile) {
+    max-width: $mobileSmall;
+    padding: 0 toRem(10);
+  }
+}

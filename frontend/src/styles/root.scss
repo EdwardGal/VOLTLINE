@@ -1,0 +1,43 @@
+@use './variables' as *;
+
+@import './reset';
+
+:root {
+  --background-main: #05070f;
+  --background-secondary: #0e1526;
+  --background-button-main: #22d3ee;
+  --background-button-hover: #2c6d77;
+  --background-button-hover-2: #262c2d;
+  --background-button-2: rgba(34, 211, 238, 0.12);
+  --headings-and-subheadings: #eaf2ff;
+  --body: #8b9ac0;
+  --background-2: rgba(139, 154, 192, 0.08);
+  --input-txt: #33363f;
+  --border: rgba(139, 154, 192, 0.4);
+  --background-cards: #10121d;
+
+
+  --font-family-base: 'DM Sans', sans-serif;
+  --font-family-heading: 'Space Grotesk', sans-serif;
+
+  --font-size-base: #{toRem(16)};
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-base: 120%;
+  --line-height-heading: 130%;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex: 1 1 auto;
+  }
+  
+}

@@ -1,0 +1,15 @@
+.tag {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: toRem(27);
+  padding: 0 toRem(12);
+  font-size: toRem(15);
+  color: var(--background-button-main);
+  background: var(--background-button-2);
+  border-radius: toRem(100);
+  &--accent {
+    color: var(--background-main);
+    background: var(--background-button-main);
+  }
+}

@@ -1,0 +1,21 @@
+.header {
+  &__topBar {
+    margin-bottom: toRem(8);
+  }
+  &__inner {
+    display: flex;
+    align-items: center;
+  }
+  &__logo {
+    flex-basis: toRem(104);
+  }
+
+  &__search {
+    flex: 1 1 auto;
+    margin-left: toRem(28);
+  }
+
+  &__panel {
+    margin-left: toRem(14);
+  }
+}

@@ -1,0 +1,25 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: toRem(2);
+  &__label {
+    text-transform: uppercase;
+    font-size: toRem(12);
+  }
+
+  &__input {
+    min-height: toRem(48);
+    padding: toRem(4) toRem(16);
+    font-size: toRem(14);
+    border-radius: toRem(16);
+    border: toRem(1) solid var(--border);
+    &:focus {
+      border-color: var(--background-button-2);
+      background: var(--background-button-2);
+    }
+  }
+
+  ::placeholder {
+    font-size: toRem(14);
+  }
+}

@@ -1,0 +1,17 @@
+.authHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  min-height: toRem(75);
+  &__status{
+    display: inline-flex;
+    align-items: center;
+    gap: toRem(10);
+  }
+  &__statusDot{
+    width: toRem(6);
+    height: toRem(6);
+    border-radius: 50%;
+    background: var(--background-button-main);
+  }
+}

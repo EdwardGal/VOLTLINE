@@ -1,0 +1,66 @@
+.authForm {
+  flex: 0 1 toRem(480);
+  padding: toRem(20);
+  border-radius: toRem(20);
+  background: var(--background-secondary);
+  &__head {
+    margin-bottom: toRem(36);
+  }
+  &__eyebrow {
+    font-size: toRem(12);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--background-button-main);
+    margin-bottom: toRem(16);
+  }
+  &__title {
+    font-size: toRem(48);
+    text-shadow: 0 0 28px color-mix(in oklab, var(--tag-text-color) 34%, transparent);
+    margin-bottom: toRem(16);
+  }
+
+  &__description {
+    font-size: toRem(14);
+  }
+
+  &__tabs {
+    display: flex;
+    margin-bottom: toRem(28);
+  }
+
+  &__tab {
+    flex-basis: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: toRem(44);
+    font-family: var(--font-family-heading);
+    font-weight: 600;
+    border-bottom: toRem(2) solid var(--border);
+    &:hover {
+      color: var(--headings-and-subheadings);
+    }
+    &.active {
+      color: var(--background-button-main);
+      border-color: var(--background-button-main);
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(20);
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: toRem(48);
+    font-family: var(--font-family-heading);
+    color: var(--background-main);
+    white-space: nowrap;
+    background: var(--background-button-main);
+    border-radius: toRem(16);
+  }
+}

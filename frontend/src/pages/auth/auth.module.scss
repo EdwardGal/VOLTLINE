@@ -1,0 +1,22 @@
+.auth {
+  height: 100%;
+  background-size: toRem(64) toRem(64);
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--border) 16%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--border) 16%, transparent) 1px,
+      transparent 1px
+    );
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: toRem(52);
+    padding: toRem(50) 0;
+    border-radius: toRem(20);
+  }
+}
