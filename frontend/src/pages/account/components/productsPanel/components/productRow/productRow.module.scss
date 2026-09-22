@@ -1,0 +1,61 @@
+.productRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: toRem(20);
+  &:not(:last-child) {
+    border-bottom: toRem(1) solid var(--border);
+  }
+  &__info {
+    flex-basis: toRem(550);
+    display: flex;
+    flex-direction: column;
+    padding: toRem(8) toRem(8) toRem(8) toRem(24);
+  }
+
+  &__name {
+    font-size: toRem(14);
+    font-weight: 500;
+    color: var(--headings-and-subheadings);
+  }
+
+  &__sku {
+    font-size: toRem(11);
+  }
+
+  &__category {
+    flex-basis: toRem(100);
+    padding: toRem(2) toRem(10);
+    font-size: toRem(11);
+    text-align: center;
+    border-radius: toRem(100);
+    background: var(--background-2);
+  }
+
+  &__price {
+    flex-basis: toRem(140);
+    padding: toRem(8);
+    font-size: toRem(14);
+    font-weight: 600;
+    color: var(--headings-and-subheadings);
+  }
+
+  &__quantity {
+    flex-basis: toRem(114);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--headings-and-subheadings);
+    background: var(--background-cards);
+    border: toRem(1) solid var(--border);
+    border-radius: toRem(100);
+  }
+
+  &__counter {
+  }
+
+  &__actions {
+    flex-basis: toRem(153);
+    padding: toRem(8) toRem(24) toRem(8) toRem(8);
+  }
+}

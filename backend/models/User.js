@@ -16,6 +16,10 @@ const UserSchema = mongoose.Schema(
       type: Number,
       default: ROLES.USER,
     },
+    lastLoginAt: {
+      type: Date,
+      default: null,
+    },
   },
   { timestamps: true }
 );

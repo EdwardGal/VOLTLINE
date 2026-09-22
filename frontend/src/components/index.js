@@ -5,4 +5,10 @@ export * from './formInput/formInput';
 export * from './pageContainer/pageContainer';
 export * from './tag/tag';
 export * from './formError/formError';
-export * from './customButton/customButton'
+export * from './customButton/customButton';
+export * from './headerLogo/headerLogo';
+export * from './sectionHead/sectionHead';
+export * from './lucideIcon/lucideIcon';
+export * from './access/access';
+export * from './tableHead/tableHead';
+export * from './formSelect/formSelect';

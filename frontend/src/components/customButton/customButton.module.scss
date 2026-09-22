@@ -4,16 +4,37 @@
   align-items: center;
   gap: toRem(8);
   min-height: toRem(32);
-  color: var(--headings-and-subheadings);
   padding: 0 toRem(12);
-  border: 1px solid var(--border);
+  color: var(--headings-and-subheadings);
+  background: var(--background-2);
+  border: toRem(1) solid var(--border);
   border-radius: toRem(100);
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.2;
+  }
+
+  &--default {
+    border: none;
+    background: none;
+    text-align: center;
+    gap: 0;
+  }
+
   &--accent {
     color: var(--background-main);
     background: var(--background-button-main);
   }
 
+  &--productForm {
+    padding: toRem(8) toRem(16);
+    font-size: toRem(14);
+    font-weight: 500;
+    border-radius: toRem(8);
+  }
+
   &__name {
-    font-size: toRem(17);
+    font-size: toRem(12);
   }
 }

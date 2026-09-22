@@ -1,0 +1,13 @@
+.productForm {
+  &__fields {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: toRem(24);
+    padding: toRem(24);
+  }
+  &__field {
+    display: flex;
+    gap: toRem(24);
+  }
+}

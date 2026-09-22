@@ -3,7 +3,7 @@
   padding: toRem(6) toRem(10);
   font-size: toRem(12);
   font-weight: 600;
-  color: var(--accent-color);
-  background: var(--accent-background);
-  border-radius: 0 0 toRem(20) toRem(20);
+  color: var(--headings-and-subheadings);
+  background: var(--background-button-2);
+  border-left: toRem(1) solid var(--background-button-main);
 }

@@ -1,0 +1,30 @@
+.productsPanel {
+  background: var(--background-secondary);
+  border-radius: toRem(12);
+  border: toRem(1) solid var(--border);
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: toRem(20) toRem(24);
+    border-bottom: toRem(1) solid var(--border);
+  }
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    gap: toRem(12);
+  }
+
+  &__summary {
+    padding: toRem(4) toRem(12);
+    font-size: toRem(12);
+    color: var(--background-button-main);
+    background: var(--background-button-2);
+    border-radius: toRem(100);
+  }
+
+  &__addButton {
+  }
+}

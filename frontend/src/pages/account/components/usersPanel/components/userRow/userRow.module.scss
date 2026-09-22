@@ -1,0 +1,92 @@
+.userRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: toRem(20);
+  &:not(:last-child) {
+    border-bottom: toRem(1) solid var(--border);
+  }
+  &__profile {
+    flex-basis: toRem(373);
+    padding: toRem(8) toRem(8) toRem(8) toRem(24);
+    display: flex;
+    align-items: center;
+    gap: toRem(12);
+  }
+  &__avatar {
+    width: toRem(32);
+    height: toRem(32);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: toRem(12);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--background-button-main);
+    background: var(--background-button-2);
+    border-radius: 50%;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+  &__email {
+    font-size: toRem(14);
+    font-weight: 500;
+    color: var(--headings-and-subheadings);
+  }
+  &__meta {
+    font-size: toRem(11);
+  }
+  &__createdAt {
+    flex-basis: toRem(208);
+    padding: toRem(8);
+    font-size: toRem(14);
+  }
+  &__lastLoginAt {
+    flex-basis: toRem(208);
+    padding: toRem(8);
+    font-size: toRem(14);
+  }
+  &__roles {
+    flex-basis: toRem(240);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: toRem(8);
+    padding: toRem(8);
+  }
+
+  &__badge {
+    flex-basis: toRem(66);
+    text-align: center;
+    padding: toRem(2) toRem(10);
+    background: var(--background-2);
+    text-transform: lowercase;
+    font-size: toRem(11);
+    font-weight: 600;
+    border-radius: toRem(100);
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+    &--active {
+      color: var(--background-button-main);
+      background: var(--background-button-2);
+    }
+  }
+
+  &__select {
+    flex-basis: toRem(150);
+    padding: toRem(6) toRem(12);
+    font-size: toRem(14);
+    background: var(--background-cards);
+    border: toRem(1) solid var(--border);
+    border-radius: toRem(100);
+  }
+  &__actions {
+    flex-basis: toRem(153);
+    padding: toRem(8) toRem(24) toRem(8) toRem(8);
+  }
+}

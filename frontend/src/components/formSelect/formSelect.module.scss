@@ -1,0 +1,22 @@
+.formSelect {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: toRem(2);
+  &__label {
+    text-transform: uppercase;
+    font-size: toRem(12);
+    color: var(--headings-and-subheadings);
+  }
+  &__select {
+    min-height: toRem(48);
+    padding: toRem(4) toRem(16);
+    font-size: toRem(14);
+    border-radius: toRem(16);
+    background: var(--background-secondary);
+    border: toRem(1) solid var(--border);
+    .formSelect__error & {
+      border-radius: toRem(16) toRem(16) 0 0;
+    }
+  }
+}

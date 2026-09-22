@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormError, FormInput } from '../../../../components';
+import { FormError, FormInput, SectionHead } from '../../../../components';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './authForm.module.scss';
@@ -59,15 +59,16 @@ export const AuthForm = () => {
 
   return (
     <div className={styles.authForm}>
-      <div className={styles.authForm__head}>
-        <p className={styles.authForm__eyebrow}>// MEMBER ACCESS</p>
-        <h1 className={styles.authForm__title}>{isSignin ? 'Welcome back' : 'Join the squad'}</h1>
-        <p className={styles.authForm__description}>
-          {isSignin
+      <SectionHead
+        className={styles.authForm__head}
+        eyebrow="// MEMBER ACCESS"
+        title={isSignin ? 'Welcome back' : 'Join the squad'}
+        description={
+          isSignin
             ? 'Sign in to view orders, saved builds, and exclusive deals.'
-            : 'Create an account to shop gaming PCs, components, and accessories.'}
-        </p>
-      </div>
+            : 'Create an account to shop gaming PCs, components, and accessories.'
+        }
+      />
       <div className={styles.authForm__tabs}>
         <button
           className={`${styles.authForm__tab} ${isSignin ? styles.active : ''}`}
@@ -90,6 +91,7 @@ export const AuthForm = () => {
           label="email"
           type="email"
           placeholder="player@example.com"
+          autoComplete={'email'}
           error={errors.email?.message}
           {...register('email', { onChange: clearServerError })}
         />
@@ -97,6 +99,7 @@ export const AuthForm = () => {
           label="password"
           type="password"
           placeholder="At least 6 characters"
+          autoComplete="current-password"
           error={errors.password?.message}
           {...register('password', { onChange: clearServerError })}
         />

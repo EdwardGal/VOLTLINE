@@ -1,11 +1,14 @@
 import clsx from 'clsx';
 import styles from './customButton.module.scss';
+import { LucideIcon } from '../lucideIcon/lucideIcon';
 
-export const CustomButton = ({ icon: { src, alt } = {}, className, name, ...props }) => {
+export const CustomButton = ({ icon, className, name, variant, ...props }) => {
+  const variantClass = variant ? styles[`customButton--${variant}`] : null;
+
   return (
-    <button className={clsx(styles.customButton, className)} type="button" {...props}>
+    <button className={clsx(styles.customButton, variantClass, className)} type="button" {...props}>
+      {icon && <LucideIcon {...icon} />}
       <span className={styles.customButton__name}>{name}</span>
-      {src && <img className={styles.customButton__icon} src={src} alt={alt} />}
     </button>
   );
 };

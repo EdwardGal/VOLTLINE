@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt';
 import User from '../models/User.js';
-import mongoose from 'mongoose';
 import { generate } from '../helpers/token.js';
 import { ROLES } from '../constants/index.js';
 
@@ -19,6 +18,7 @@ export const register = async (email, password) => {
 
 export const login = async (email, password) => {
   const user = await User.findOne({ email });
+
   if (!user) {
     throw new Error('User not found');
   }
@@ -30,6 +30,9 @@ export const login = async (email, password) => {
   }
 
   const token = generate({ id: user.id });
+
+  user.lastLoginAt = new Date();
+  await user.save();
 
   return { token, user };
 };
@@ -45,4 +48,4 @@ export const getRoles = () => [
 export const deleteUser = (id) => User.deleteOne({ _id: id });
 
 export const updateUser = (id, userData) =>
-  User.findByIdAndUpdate(id, userData, { returnDocument: 'after' });
+  User.findByIdAndUpdate(id, userData, { new: true, runValidators: true });

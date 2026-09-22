@@ -1,10 +1,7 @@
-import logo from '../../assets/logo.svg';
 import { PageContainer } from '../pageContainer/pageContainer';
-
-import { Link } from 'react-router-dom';
-import { ROUTES } from '../../constants';
 import styles from './header.module.scss';
 import { ControlPanel, Nav, Search, TopBar } from './components';
+import { HeaderLogo } from '../headerLogo/headerLogo';
 
 export const Header = () => {
   return (
@@ -12,12 +9,10 @@ export const Header = () => {
       <PageContainer className={styles.header__container}>
         <TopBar className={styles.header__topBar} />
         <div className={styles.header__inner}>
-          <Link className={styles.header__navLink} to={ROUTES.HOME}>
-            <img className={styles.header__logo} src={logo} alt="Voltline" />
-          </Link>
+          <HeaderLogo />
           <Nav />
           <Search className={styles.header__search} />
-          <ControlPanel className={styles.header__} />
+          <ControlPanel className={styles.header__control} />
         </div>
       </PageContainer>
     </header>

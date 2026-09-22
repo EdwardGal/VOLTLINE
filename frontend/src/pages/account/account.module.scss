@@ -13,14 +13,10 @@
       transparent 1px
     );
   &__content {
-    display: flex;
-    align-items: center;
-    padding: toRem(50) 0;
-    border-radius: toRem(20);
+    padding: toRem(50);
   }
-  &__nav{
-    display: flex;
-    align-items: center;
-    gap: toRem(8);
+
+  &__head {
+    margin-bottom: toRem(40);
   }
 }

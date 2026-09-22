@@ -14,7 +14,7 @@ export const ControlPanel = ({ className }) => {
     <div className={clsx(styles.controlPanel, className)}>
       <CustomLink
         className={styles.controlPanel__actionsLink}
-        icon={isLoggedIn ? { src: userIcon, alt: 'User profile' } : {}}
+        icon={isLoggedIn ? { name: 'UserRound' } : null}
         to={isLoggedIn ? ROUTES.ACCOUNT : ROUTES.AUTH}
         name={isLoggedIn ? '' : 'Login'}
       />

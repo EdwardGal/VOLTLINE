@@ -1,0 +1,40 @@
+.accountHeader {
+  display: flex;
+  align-items: center;
+  min-height: toRem(70);
+
+  &__role {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: toRem(21);
+    padding: 0 toRem(10);
+    font-size: toRem(10);
+    text-transform: uppercase;
+    letter-spacing: em(1);
+    color: var(--headings-and-subheadings);
+    border: 1px solid var(--border);
+    border-radius: toRem(100);
+    margin-left: toRem(16);
+  }
+
+  &__user {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: toRem(8);
+  }
+  &__status {
+    width: toRem(6);
+    height: toRem(6);
+    border-radius: 50%;
+    background: var(--background-button-main);
+  }
+  &__email {
+    font-size: toRem(14);
+  }
+  &__button {
+    margin-left: toRem(12);
+  }
+}
