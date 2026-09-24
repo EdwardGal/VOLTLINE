@@ -1,8 +1,8 @@
 .userRow {
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: space-between;
-  gap: toRem(20);
+  gap: toRem(10);
+  grid-template-columns: 722px 160px 160px 264px 120px;
   &:not(:last-child) {
     border-bottom: toRem(1) solid var(--border);
   }

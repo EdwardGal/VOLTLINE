@@ -1,0 +1,18 @@
+.catalog {
+  padding: toRem(30) 0;
+  
+  &__head {
+    margin-bottom: toRem(30);
+  }
+
+  &__link {
+    font-size: toRem(14);
+    line-height: 130%;
+    color: var(--background-button-main);
+  }
+
+  &__cards {
+    display: flex;
+    gap: toRem(20);
+  }
+}

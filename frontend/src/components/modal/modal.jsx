@@ -3,7 +3,7 @@ import { LucideIcon } from '../lucideIcon/lucideIcon';
 
 import styles from './modal.module.scss';
 
-export const Modal = ({ title, subtitle, icon, children, onClose }) => {
+export const Modal = ({ title, subtitle, icon, content, onClose, onConfirm }) => {
   return (
     <div className={styles.modal}>
       <div className={styles.modal__overlay} onClick={onClose} />
@@ -27,12 +27,18 @@ export const Modal = ({ title, subtitle, icon, children, onClose }) => {
           />
         </div>
 
-        <div className={styles.modal__body}>{children}</div>
+        <div className={styles.modal__body}>{content}</div>
 
         <div className={styles.modal__actions}>
           <CustomButton name="Close" type="button" variant="productForm" onClick={onClose} />
 
-          <CustomButton name={title} form="product-form" type="submit" variant="productForm" />
+          <CustomButton
+            name={title}
+            form="product-form"
+            type="submit"
+            variant="productForm"
+            onClick={onConfirm}
+          />
         </div>
       </div>
     </div>

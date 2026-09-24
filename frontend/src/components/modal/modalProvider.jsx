@@ -1,37 +1,24 @@
-import { createContext, useState } from 'react';
+import { useCallback, useState } from 'react';
 
-import { Modal } from './modal';
-import { getModalConfig } from './modalConfig';
-
-export const ModalContext = createContext(null);
+import { ModalContext } from './modalContext';
+import { Modal } from './Modal';
 
 export const ModalProvider = ({ children }) => {
   const [modal, setModal] = useState(null);
 
-  const openModal = (type, data) => {
-    setModal({ type, data });
-  };
+  const openModal = useCallback((data) => {
+    setModal(data);
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setModal(null);
-  };
-
-  const config = getModalConfig(modal);
+  }, []);
 
   return (
     <ModalContext.Provider value={{ openModal, closeModal }}>
       {children}
 
-      {config && (
-        <Modal
-          title={config.title}
-          subtitle={config.subtitle}
-          icon={config.icon}
-          onClose={closeModal}
-        >
-          {config.content}
-        </Modal>
-      )}
+      {modal && <Modal {...modal} onClose={closeModal} />}
     </ModalContext.Provider>
   );
 };

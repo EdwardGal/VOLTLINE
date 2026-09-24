@@ -1,14 +1,30 @@
-export const request = (path, method, data) => {
-  const isFormData = data instanceof FormData;
-  return fetch('/api' + path, {
-    headers: isFormData
-      ? undefined
-      : {
-          'content-type': 'application/json',
-        },
+export const request = async (url, method = 'GET', body) => {
+  try {
+    const isFormData = body instanceof FormData;
 
-    method: method || 'GET',
+    const response = await fetch('/api' + url, {
+      method,
+      headers: isFormData
+        ? undefined
+        : {
+            'Content-Type': 'application/json',
+          },
+      body: body ? (isFormData ? body : JSON.stringify(body)) : undefined,
+    });
 
-    body: data ? (isFormData ? data : JSON.stringify(data)) : undefined,
-  }).then((res) => res.json());
+    const result = await response.json();
+
+    if (!response.ok) {
+      return {
+        error: result.error || 'Server error',
+        status: response.status,
+      };
+    }
+
+    return result;
+  } catch {
+    return {
+      error: 'Unable to connect to the server',
+    };
+  }
 };

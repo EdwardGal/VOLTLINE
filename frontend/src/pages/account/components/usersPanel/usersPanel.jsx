@@ -1,64 +1,73 @@
 import { useEffect, useState } from 'react';
-import { SectionHead, TableHead } from '../../../../components';
-import styles from './usersPanel.module.scss';
-import { request } from '../../../../utils';
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../../../store/selectors';
-import { UserRow } from './components';
+
+import { ErrorMessage, Loading, TableHead, TableCells } from '../../../../components';
 import { TABLE_HEAD_CELLS } from '../../../../constants';
+import { selectUser } from '../../../../store/selectors';
+
+import { UserRow } from './components';
+
+import styles from './usersPanel.module.scss';
+
+import { getUsers, getRoles } from '../../../../api';
 
 export const UsersPanel = () => {
   const [users, setUsers] = useState([]);
   const [roles, setRoles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [usersUpdateTrigger, setUsersUpdateTrigger] = useState(false);
-
-  const { email } = useSelector(selectUser);
+  const [serverErrorMessage, setServerErrorMessage] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
 
-    Promise.all([request('/users'), request('/users/roles')]).then(([usersRes, rolesRes]) => {
-      if (usersRes.error || rolesRes.error) {
-        setErrorMessage(usersRes.error || rolesRes.error);
-        setIsLoading(false);
-        return;
-      }
+    Promise.all([getUsers(), getRoles()])
+      .then(([usersRes, rolesRes]) => {
+        if (usersRes.error || rolesRes.error) {
+          setServerErrorMessage(usersRes.error || rolesRes.error);
+          return;
+        }
+        setUsers(usersRes.data);
+        setRoles(rolesRes.data);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
 
-      setUsers(usersRes.data);
-      setRoles(rolesRes.data);
-      setIsLoading(false);
-    });
-  }, [usersUpdateTrigger]);
-
-  if (isLoading) {
-    return 'Loading ...';
-  }
+  const removeUserHandler = (userId) => {
+    setUsers((prev) => prev.filter((user) => user.id !== userId));
+  };
 
   return (
     <div className={styles.usersPanel}>
       <div className={styles.usersPanel__info}>
-        <SectionHead
+        <TableHead
           className={styles.usersPanel__head}
           variant="small"
-          eyebrow={'// Users'}
-          title={'All accounts'}
+          eyebrow="// Users"
+          title="All accounts"
         />
-        <span className={styles.usersPanel__counter}>всего: {users?.length}</span>
+
+        <span className={styles.usersPanel__counter}>всего: {users.length}</span>
       </div>
 
       <div className={styles.usersPanel__table}>
-        <TableHead cells={TABLE_HEAD_CELLS.USERS} variant="userPanel" />
-        {users.map((user) => (
-          <UserRow
-            key={user.id}
-            currentEmail={email}
-            user={user}
-            roles={roles}
-            setUsersUpdateTrigger={setUsersUpdateTrigger}
-          />
-        ))}
+        {isLoading ? (
+          <Loading />
+        ) : serverErrorMessage ? (
+          <ErrorMessage error={serverErrorMessage} />
+        ) : (
+          <>
+            <TableCells cells={TABLE_HEAD_CELLS.USERS} variant="userPanel" />
+
+            {users.map((user) => (
+              <UserRow
+                key={user.id}
+                user={user}
+                roles={roles}
+                removeUserHandler={removeUserHandler}
+              />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

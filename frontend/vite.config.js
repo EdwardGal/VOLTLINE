@@ -6,7 +6,6 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      // Краткий современный синтаксис без path и __dirname
       '@': new URL('./src', import.meta.url).pathname,
     },
   },
@@ -22,6 +21,10 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     proxy: {
+      '/uploads': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
       '/api': {
         target: 'http://localhost:3001',
         changeOrigin: true,

@@ -20,4 +20,12 @@
     border-radius: toRem(100);
   }
 
+    &__error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    padding: 30px;
+  }
+
 }

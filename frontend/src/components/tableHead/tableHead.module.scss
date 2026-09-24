@@ -1,54 +1,27 @@
 .tableHead {
-  display: flex;
-  justify-content: space-between;
-  gap: toRem(20);
-  font-size: toRem(11);
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: em(0.55);
-  border-bottom: toRem(1) solid var(--border);
-
-  &__cell {
-    padding: toRem(8);
-  }
-
-  &--userPanel {
-    .cell_1 {
-      flex-basis: toRem(373);
-      padding-left: toRem(24);
+  &--small {
+    .sectionHead__eyebrow {
+      font-size: toRem(11);
     }
-    .cell_2 {
-      flex-basis: toRem(208);
-    }
-    .cell_3 {
-      flex-basis: toRem(208);
-    }
-    .cell_4 {
-      flex-basis: toRem(240);
-    }
-    .cell_5 {
-      flex-basis: toRem(153);
-      padding-right: toRem(24);
+    .sectionHead__title {
+      font-size: toRem(24);
     }
   }
 
-  &--products {
-    .cell_1 {
-      flex-basis: toRem(550);
-      padding-left: toRem(24);
-    }
-    .cell_2 {
-      flex-basis: toRem(100);
-    }
-    .cell_3 {
-      flex-basis: toRem(140);
-    }
-    .cell_4 {
-      flex-basis: toRem(114);
-    }
-    .cell_5 {
-      flex-basis: toRem(153);
-      padding-right: toRem(24);
-    }
+  &__eyebrow {
+    font-size: toRem(12);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--background-button-main);
+  }
+  &__title {
+    font-size: toRem(48);
+    text-shadow: 0 0 28px color-mix(in oklab, var(--tag-text-color) 34%, transparent);
+    margin-top: toRem(16);
+  }
+
+  &__description {
+    font-size: toRem(14);
+    margin-top: toRem(16);
   }
 }

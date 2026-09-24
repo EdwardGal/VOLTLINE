@@ -48,4 +48,4 @@ export const getRoles = () => [
 export const deleteUser = (id) => User.deleteOne({ _id: id });
 
 export const updateUser = (id, userData) =>
-  User.findByIdAndUpdate(id, userData, { new: true, runValidators: true });
+  User.findByIdAndUpdate(id, userData, { returnDocument: 'after', runValidators: true });

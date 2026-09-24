@@ -1,0 +1,29 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: toRem(12);
+  width: 100%;
+  min-height: toRem(160);
+
+  &__spinner {
+    width: toRem(20);
+    height: toRem(20);
+    border: toRem(2) solid var(--background-button-2);
+    border-top-color: var(--background-button-main);
+    border-radius: 50%;
+    animation: loading 0.7s linear infinite;
+  }
+
+  &__text {
+    font-size: toRem(14);
+    line-height: 1;
+    color: var(--headings-and-subheadings);
+  }
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,22 @@
+.formTextarea {
+  display: flex;
+  flex-direction: column;
+  gap: toRem(8);
+  background: var(--background-main);
+
+  &__label {
+    font-size: toRem(14);
+  }
+
+  &__input {
+    width: 100%;
+    min-height: toRem(140);
+    padding: toRem(12);
+    resize: vertical;
+     background: var(--background-main);
+  }
+
+  &__error {
+    font-size: toRem(12);
+  }
+}

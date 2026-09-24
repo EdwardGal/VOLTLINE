@@ -1,11 +1,12 @@
 import { useContext } from 'react';
-import { ModalContext } from './modalProvider';
+
+import { ModalContext } from './modalContext';
 
 export const useModal = () => {
   const context = useContext(ModalContext);
 
   if (!context) {
-    throw new Error('useModal must be used within ModalProvider');
+    throw new Error('useModal must be used inside ModalProvider');
   }
 
   return context;

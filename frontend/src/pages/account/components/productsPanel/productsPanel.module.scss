@@ -25,6 +25,30 @@
     border-radius: toRem(100);
   }
 
-  &__addButton {
+  &__rows {
+    max-height: toRem(360);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--background-main) var(--background-secondary);
+
+    &::-webkit-scrollbar {
+      width: toRem(6);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--background-main);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--background-secondary);
+      border-radius: toRem(6);
+    }
+  }
+  &__error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    padding: 30px;
   }
 }

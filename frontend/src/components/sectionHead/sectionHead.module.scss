@@ -1,28 +1,6 @@
-.sectionHead {
-
-&--small{
-  .sectionHead__eyebrow{
-    font-size: toRem(11);
-  }
-  .sectionHead__title{
-    font-size: toRem(24);
-  }
-}
-
-  &__eyebrow {
-    font-size: toRem(12);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--background-button-main);
-  }
-  &__title {
-    font-size: toRem(48);
-    text-shadow: 0 0 28px color-mix(in oklab, var(--tag-text-color) 34%, transparent);
-    margin-top: toRem(16);
-  }
-
-  &__description {
-    font-size: toRem(14);
-    margin-top: toRem(16);
-  }
+.sectionHead{
+   display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: em(20);
 }

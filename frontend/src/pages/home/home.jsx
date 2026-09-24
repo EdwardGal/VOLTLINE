@@ -1,8 +1,6 @@
 import { Header, Footer } from '../../components';
-import { Hero } from './components';
+import { Catalog, Hero, Popular } from './components';
 import styles from './home.module.scss';
-
-
 
 export const Home = () => {
   return (
@@ -10,6 +8,8 @@ export const Home = () => {
       <Header />
       <main className={styles.page}>
         <Hero />
+        <Catalog />
+        <Popular />
       </main>
       <Footer />
     </>

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './formInput.module.scss';
-import { FormError } from '../formError/formError';
+import { ErrorMessage } from '../errorMessage/errorMessage';
 
 export const FormInput = ({ label, error, className, ...props }) => {
   return (
@@ -13,7 +13,7 @@ export const FormInput = ({ label, error, className, ...props }) => {
 
       <input className={styles.formField__input} {...props} />
 
-      {error && <FormError className={styles.formField__error} error={error} />}
+      {error && <ErrorMessage className={styles.formField__error} error={error} />}
     </div>
   );
 };

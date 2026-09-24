@@ -1,0 +1,68 @@
+.popularCard {
+  position: relative;
+  max-width: toRem(476);
+  width: 100%;
+  border-radius: toRem(20);
+  overflow: hidden;
+
+  &__cover {
+    width: 100%;
+    height: toRem(357);
+    overflow: hidden;
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__tag {
+    position: absolute;
+    z-index: 100;
+    top: toRem(20);
+    left: toRem(20);
+  }
+
+  &__info {
+    padding: toRem(20);
+    background: var(--background-secondary);
+  }
+
+  &__infoHead {
+    margin-bottom: toRem(16);
+  }
+  &__name {
+    font-size: toRem(18);
+    font-weight: 700;
+    line-height: 130%;
+    color: var(--headings-and-subheadings);
+    margin-bottom: toRem(8);
+  }
+  &__sku {
+    font-size: toRem(15);
+    line-height: 130%;
+  }
+  &__purchase {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: toRem(20);
+  }
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: toRem(12);
+  }
+  &__currentPrice {
+    font-size: toRem(18);
+    font-weight: 700;
+    line-height: 130%;
+    color: var(--headings-and-subheadings);
+  }
+  &__lastPrice {
+    font-size: toRem(15);
+    line-height: 130%;
+  }
+  &__button {
+  }
+}

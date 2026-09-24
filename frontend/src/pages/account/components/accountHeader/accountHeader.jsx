@@ -6,10 +6,12 @@ import { findRoleName } from '../../../../utils';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../../../constants';
 import { logout } from '../../../../store/actions';
-import logoutIcon from '../../../../assets/icons/logout.svg';
+import { useToast } from '../../../../components/toast';
 
 export const AccountHeader = () => {
   const { email, roleId } = useSelector(selectUser);
+
+  const { showToast } = useToast();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ export const AccountHeader = () => {
   const onLogout = () => {
     dispatch(logout());
     sessionStorage.removeItem('userData');
+    showToast('Logged out successfully', 'success');
     navigate(ROUTES.HOME, { replace: true });
   };
 

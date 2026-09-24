@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormError, FormInput, SectionHead } from '../../../../components';
+import { ErrorMessage, FormInput, TableHead } from '../../../../components';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './authForm.module.scss';
@@ -9,6 +9,7 @@ import { ROUTES } from '../../../../constants';
 import { request } from '../../../../utils/request';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../../../store/actions';
+import { useToast } from '../../../../components/toast';
 
 export const AuthForm = () => {
   const {
@@ -26,10 +27,12 @@ export const AuthForm = () => {
   });
 
   const [activeTab, setActiveTab] = useState('signin');
-  const [serverError, setServerError] = useState(null);
+  const [serverErrorMessage, setServerErrorMessage] = useState(null);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { showToast } = useToast();
 
   const isSignin = activeTab === 'signin';
 
@@ -38,28 +41,31 @@ export const AuthForm = () => {
 
     request(requestUrl, 'POST', { email, password }).then(({ error, user }) => {
       if (error) {
-        setServerError(error);
+        setServerErrorMessage(error);
         return;
       }
 
       dispatch(setUser(user));
       sessionStorage.setItem('userData', JSON.stringify(user));
       reset();
+
+      showToast(isSignin ? 'Logged in successfully' : 'Account created successfully', 'success');
+
       navigate(ROUTES.HOME, { replace: true });
     });
   };
 
-  const clearServerError = () => setServerError(null);
+  const clearServerError = () => setServerErrorMessage(null);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     reset();
-    setServerError(null);
+    setServerErrorMessage(null);
   };
 
   return (
     <div className={styles.authForm}>
-      <SectionHead
+      <TableHead
         className={styles.authForm__head}
         eyebrow="// MEMBER ACCESS"
         title={isSignin ? 'Welcome back' : 'Join the squad'}
@@ -106,7 +112,7 @@ export const AuthForm = () => {
         <button className={styles.authForm__btn} type="submit">
           {isSignin ? 'sign in' : 'create account'}
         </button>
-        {serverError && <FormError error={serverError} />}
+        {serverErrorMessage && <ErrorMessage error={serverErrorMessage} />}
       </form>
     </div>
   );

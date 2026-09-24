@@ -1,47 +1,73 @@
 import { useEffect, useState } from 'react';
 
-import { CustomButton, SectionHead, TableHead } from '../../../../components';
+import { CustomButton, ErrorMessage, Loading, TableHead, TableCells } from '../../../../components';
 import { TABLE_HEAD_CELLS } from '../../../../constants';
-import { request } from '../../../../utils';
-import { useModal } from '../../../../components/modal/useModal';
+import { calcQuantity } from '../../../../utils';
 
-import { ProductRow } from './components';
+import { ProductForm, ProductRow } from './components';
 
 import styles from './productsPanel.module.scss';
 
+import { useToast } from '../../../../components/toast';
+import { useModal } from '../../../../components/modal';
+import { getProducts } from '../../../../api/productService';
+
 export const ProductsPanel = () => {
-  const { openModal } = useModal();
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [serverErrorMessage, setServerErrorMessage] = useState(null);
+
+  const { showToast } = useToast();
+  const { openModal, closeModal } = useModal();
 
   useEffect(() => {
-    request('/products', 'GET').then(({ data }) => {
-      setProducts(data);
-    });
+    getProducts()
+      .then(({ data, error }) => {
+        if (error) {
+          setServerErrorMessage(error);
+          return;
+        }
+        setProducts(data);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
-  const handleProductCreated = (product) => {
-    setProducts((prev) => [...prev, product]);
+  const onProductAdd = () => {
+    openModal({
+      icon: 'PackagePlus',
+      title: 'Add product',
+      subtitle: 'A new item will appear in the warehouse list.',
+      content: (
+        <ProductForm
+          onConfirm={(product) => {
+            setProducts((prev) => [...prev, product]);
+            showToast('Product added successfully', 'success');
+            closeModal();
+          }}
+        />
+      ),
+    });
   };
 
-  const handleProductUpdated = (product) => {
-    setProducts((prev) => prev.map((item) => (item.id === product.id ? product : item)));
+  const removeProductHandler = (productId) => {
+    setProducts((prev) => prev.filter((product) => product.id !== productId));
   };
 
-  const handleProductRemoved = (id) => {
-    setProducts((prev) => prev.filter((item) => item.id !== id));
+  const updateProductHandler = (updatedProduct) => {
+    setProducts((prev) =>
+      prev.map((product) => (product.id === updatedProduct.id ? updatedProduct : product))
+    );
   };
-
-  const totalQuantity = products.reduce((total, product) => total + Number(product.quantity), 0);
 
   return (
     <div className={styles.productsPanel}>
       <div className={styles.productsPanel__info}>
-        <SectionHead variant="small" eyebrow="// warehouse" title="Products" />
+        <TableHead variant="small" eyebrow="// warehouse" title="Products" />
 
         <div className={styles.productsPanel__toolbar}>
           {products.length > 0 && (
             <span className={styles.productsPanel__summary}>
-              {products.length} позиций · {totalQuantity} шт.
+              {products.length} item · {calcQuantity(products)} units
             </span>
           )}
 
@@ -50,25 +76,33 @@ export const ProductsPanel = () => {
             name="Add product"
             icon={{ name: 'Plus', color: '#10121d' }}
             variant="accent"
-            onClick={() =>
-              openModal('addProduct', {
-                onSuccess: handleProductCreated,
-              })
-            }
+            onClick={onProductAdd}
           />
         </div>
       </div>
 
-      <TableHead cells={TABLE_HEAD_CELLS.PRODUCTS} variant="products" />
+      <div className={styles.productsPanel__table}>
+        {isLoading ? (
+          <Loading />
+        ) : serverErrorMessage ? (
+          <ErrorMessage error={serverErrorMessage} />
+        ) : (
+          <>
+            <TableCells cells={TABLE_HEAD_CELLS.PRODUCTS} variant="products" />
 
-      {products.map((product) => (
-        <ProductRow
-          key={product.id}
-          product={product}
-          onProductUpdate={handleProductUpdated}
-          onProductRemove={handleProductRemoved}
-        />
-      ))}
+            <div className={styles.productsPanel__rows}>
+              {products.map((product) => (
+                <ProductRow
+                  key={product.id}
+                  product={product}
+                  removeProductHandler={removeProductHandler}
+                  updateProductHandler={updateProductHandler}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };

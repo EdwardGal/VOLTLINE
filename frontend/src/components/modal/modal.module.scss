@@ -51,6 +51,26 @@
     border: toRem(1) solid var(--border);
   }
 
+  &__body {
+    max-height: toRem(600);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--background-main) var(--background-secondary);
+
+    &::-webkit-scrollbar {
+      width: toRem(6);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--background-main);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--background-secondary);
+      border-radius: toRem(6);
+    }
+  }
+
   &__close {
     position: absolute;
     top: toRem(15);

@@ -1,16 +1,17 @@
 import styles from './account.module.scss';
-import { Access, PageContainer, SectionHead } from '../../components';
+import { Access, PageContainer, TableHead } from '../../components';
 import { AccountHeader, ProductsPanel, UsersPanel } from './components';
 import { ROLES } from '../../constants';
 
 export const Account = () => {
+
   return (
     <div className={styles.account}>
       <PageContainer>
         <AccountHeader />
 
         <div className={styles.account__content}>
-          <SectionHead
+          <TableHead
             className={styles.account__head}
             eyebrow={'// Control panel'}
             title={'Controls'}
@@ -24,7 +25,6 @@ export const Account = () => {
           <Access roles={[ROLES.ADMIN, ROLES.MANAGER]}>
             <ProductsPanel />
           </Access>
-
         </div>
       </PageContainer>
     </div>

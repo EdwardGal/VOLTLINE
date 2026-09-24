@@ -8,10 +8,19 @@
   padding: 0 toRem(12);
   border: 1px solid var(--border);
   border-radius: toRem(100);
-  
+
   &--accent {
     color: var(--background-main);
     background: var(--background-button-main);
+  }
+
+  &--reverse {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: toRem(12);
+    border: none;
+    background: none;
   }
 
   &__name {

@@ -1,10 +1,15 @@
 .header {
-  &__topBar {
-    margin-bottom: toRem(8);
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 120;
+  width: 100%;
+  background: var(--background-main);
+
   &__inner {
     display: flex;
     align-items: center;
+    padding: toRem(8) toRem(16);
   }
 
   &__search {

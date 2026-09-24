@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './formSelect.module.scss';
-import { FormError } from '../formError/formError';
+import { ErrorMessage } from '../errorMessage/errorMessage';
 
 export const FormSelect = ({ label, error, className, children, ...props }) => {
   return (
@@ -15,7 +15,7 @@ export const FormSelect = ({ label, error, className, children, ...props }) => {
         {children}
       </select>
 
-      {error && <FormError className={styles.formSelect__error} error={error} />}
+      {error && <ErrorMessage className={styles.formSelect__error} error={error} />}
     </div>
   );
 };
