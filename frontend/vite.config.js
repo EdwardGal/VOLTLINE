@@ -17,13 +17,14 @@ export default defineConfig({
     },
   },
   server: {
-    host: '127.0.0.1',
-    port: 5173,
-    strictPort: true,
+    host: true,
+    port: 3000,
     proxy: {
       '/uploads': {
         target: 'http://localhost:3001',
         changeOrigin: true,
+
+        
       },
       '/api': {
         target: 'http://localhost:3001',

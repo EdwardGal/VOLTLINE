@@ -1,4 +1,5 @@
 .customLink {
+  flex-shrink: 0;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -15,12 +16,17 @@
   }
 
   &--reverse {
-    display: inline-flex;
-    align-items: center;
     flex-direction: row-reverse;
     gap: toRem(12);
     border: none;
     background: none;
+  }
+
+  &--default {
+    border: none;
+    background: none;
+    color: inherit;
+    padding: 0;
   }
 
   &__name {

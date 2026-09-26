@@ -6,7 +6,7 @@ import styles from './sectionHead.module.scss';
 export const SectionHead = ({ className, title, iconName, iconLabel }) => {
   return (
     <div className={clsx(styles.sectionHead, className)}>
-      <H2 className={styles.sectionHead__title}>{title}</H2>
+      <H2 className={styles.sectionHead__title} title={title} />
       <CustomLink
         className={styles.sectionHead__link}
         name={iconLabel}

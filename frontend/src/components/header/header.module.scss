@@ -7,6 +7,7 @@
   background: var(--background-main);
 
   &__inner {
+    position: relative;
     display: flex;
     align-items: center;
     padding: toRem(8) toRem(16);

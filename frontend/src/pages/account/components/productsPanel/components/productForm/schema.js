@@ -53,14 +53,17 @@ export const schema = yup.object({
     .min(0, 'Discount cannot be negative')
     .max(100, 'Discount cannot be more than 100%'),
 
-  tag: yup.string(),
+  tags: yup
+    .array()
+    .of(yup.string().oneOf(['new', 'popular', 'bestseller', '20%']))
+    .default([]),
 
   quantity: yup
     .number()
     .typeError('Please enter a valid quantity')
     .required('Please enter product quantity')
     .integer('Quantity must be a whole number')
-    .min(1, 'Quantity must be at least 1'),
+    .min(0, 'Quantity must be at least 1'),
   images: yup.mixed().test('fileSize', 'Each image must be no more than 5 MB', (files) => {
     if (!files?.length) return true;
 

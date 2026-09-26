@@ -4,11 +4,10 @@ export const ROUTES = {
   REGISTER: '/register',
   LOGIN: '/login',
   ACCOUNT: '/account',
+  CATALOG: '/catalog',
 
-  POST: '/post',
-  POST_VIEW: ':id',
-  POST_EDIT: ':id/edit',
-  POST_NEW: 'new',
+  PRODUCT: '/product',
+  PRODUCT_VIEW: '/products/:id',
 
   USERS: '/users',
 };

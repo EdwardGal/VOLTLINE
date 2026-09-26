@@ -1,0 +1,11 @@
+.product {
+  padding: toRem(115) 0 toRem(60);
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    gap: toRem(68);
+  }
+  &__breadcrumbs{
+    margin-bottom: toRem(20);
+  }
+}

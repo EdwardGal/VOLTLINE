@@ -15,7 +15,7 @@ export const FormSelect = ({ label, error, className, children, ...props }) => {
         {children}
       </select>
 
-      {error && <ErrorMessage className={styles.formSelect__error} error={error} />}
+      {error && <ErrorMessage error={error} />}
     </div>
   );
 };

@@ -1,14 +1,14 @@
 .userRow {
   display: grid;
+  grid-template-columns: var(--table-users-columns);
   align-items: center;
   gap: toRem(10);
-  grid-template-columns: 722px 160px 160px 264px 120px;
+  padding: toRem(8) toRem(24);
+
   &:not(:last-child) {
     border-bottom: toRem(1) solid var(--border);
   }
   &__profile {
-    flex-basis: toRem(373);
-    padding: toRem(8) toRem(8) toRem(8) toRem(24);
     display: flex;
     align-items: center;
     gap: toRem(12);
@@ -39,28 +39,20 @@
     font-size: toRem(11);
   }
   &__createdAt {
-    flex-basis: toRem(208);
-    padding: toRem(8);
     font-size: toRem(14);
   }
   &__lastLoginAt {
-    flex-basis: toRem(208);
-    padding: toRem(8);
     font-size: toRem(14);
   }
   &__roles {
-    flex-basis: toRem(240);
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: toRem(8);
-    padding: toRem(8);
   }
-
   &__badge {
-    flex-basis: toRem(66);
+    padding: toRem(4) toRem(10);
     text-align: center;
-    padding: toRem(2) toRem(10);
     background: var(--background-2);
     text-transform: lowercase;
     font-size: toRem(11);
@@ -78,15 +70,10 @@
   }
 
   &__select {
-    flex-basis: toRem(150);
     padding: toRem(6) toRem(12);
     font-size: toRem(14);
     background: var(--background-cards);
     border: toRem(1) solid var(--border);
     border-radius: toRem(100);
-  }
-  &__actions {
-    flex-basis: toRem(153);
-    padding: toRem(8) toRem(24) toRem(8) toRem(8);
   }
 }

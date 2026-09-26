@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 
-import { ErrorMessage, Loading, TableHead, TableCells } from '../../../../components';
-import { TABLE_HEAD_CELLS } from '../../../../constants';
-import { selectUser } from '../../../../store/selectors';
-
-import { UserRow } from './components';
+import { ErrorMessage, Loading, TableHead, Table } from '../../../../components';
 
 import styles from './usersPanel.module.scss';
 
 import { getUsers, getRoles } from '../../../../api';
+import { USER_TABLE_COLUMNS } from './user-table-columns';
+
+import { UserRow } from './components/userRow/userRow';
 
 export const UsersPanel = () => {
   const [users, setUsers] = useState([]);
@@ -26,6 +24,7 @@ export const UsersPanel = () => {
           setServerErrorMessage(usersRes.error || rolesRes.error);
           return;
         }
+
         setUsers(usersRes.data);
         setRoles(rolesRes.data);
       })
@@ -55,18 +54,16 @@ export const UsersPanel = () => {
         ) : serverErrorMessage ? (
           <ErrorMessage error={serverErrorMessage} />
         ) : (
-          <>
-            <TableCells cells={TABLE_HEAD_CELLS.USERS} variant="userPanel" />
-
-            {users.map((user) => (
-              <UserRow
-                key={user.id}
-                user={user}
-                roles={roles}
-                removeUserHandler={removeUserHandler}
-              />
-            ))}
-          </>
+          <Table
+            data={users}
+            columns={USER_TABLE_COLUMNS}
+            Row={UserRow}
+            rowProps={{
+              roles,
+              removeUserHandler,
+            }}
+            variant="users"
+          />
         )}
       </div>
     </div>

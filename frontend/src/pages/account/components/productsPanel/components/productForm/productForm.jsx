@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { FormInput, FormSelect, FormTextarea } from '../../../../../../components';
+import { ErrorMessage, FormInput, FormSelect, FormTextarea } from '../../../../../../components';
 import { getCategories } from '../../../../../../api/productService';
 import { request } from '../../../../../../utils';
 
@@ -11,8 +11,8 @@ import styles from './productForm.module.scss';
 import { PRODUCT_TAGS } from '../../../../../../constants';
 
 export const ProductForm = ({ product, onConfirm }) => {
-  const [serverError, setServerError] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [serverErrorMessage, setServerErrorMessage] = useState(null);
 
   const {
     register,
@@ -29,7 +29,7 @@ export const ProductForm = ({ product, onConfirm }) => {
       category: '',
       price: product?.price ?? '',
       discount: product?.discount ?? '',
-      tag: product?.tag ?? '',
+      tags: product?.tags ?? [],
       quantity: product?.quantity ?? '',
       images: [],
     },
@@ -39,7 +39,7 @@ export const ProductForm = ({ product, onConfirm }) => {
   useEffect(() => {
     getCategories().then(({ data, error }) => {
       if (error) {
-        setServerError(error);
+        setServerErrorMessage(error);
         return;
       }
 
@@ -50,18 +50,23 @@ export const ProductForm = ({ product, onConfirm }) => {
 
         reset({
           name: product.name ?? '',
+          description: product.description ?? '',
+          brand: product.brand ?? '',
           sku: product.sku ?? '',
+          warranty: product.warranty ?? '',
           category: categoryId,
           price: product.price ?? '',
           discount: product.discount ?? 0,
+          tags: product.tags ?? [],
           quantity: product.quantity ?? '',
+          images: [],
         });
       }
     });
   }, [product, reset]);
 
   const clearServerError = () => {
-    setServerError(null);
+    setServerErrorMessage(null);
   };
 
   const onSubmit = async (formData) => {
@@ -77,10 +82,13 @@ export const ProductForm = ({ product, onConfirm }) => {
         return;
       }
 
+      if (key === 'tags') {
+        dataToSend.append('tags', JSON.stringify(value));
+        return;
+      }
+
       dataToSend.append(key, value ?? '');
     });
-
-    dataToSend.set('tag', formData.tag || '');
 
     const { data, error } = await request(
       isEdit ? `/products/${product.id}` : '/products',
@@ -89,7 +97,7 @@ export const ProductForm = ({ product, onConfirm }) => {
     );
 
     if (error) {
-      setServerError(error);
+      serverErrorMessage(error);
       return;
     }
 
@@ -191,21 +199,21 @@ export const ProductForm = ({ product, onConfirm }) => {
         </div>
 
         <div className={styles.productForm__field}>
-          <FormSelect
-            label="tag"
-            id="product-tag"
-            error={errors.tag?.message}
-            {...register('tag', {
-              onChange: clearServerError,
-            })}
-          >
-            <option value="">No tag</option>
-            {PRODUCT_TAGS.map(({ id, name }) => (
-              <option key={id} value={id}>
-                {name}
-              </option>
-            ))}
-          </FormSelect>
+          <div className={styles.productForm__tags}>
+            <span className={styles.productForm__label}>TAGS</span>
+            <div className={styles.productForm__tagsList}>
+              {PRODUCT_TAGS.map(({ id, name }) => (
+                <FormInput
+                  key={id}
+                  type="checkbox"
+                  value={id}
+                  label={name}
+                  error={errors.tags?.message}
+                  {...register('tags')}
+                />
+              ))}
+            </div>
+          </div>
           <FormInput
             label="warranty"
             id="product-warranty"
@@ -219,13 +227,24 @@ export const ProductForm = ({ product, onConfirm }) => {
           />
         </div>
 
-        <FormInput
-          type="file"
-          label="Product images"
-          accept="image/jpeg,image/png,image/webp"
-          multiple
-          {...register('images')}
-        />
+        <div className={styles.productForm__field}>
+          <FormInput
+            type="file"
+            label="Product images"
+            accept="image/jpeg,image/png,image/webp"
+            multiple
+            {...register('images')}
+          />
+          {product?.images?.length > 0 && (
+            <div className={styles.productForm__images}>
+              {product.images.map((image) => (
+                <span key={image} className={styles.productForm__image}>
+                  {image.split('/uploads/products/')[1]}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
 
         <FormTextarea
           label="Description"
@@ -234,7 +253,7 @@ export const ProductForm = ({ product, onConfirm }) => {
         />
       </div>
 
-      {serverError && <div className={styles.productForm__serverError}>{serverError}</div>}
+      {serverErrorMessage && <ErrorMessage error={serverErrorMessage} />}
     </form>
   );
 };

@@ -37,15 +37,15 @@ const ProductSchema = mongoose.Schema(
     },
     discount: {
       type: Number,
-      default: 0,
-    },
-    tag: {
-      type: String,
-      enum: ['new', 'popular', 'bestseller', '20%', ''],
       default: '',
     },
+    tags: {
+      type: [String],
+      enum: ['new', 'popular', 'bestseller', '20%'],
+      default: [],
+    },
     quantity: {
-      type: String,
+      type: Number,
       required: true,
     },
   },

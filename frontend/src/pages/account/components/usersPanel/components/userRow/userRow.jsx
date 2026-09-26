@@ -12,10 +12,10 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../../../../../../store/selectors';
 import { useModal } from '../../../../../../components/modal';
 
-export const UserRow = ({ user, roles, removeUserHandler }) => {
+export const UserRow = ({ item: user, roles, removeUserHandler }) => {
   const [initialRoleId, setInitialRoleId] = useState(user.roleId);
   const [selectedRoleId, setSelectedRoleId] = useState(user.roleId);
-
+  
   const { showToast } = useToast();
 
   const { openModal, closeModal } = useModal();

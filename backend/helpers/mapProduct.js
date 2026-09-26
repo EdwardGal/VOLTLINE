@@ -9,6 +9,6 @@ export const mapProduct = (product) => ({
   category: product.category.name,
   price: product.price,
   discount: product.discount,
-  tag: product.tag,
+  tags: product.tags,
   quantity: product.quantity,
 });

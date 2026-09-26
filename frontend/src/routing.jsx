@@ -1,11 +1,25 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Account, Auth, Home } from './pages';
+import { Account, Auth, Catalog, Home, Product } from './pages';
 import { ROUTES } from './constants';
+import { MainLayout } from './layouts';
 
 export const router = createBrowserRouter([
   {
-    path: ROUTES.HOME,
-    element: <Home />,
+    element: <MainLayout />,
+    children: [
+      {
+        path: ROUTES.HOME,
+        element: <Home />,
+      },
+      {
+        path: ROUTES.PRODUCT_VIEW,
+        element: <Product />,
+      },
+      {
+        path: ROUTES.CATALOG,
+        element: <Catalog />,
+      },
+    ],
   },
   {
     path: ROUTES.AUTH,

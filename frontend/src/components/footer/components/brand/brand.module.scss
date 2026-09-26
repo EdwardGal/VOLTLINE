@@ -1,0 +1,7 @@
+.brand{
+  &__description {
+    font-size: toRem(15);
+    line-break: 130%;
+    margin-top: toRem(22);
+  }
+}

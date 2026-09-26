@@ -1,0 +1,17 @@
+.legal {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: toRem(30) 0;
+  border-top: toRem(1) solid var(--border);
+  &__copy {
+    font-size: toRem(15);
+    line-height: 130%;
+  }
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: toRem(20);
+  }
+}

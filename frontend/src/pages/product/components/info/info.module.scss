@@ -1,0 +1,45 @@
+.info {
+  flex: 0 1 toRem(600);
+  &__description {
+    font-size: toRem(15);
+    line-height: 130%;
+    margin-top: toRem(16);
+  }
+  &__price {
+    margin-top: toRem(20);
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: toRem(12);
+    margin-top: toRem(20);
+  }
+
+  &__purchase {
+    display: flex;
+    align-items: center;
+    gap: toRem(12);
+  }
+
+  &__techs {
+    display: flex;
+    flex-direction: column;
+    margin-top: toRem(40);
+  }
+
+  &__tech {
+    display: flex;
+    justify-content: space-between;
+    padding: toRem(10) 0;
+    border-bottom: toRem(1) solid var(--border);
+  }
+
+  &__techTitle {
+    color: var(--headings-and-subheadings);
+  }
+
+  &__delivery {
+    margin-top: toRem(16);
+  }
+}

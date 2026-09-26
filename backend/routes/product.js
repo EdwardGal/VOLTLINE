@@ -1,20 +1,43 @@
 import express from 'express';
+
 import {
   getProducts,
   getProductsWithTags,
   addProduct,
   updateProduct,
   deleteProduct,
+  getProduct,
 } from '../controllers/product.js';
+
 import { ROLES } from '../constants/roles.js';
 import { authenticated, hasRole, upload } from '../middlewars/index.js';
 
-
 const router = express.Router({ mergeParams: true });
 
-router.get('/', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
+router.get(
+  '/',
+  // authenticated,
+  // hasRole([ROLES.ADMIN, ROLES.MANAGER, ROLES.USER]),
+  async (req, res) => {
+    try {
+      const products = await getProducts(req.query.search);
+
+      res.send({
+        data: products,
+        error: null,
+      });
+    } catch (error) {
+      res.status(500).send({
+        data: null,
+        error: error.message,
+      });
+    }
+  }
+);
+
+router.get('/tagged', async (req, res) => {
   try {
-    const products = await getProducts();
+    const products = await getProductsWithTags();
 
     res.send({
       data: products,
@@ -28,12 +51,12 @@ router.get('/', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
   }
 });
 
-router.get('/tagged', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const products = await getProductsWithTags();
+    const product = await getProduct(req.params.id);
 
     res.send({
-      data: products,
+      data: product,
       error: null,
     });
   } catch (error) {
@@ -53,8 +76,11 @@ router.post(
     try {
       const images = req.files.map((file) => `/uploads/products/${file.filename}`);
 
+      const tags = req.body.tags ? JSON.parse(req.body.tags) : [];
+
       const product = await addProduct({
         ...req.body,
+        tags,
         images,
       });
 
@@ -63,6 +89,8 @@ router.post(
         error: null,
       });
     } catch (error) {
+      console.error(error);
+
       res.status(500).send({
         data: null,
         error: error.message,
@@ -78,13 +106,23 @@ router.patch(
   upload.array('images', 10),
   async (req, res) => {
     try {
-      const product = await updateProduct(req.params.id, req.body, req.files);
+      const productData = {
+        ...req.body,
+      };
+
+      if (req.body.tags !== undefined) {
+        productData.tags = JSON.parse(req.body.tags);
+      }
+
+      const product = await updateProduct(req.params.id, productData, req.files);
 
       res.send({
         data: product,
         error: null,
       });
     } catch (error) {
+      console.error(error);
+
       res.status(500).send({
         data: null,
         error: error.message,
@@ -96,7 +134,9 @@ router.patch(
 router.delete('/:id', authenticated, hasRole([ROLES.ADMIN, ROLES.MANAGER]), async (req, res) => {
   await deleteProduct(req.params.id);
 
-  res.send({ error: null });
+  res.send({
+    error: null,
+  });
 });
 
 export default router;

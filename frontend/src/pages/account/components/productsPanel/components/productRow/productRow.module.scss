@@ -1,26 +1,14 @@
 .productRow {
   display: grid;
-  grid-template-columns:
-    86px
-    410px
-    122px
-    122px
-    100px
-    73px
-    98px
-    73px
-    122px
-    160px;
-
+  grid-template-columns: var(--table-products-columns);
   align-items: center;
   gap: toRem(10);
+  padding: toRem(8) toRem(24);
 
   &:not(:last-child) {
     border-bottom: toRem(1) solid var(--border);
   }
 
-  &__cover {
-  }
 
   &__image {
     width: 100%;
@@ -31,7 +19,6 @@
   &__info {
     display: flex;
     flex-direction: column;
-    padding: toRem(8) toRem(8) toRem(8) toRem(24);
   }
 
   &__name {
@@ -39,16 +26,7 @@
     font-weight: 500;
     color: var(--headings-and-subheadings);
   }
-  &__brand {
-    padding: toRem(8);
-  }
-
-  &__warranty {
-    padding: toRem(8);
-  }
-
   &__category {
-    padding: toRem(2) toRem(10);
     font-size: toRem(11);
     text-align: center;
     overflow: hidden;
@@ -59,20 +37,10 @@
   }
 
   &__price {
-    padding: toRem(8);
     font-size: toRem(14);
     font-weight: 600;
     color: var(--headings-and-subheadings);
   }
-
-  &__discount {
-    padding: toRem(8);
-  }
-
-  &__tag {
-    padding: toRem(8);
-  }
-
   &__quantity {
     display: flex;
     justify-content: space-between;
@@ -81,9 +49,5 @@
     background: var(--background-cards);
     border: toRem(1) solid var(--border);
     border-radius: toRem(100);
-  }
-
-  &__actions {
-    padding: toRem(8) toRem(24) toRem(8) toRem(8);
   }
 }

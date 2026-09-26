@@ -1,0 +1,11 @@
+.delivery {
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: toRem(20);
+    margin-bottom: toRem(12);
+  }
+  &__adress {
+    flex: 0 0 toRem(225);
+  }
+}

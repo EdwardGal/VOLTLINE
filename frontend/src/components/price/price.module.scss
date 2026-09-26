@@ -1,0 +1,22 @@
+.price {
+  display: flex;
+  align-items: center;
+  gap: toRem(12);
+
+  &--productCard {
+    .price__current {
+      font-size: toRem(24);
+    }
+  }
+
+  &__current {
+    font-size: toRem(18);
+    font-weight: 700;
+    line-height: 130%;
+    color: var(--headings-and-subheadings);
+  }
+  &__old {
+    font-size: toRem(15);
+    line-height: 130%;
+  }
+}

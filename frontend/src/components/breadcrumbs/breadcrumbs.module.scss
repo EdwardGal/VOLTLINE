@@ -1,0 +1,13 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: toRem(10);
+
+  font-size: toRem(14);
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: toRem(10);
+  }
+}

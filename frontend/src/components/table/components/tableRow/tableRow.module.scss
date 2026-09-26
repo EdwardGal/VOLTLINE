@@ -1,0 +1,4 @@
+.tableRow {
+  display: grid;
+  grid-template-columns: var(--table-columns);
+}

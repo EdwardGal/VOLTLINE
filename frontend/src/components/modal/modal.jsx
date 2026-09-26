@@ -1,4 +1,5 @@
 import { CustomButton } from '../customButton/customButton';
+import { H2 } from '../h2/h2';
 import { LucideIcon } from '../lucideIcon/lucideIcon';
 
 import styles from './modal.module.scss';
@@ -13,7 +14,7 @@ export const Modal = ({ title, subtitle, icon, content, onClose, onConfirm }) =>
           <LucideIcon className={styles.modal__icon} name={icon} size="20" />
 
           <div className={styles.modal__info}>
-            <h2 className={styles.modal__title}>{title}</h2>
+            <H2 className={styles.modal__title} title={title} />
 
             <div className={styles.modal__subtitle}>{subtitle}</div>
           </div>

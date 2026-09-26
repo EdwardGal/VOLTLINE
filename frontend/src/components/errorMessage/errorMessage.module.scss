@@ -6,4 +6,16 @@
   color: var(--headings-and-subheadings);
   background: var(--background-button-2);
   border-left: toRem(1) solid var(--background-button-main);
+  &__inner{
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    color: var(--headings-and-subheadings);
+    font-size: toRem(12);
+  }
+  &__description {
+    font-size: toRem(10);
+    color: var(--body);
+  }
 }

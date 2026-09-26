@@ -1,19 +1,22 @@
 import { useState } from 'react';
 
-import { CustomButton } from '../../../../../../components';
+import { deleteProduct, updateProduct } from '../../../../../../api/productService';
+import { CustomButton, Quantity } from '../../../../../../components';
+import { useModal } from '../../../../../../components/modal';
+import { useToast } from '../../../../../../components/toast';
+import { formatPrice } from '../../../../../../utils';
 
 import styles from './productRow.module.scss';
-import { useToast } from '../../../../../../components/toast';
-import { deleteProduct, updateProduct } from '../../../../../../api/productService';
-import { useModal } from '../../../../../../components/modal';
 import { ProductForm } from '../productForm/productForm';
 
-export const ProductRow = ({ product, removeProductHandler, updateProductHandler }) => {
+export const ProductRow = ({ item: product, removeProductHandler, updateProductHandler }) => {
   const [quantity, setQuantity] = useState(Number(product.quantity));
   const [initialQuantity, setInitialQuantity] = useState(Number(product.quantity));
 
   const { showToast } = useToast();
   const { openModal, closeModal } = useModal();
+
+  const { images, ...techs } = product;
 
   const onProductRemove = () => {
     openModal({
@@ -45,8 +48,10 @@ export const ProductRow = ({ product, removeProductHandler, updateProductHandler
           product={product}
           onConfirm={(updatedProduct) => {
             updateProductHandler(updatedProduct);
+
             setQuantity(Number(updatedProduct.quantity));
             setInitialQuantity(Number(updatedProduct.quantity));
+
             showToast('Product updated successfully', 'success');
             closeModal();
           }}
@@ -67,6 +72,7 @@ export const ProductRow = ({ product, removeProductHandler, updateProductHandler
       }
 
       updateProductHandler(data);
+
       setQuantity(Number(data.quantity));
       setInitialQuantity(Number(data.quantity));
 
@@ -77,43 +83,29 @@ export const ProductRow = ({ product, removeProductHandler, updateProductHandler
   return (
     <div className={styles.productRow}>
       <div className={styles.productRow__cover}>
-        <img className={styles.productRow__image} src={product.images[0]} alt={product.name} />
+        <img className={styles.productRow__image} src={images[0]} alt={product.name} />
       </div>
+      {Object.entries(techs).map(([name, value]) => {
+        const formattedValue = name === 'price' ? `${formatPrice(value)} ₽` : value;
 
-      <div className={styles.productRow__info}>
-        <span className={styles.productRow__name}>{product.name}</span>
+        if (name === 'description' || name === 'id') {
+          return null;
+        }
 
-        <span className={styles.productRow__sku}>{product.sku}</span>
-      </div>
+        if (name === 'tags') {
+          return value.join(' ');
+        }
 
-      <span className={styles.productRow__brand}>{product.brand}</span>
+        if (name === 'quantity') {
+          return <Quantity key={name} quantity={quantity} onQuantityChange={onQuantityChange} />;
+        }
 
-      <span className={styles.productRow__category}>{product.category}</span>
-
-      <span className={styles.productRow__price}>{product.price} ₽</span>
-
-      <span className={styles.productRow__discount}>{product.discount}%</span>
-
-      <span className={styles.productRow__tag}>{product.tag}</span>
-
-      <span className={styles.productRow__warranty}>{product.warranty}</span>
-
-      <div className={styles.productRow__quantity}>
-        <CustomButton
-          icon={{ name: 'Plus' }}
-          variant="default"
-          onClick={() => onQuantityChange(1)}
-        />
-
-        <span className={styles.productRow__counter}>{quantity}</span>
-
-        <CustomButton
-          icon={{ name: 'Minus' }}
-          variant="default"
-          disabled={quantity === 0}
-          onClick={() => onQuantityChange(-1)}
-        />
-      </div>
+        return (
+          <span key={name} className={styles[`productRow__${name}`]}>
+            {formattedValue}
+          </span>
+        );
+      })}
 
       <div className={styles.productRow__actions}>
         <CustomButton

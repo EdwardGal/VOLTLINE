@@ -1,6 +1,6 @@
 .catalog {
   padding: toRem(30) 0;
-  
+
   &__head {
     margin-bottom: toRem(30);
   }
@@ -13,6 +13,7 @@
 
   &__cards {
     display: flex;
+    flex-wrap: wrap;
     gap: toRem(20);
   }
 }

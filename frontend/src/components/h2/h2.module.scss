@@ -3,4 +3,8 @@
   font-size: toRem(24);
   line-height: 130%;
   color: var(--headings-and-subheadings);
+  &--productCard {
+    font-family: var(--font-family-base);
+    font-size: toRem(40);
+  }
 }

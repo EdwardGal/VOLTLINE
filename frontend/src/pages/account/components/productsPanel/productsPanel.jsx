@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import { CustomButton, ErrorMessage, Loading, TableHead, TableCells } from '../../../../components';
-import { TABLE_HEAD_CELLS } from '../../../../constants';
+import {
+  CustomButton,
+  ErrorMessage,
+  Loading,
+  TableHead,
+  Table,
+} from '../../../../components';
+
 import { calcQuantity } from '../../../../utils';
 
 import { ProductForm, ProductRow } from './components';
@@ -11,6 +17,7 @@ import styles from './productsPanel.module.scss';
 import { useToast } from '../../../../components/toast';
 import { useModal } from '../../../../components/modal';
 import { getProducts } from '../../../../api/productService';
+import { PRODUCT_TABLE_COLUMNS } from './product-table-columns';
 
 export const ProductsPanel = () => {
   const [products, setProducts] = useState([]);
@@ -87,20 +94,16 @@ export const ProductsPanel = () => {
         ) : serverErrorMessage ? (
           <ErrorMessage error={serverErrorMessage} />
         ) : (
-          <>
-            <TableCells cells={TABLE_HEAD_CELLS.PRODUCTS} variant="products" />
-
-            <div className={styles.productsPanel__rows}>
-              {products.map((product) => (
-                <ProductRow
-                  key={product.id}
-                  product={product}
-                  removeProductHandler={removeProductHandler}
-                  updateProductHandler={updateProductHandler}
-                />
-              ))}
-            </div>
-          </>
+          <Table
+            data={products}
+            columns={PRODUCT_TABLE_COLUMNS}
+            Row={ProductRow}
+            rowProps={{
+              removeProductHandler,
+              updateProductHandler,
+            }}
+            variant="products"
+          />
         )}
       </div>
     </div>

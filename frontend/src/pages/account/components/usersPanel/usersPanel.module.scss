@@ -1,4 +1,5 @@
 .usersPanel {
+  display: grid;
   margin-bottom: toRem(40);
   background: var(--background-secondary);
   border-radius: toRem(12);

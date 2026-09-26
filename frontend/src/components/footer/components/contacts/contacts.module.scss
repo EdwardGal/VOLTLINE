@@ -1,0 +1,22 @@
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: toRem(16);
+
+  &__title {
+    font-size: toRem(18);
+    font-weight: 600;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(8);
+  }
+
+  &__link {
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}

@@ -18,6 +18,8 @@
 
   --error: #ed324b;
 
+  --gallery-catalog-background: linear-gradient(180deg, #252838 50.11%, #04050c 95.04%);
+
   --font-family-base: 'DM Sans', sans-serif;
   --font-family-heading: 'Space Grotesk', sans-serif;
 
@@ -30,6 +32,13 @@
 
   --line-height-base: 120%;
   --line-height-heading: 130%;
+
+  --table-products-columns: 80px minmax(260px, 2fr) minmax(100px, 1fr) minmax(120px, 1fr)
+    minmax(100px, 0.8fr) minmax(120px, 1.2fr) minmax(100px, 1fr) minmax(40px, 0.8fr)
+    minmax(120px, 1fr) minmax(100px, 1fr) 120px;
+
+  --table-users-columns: minmax(280px, 2fr) minmax(160px, 1.2fr) minmax(160px, 1.2fr)
+    minmax(100px, 0.8fr) 120px;
 }
 
 #root {

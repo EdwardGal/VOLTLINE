@@ -27,7 +27,7 @@
 
   &__rows {
     max-height: toRem(360);
-    overflow-y: auto;
+    overflow: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--background-main) var(--background-secondary);
 

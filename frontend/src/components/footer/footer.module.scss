@@ -1,0 +1,10 @@
+.footer {
+  padding: toRem(60) 0 0;
+
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: toRem(40);
+  }
+}

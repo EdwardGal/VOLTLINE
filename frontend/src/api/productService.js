@@ -1,7 +1,13 @@
 import { request } from '../utils';
 
-export const getProducts = async () => {
-  return request('/products');
+export const getProducts = async (search = '') => {
+  const query = search ? `?search=${encodeURIComponent(search)}` : '';
+
+  return request(`/products${query}`);
+};
+
+export const getProduct = async (id) => {
+  return request(`/products/${id}`);
 };
 
 export const getProductsWithTags = async () => {

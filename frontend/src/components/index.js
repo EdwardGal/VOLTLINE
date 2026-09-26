@@ -10,9 +10,14 @@ export * from './headerLogo/headerLogo';
 export * from './tableHead/tableHead';
 export * from './lucideIcon/lucideIcon';
 export * from './access/access';
-export * from './tableCells/tableCells';
 export * from './formSelect/formSelect';
 export * from './loading/loading';
 export * from './h2/h2';
 export * from './sectionHead/sectionHead';
 export * from './formTextArea/formTextArea';
+export * from './productCard/productCard';
+export * from './table/table';
+export * from './quantity/quantity';
+export * from './price/price';
+export * from './delivery/delivery'
+export * from './breadcrumbs/breadcrumbs'

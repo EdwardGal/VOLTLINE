@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 import { getCategories } from '../../../../api/productService';
-import { ErrorMessage, Loading, PageContainer, SectionHead } from '../../../../components';
+import {
+  ErrorMessage,
+  Loading,
+  PageContainer,
+  ProductCard,
+  SectionHead,
+} from '../../../../components';
 
 import styles from './catalog.module.scss';
-import { ProductCard } from './components';
 
 export const Catalog = () => {
   const [categories, setCategories] = useState([]);
@@ -40,7 +45,12 @@ export const Catalog = () => {
             ) : (
               <>
                 {categories.map((category) => (
-                  <ProductCard key={category.id} {...category} />
+                  <ProductCard
+                    key={category.id}
+                    variant="category"
+                    showBuyButton={false}
+                    product={category}
+                  />
                 ))}
               </>
             )}
