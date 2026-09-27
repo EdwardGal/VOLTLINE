@@ -1,13 +1,6 @@
 import { useState } from 'react';
 
-import {
-  CustomButton,
-  CustomLink,
-  Delivery,
-  H2,
-  Price,
-  Quantity,
-} from '../../../../components';
+import { CustomButton, CustomLink, Delivery, H2, Price, Quantity } from '../../../../components';
 import { useToast } from '../../../../components/toast';
 import { ROUTES } from '../../../../constants';
 
@@ -47,11 +40,7 @@ export const Info = ({ product }) => {
 
   return (
     <div className={styles.info}>
-      <H2
-        className={styles.info__title}
-        variant="productCard"
-        title={name}
-      />
+      <H2 className={styles.info__title} variant="productCard" title={name} />
 
       <p className={styles.info__description}>{description}</p>
 
@@ -65,11 +54,6 @@ export const Info = ({ product }) => {
       <div className={styles.info__actions}>
         {initialQuantity > 0 ? (
           <div className={styles.info__purchase}>
-            <Quantity
-              quantity={quantity}
-              onQuantityChange={onQuantityChange}
-            />
-
             <CustomButton
               name="Buy"
               variant="productCard"
@@ -81,24 +65,17 @@ export const Info = ({ product }) => {
             />
           </div>
         ) : (
-          <p className={styles.info__stockMessage}>
-            Out of stock
-          </p>
+          <p className={styles.info__stockMessage}>Out of stock</p>
         )}
 
-        <CustomLink
-          name="Back to catalog"
-          to={ROUTES.CATALOG}
-        />
+        <CustomLink name="Back to catalog" to={ROUTES.CATALOG} />
       </div>
 
       <div className={styles.info__techs}>
         {Object.entries(techs).map(([name, value]) => (
           <div key={name} className={styles.info__tech}>
             <span>{name}</span>
-            <span className={styles.info__techTitle}>
-              {value}
-            </span>
+            <span className={styles.info__techTitle}>{value}</span>
           </div>
         ))}
       </div>

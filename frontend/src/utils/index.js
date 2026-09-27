@@ -6,3 +6,4 @@ export * from './check-access';
 export * from './calc-quantity';
 export * from './calc-discount-price';
 export * from './format-price';
+export * from './create-slug';

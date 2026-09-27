@@ -22,7 +22,7 @@
     gap: 0;
   }
 
-  &--productCard {
+  &--popular {
     flex-direction: row-reverse;
     font-size: toRem(17);
     color: var(--background-main);
@@ -30,6 +30,11 @@
   }
 
   &--accent {
+    color: var(--background-main);
+    background: var(--background-button-main);
+  }
+
+   &--catalog {
     color: var(--background-main);
     background: var(--background-button-main);
   }
@@ -47,7 +52,7 @@
     color: var(--background-button-main);
     border: none;
     background: none;
-    .customButton__name{
+    .customButton__name {
       font-size: toRem(15);
     }
   }

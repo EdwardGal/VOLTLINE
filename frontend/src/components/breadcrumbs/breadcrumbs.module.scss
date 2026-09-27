@@ -10,4 +10,8 @@
     align-items: center;
     gap: toRem(10);
   }
+
+  &__current {
+    font-size: toRem(15);
+  }
 }

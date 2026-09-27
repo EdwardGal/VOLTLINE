@@ -19,27 +19,21 @@ export const Modal = ({ title, subtitle, icon, content, onClose, onConfirm }) =>
             <div className={styles.modal__subtitle}>{subtitle}</div>
           </div>
 
-          <CustomButton
-            className={styles.modal__close}
-            icon={{ name: 'X' }}
-            type="button"
-            variant="default"
-            onClick={onClose}
-          />
+          <CustomButton className={styles.modal__close} variant="default" onClick={onClose}>
+            <LucideIcon name="X" />
+          </CustomButton>
         </div>
 
         <div className={styles.modal__body}>{content}</div>
 
         <div className={styles.modal__actions}>
-          <CustomButton name="Close" type="button" variant="productForm" onClick={onClose} />
+          <CustomButton variant="productForm" onClick={onClose}>
+            Close
+          </CustomButton>
 
-          <CustomButton
-            name={title}
-            form="product-form"
-            type="submit"
-            variant="productForm"
-            onClick={onConfirm}
-          />
+          <CustomButton form="product-form" type="submit" variant="productForm" onClick={onConfirm}>
+            {title}
+          </CustomButton>
         </div>
       </div>
     </div>

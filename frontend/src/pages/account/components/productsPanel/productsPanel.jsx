@@ -4,20 +4,19 @@ import {
   CustomButton,
   ErrorMessage,
   Loading,
+  LucideIcon,
   TableHead,
-  Table,
 } from '../../../../components';
 
 import { calcQuantity } from '../../../../utils';
 
-import { ProductForm, ProductRow } from './components';
+import { ProductForm, ProductTable } from './components';
 
 import styles from './productsPanel.module.scss';
 
 import { useToast } from '../../../../components/toast';
 import { useModal } from '../../../../components/modal';
 import { getProducts } from '../../../../api/productService';
-import { PRODUCT_TABLE_COLUMNS } from './product-table-columns';
 
 export const ProductsPanel = () => {
   const [products, setProducts] = useState([]);
@@ -80,32 +79,26 @@ export const ProductsPanel = () => {
 
           <CustomButton
             className={styles.productsPanel__addButton}
-            name="Add product"
-            icon={{ name: 'Plus', color: '#10121d' }}
             variant="accent"
             onClick={onProductAdd}
-          />
+          >
+            <LucideIcon name="Plus" color="#10121d" />
+            <span className={styles.productsPanel__addTitle}>Add product</span>
+          </CustomButton>
         </div>
       </div>
 
-      <div className={styles.productsPanel__table}>
-        {isLoading ? (
-          <Loading />
-        ) : serverErrorMessage ? (
-          <ErrorMessage error={serverErrorMessage} />
-        ) : (
-          <Table
-            data={products}
-            columns={PRODUCT_TABLE_COLUMNS}
-            Row={ProductRow}
-            rowProps={{
-              removeProductHandler,
-              updateProductHandler,
-            }}
-            variant="products"
-          />
-        )}
-      </div>
+      {isLoading ? (
+        <Loading />
+      ) : serverErrorMessage ? (
+        <ErrorMessage error={serverErrorMessage} />
+      ) : (
+        <ProductTable
+          products={products}
+          removeProductHandler={removeProductHandler}
+          updateProductHandler={updateProductHandler}
+        />
+      )}
     </div>
   );
 };

@@ -32,7 +32,7 @@ export const HeaderSearch = ({
       return;
     }
 
-    getProducts(search).then(({ data, error }) => {
+    getProducts({ search }).then(({ data, error }) => {
       if (error) {
         setSearchResults([]);
         setSearchMessage({

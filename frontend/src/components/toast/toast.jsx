@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 
 import styles from './toast.module.scss';
+import { LucideIcon } from '../lucideIcon/lucideIcon';
+import { CustomButton } from '../customButton/customButton';
 
 export const Toast = ({ message, type, onClose }) => {
   const isError = type === 'error';
@@ -15,14 +17,9 @@ export const Toast = ({ message, type, onClose }) => {
         <span className={styles.toast__message}>{message}</span>
       </div>
 
-      <button
-        className={styles.toast__close}
-        type="button"
-        onClick={onClose}
-        aria-label="Close notification"
-      >
-        ×
-      </button>
+      <CustomButton className={styles.toast__close} onClick={onClose}>
+        <LucideIcon className={styles.toast__icon} name="X" />
+      </CustomButton>
     </div>
   );
 };

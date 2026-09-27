@@ -1,3 +1,15 @@
 .catalog {
   padding: toRem(115) 0 toRem(60);
+  &__content {
+    display: flex;
+    gap: toRem(20);
+    align-items: start;
+  }
+  &__controlPanel {
+    flex: 0 1 toRem(352);
+  }
+  &__productList {
+    flex: 0 1 toRem(1096);
+    flex-wrap: wrap;
+  }
 }

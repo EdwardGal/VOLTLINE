@@ -16,8 +16,8 @@ export * from './h2/h2';
 export * from './sectionHead/sectionHead';
 export * from './formTextArea/formTextArea';
 export * from './productCard/productCard';
-export * from './table/table';
 export * from './quantity/quantity';
 export * from './price/price';
-export * from './delivery/delivery'
-export * from './breadcrumbs/breadcrumbs'
+export * from './delivery/delivery';
+export * from './breadcrumbs/breadcrumbs';
+export * from './table/table';

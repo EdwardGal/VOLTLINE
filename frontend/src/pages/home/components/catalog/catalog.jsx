@@ -9,6 +9,8 @@ import {
 } from '../../../../components';
 
 import styles from './catalog.module.scss';
+import { ROUTES } from '../../../../constants';
+import { createSlug } from '../../../../utils';
 
 export const Catalog = () => {
   const [categories, setCategories] = useState([]);
@@ -36,6 +38,7 @@ export const Catalog = () => {
             title="Catalog"
             iconName="MoveRight"
             iconLabel="Full catalog"
+            pathLink={ROUTES.CATALOG}
           />
           <div className={styles.catalog__cards}>
             {isLoading ? (
@@ -48,8 +51,8 @@ export const Catalog = () => {
                   <ProductCard
                     key={category.id}
                     variant="category"
-                    showBuyButton={false}
                     product={category}
+                    pathLink={`${ROUTES.CATALOG}/${createSlug(category.name)}`}
                   />
                 ))}
               </>

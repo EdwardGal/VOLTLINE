@@ -1,17 +1,32 @@
 import { mapProduct } from '../helpers/index.js';
-import Product from '../models/Product.js';
+
 import fs from 'fs/promises';
 import path from 'path';
 
-export const getProducts = async (search = '') => {
-  const filter = search
-    ? {
-        name: {
-          $regex: search,
-          $options: 'i',
-        },
-      }
-    : {};
+import Product from '../models/Product.js';
+import Category from '../models/Category.js';
+
+export const getProducts = async (search = '', category = '') => {
+  const filter = {};
+
+  if (search) {
+    filter.name = {
+      $regex: search,
+      $options: 'i',
+    };
+  }
+
+  if (category) {
+    const categoryData = await Category.findOne({
+      slug: category,
+    });
+
+    if (!categoryData) {
+      return [];
+    }
+
+    filter.category = categoryData._id;
+  }
 
   const products = await Product.find(filter).populate('category');
 

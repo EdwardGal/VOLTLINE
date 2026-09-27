@@ -221,7 +221,6 @@ export const ProductForm = ({ product, onConfirm }) => {
             placeholder="10"
             error={errors.warranty?.message}
             {...register('warranty', {
-              valueAsNumber: true,
               onChange: clearServerError,
             })}
           />

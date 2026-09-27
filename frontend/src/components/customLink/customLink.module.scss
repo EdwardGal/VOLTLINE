@@ -28,6 +28,16 @@
     color: inherit;
     padding: 0;
   }
+  &--breadcrumbs {
+    border: none;
+    background: none;
+    color: inherit;
+    padding: 0;
+    .customLink__name {
+      font-size: toRem(15);
+      text-transform: capitalize;
+    }
+  }
 
   &__name {
     font-size: toRem(17);

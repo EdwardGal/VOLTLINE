@@ -44,11 +44,15 @@
       border-radius: toRem(6);
     }
   }
-  &__error {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 200px;
-    padding: 30px;
+
+  &__addTitle{
+    font-size: toRem(12);
   }
+  // &__error {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   min-height: 200px;
+  //   padding: 30px;
+  // }
 }

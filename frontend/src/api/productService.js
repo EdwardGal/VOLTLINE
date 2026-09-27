@@ -1,9 +1,19 @@
 import { request } from '../utils';
 
-export const getProducts = async (search = '') => {
-  const query = search ? `?search=${encodeURIComponent(search)}` : '';
+export const getProducts = async ({ search = '', category = '' } = {}) => {
+  const params = new URLSearchParams();
 
-  return request(`/products${query}`);
+  if (search) {
+    params.set('search', search);
+  }
+
+  if (category) {
+    params.set('category', category);
+  }
+
+  const query = params.toString();
+
+  return request(`/products${query ? `?${query}` : ''}`);
 };
 
 export const getProduct = async (id) => {

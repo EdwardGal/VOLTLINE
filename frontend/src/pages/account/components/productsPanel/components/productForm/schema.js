@@ -29,13 +29,7 @@ export const schema = yup.object({
     .min(3, 'SKU must be at least 3 characters long')
     .max(30, 'SKU must be no more than 30 characters long'),
 
-  warranty: yup
-    .number()
-    .typeError('Please enter a valid warranty period')
-    .required('Please enter warranty period')
-    .integer('Warranty must be a whole number')
-    .min(1, 'Warranty must be at least 1 month')
-    .max(120, 'Warranty must be no more than 120 months'),
+  warranty: yup.string().trim().required('Please enter warranty period'),
 
   category: yup.string().required('Please select a category'),
 

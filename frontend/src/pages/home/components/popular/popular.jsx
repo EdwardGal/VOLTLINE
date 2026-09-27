@@ -9,6 +9,8 @@ import {
 
 import { useEffect, useState } from 'react';
 import { getProductsWithTags } from '../../../../api/productService';
+import { ROUTES } from '../../../../constants';
+import { createSlug } from '../../../../utils';
 
 export const Popular = () => {
   const [taggedProducts, setTaggedProducts] = useState([]);
@@ -37,6 +39,7 @@ export const Popular = () => {
               title="Popular"
               iconName="MoveRight"
               iconLabel="All products"
+              pathLink={ROUTES.CATALOG}
             />
             <div className={styles.popular__cards}>
               {isLoading ? (
@@ -46,7 +49,12 @@ export const Popular = () => {
               ) : (
                 <>
                   {taggedProducts.map((product) => (
-                    <ProductCard key={product.id} variant="popular" product={product} />
+                    <ProductCard
+                      key={product.id}
+                      variant="popular"
+                      product={product}
+                      pathLink={`${ROUTES.CATALOG}/${createSlug(product.category)}/${product.id}`}
+                    />
                   ))}
                 </>
               )}

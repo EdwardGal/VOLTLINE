@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import { ErrorMessage, Loading, TableHead, Table } from '../../../../components';
+import { getRoles, getUsers } from '../../../../api';
+import { ErrorMessage, Loading, TableHead } from '../../../../components';
+
+import { UserTable } from './components';
 
 import styles from './usersPanel.module.scss';
-
-import { getUsers, getRoles } from '../../../../api';
-import { USER_TABLE_COLUMNS } from './user-table-columns';
-
-import { UserRow } from './components/userRow/userRow';
 
 export const UsersPanel = () => {
   const [users, setUsers] = useState([]);
@@ -17,6 +15,7 @@ export const UsersPanel = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    setServerErrorMessage(null);
 
     Promise.all([getUsers(), getRoles()])
       .then(([usersRes, rolesRes]) => {
@@ -33,6 +32,10 @@ export const UsersPanel = () => {
 
   const removeUserHandler = (userId) => {
     setUsers((prev) => prev.filter((user) => user.id !== userId));
+  };
+
+  const updateUserHandler = (updatedUser) => {
+    setUsers((prev) => prev.map((user) => (user.id === updatedUser.id ? updatedUser : user)));
   };
 
   return (
@@ -54,15 +57,11 @@ export const UsersPanel = () => {
         ) : serverErrorMessage ? (
           <ErrorMessage error={serverErrorMessage} />
         ) : (
-          <Table
-            data={users}
-            columns={USER_TABLE_COLUMNS}
-            Row={UserRow}
-            rowProps={{
-              roles,
-              removeUserHandler,
-            }}
-            variant="users"
+          <UserTable
+            users={users}
+            roles={roles}
+            removeUserHandler={removeUserHandler}
+            updateUserHandler={updateUserHandler}
           />
         )}
       </div>

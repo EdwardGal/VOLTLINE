@@ -3,12 +3,6 @@
   align-items: center;
   gap: toRem(12);
 
-  &--productCard {
-    .price__current {
-      font-size: toRem(24);
-    }
-  }
-
   &__current {
     font-size: toRem(18);
     font-weight: 700;
@@ -18,5 +12,20 @@
   &__old {
     font-size: toRem(15);
     line-height: 130%;
+  }
+
+  &--productCard {
+    .price__current {
+      font-size: toRem(24);
+    }
+  }
+
+  &--catalog {
+    .price__current {
+      font-size: toRem(18);
+    }
+    .price__old {
+      font-size: toRem(12);
+    }
   }
 }

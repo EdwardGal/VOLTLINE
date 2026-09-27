@@ -4,10 +4,10 @@ export const ROUTES = {
   REGISTER: '/register',
   LOGIN: '/login',
   ACCOUNT: '/account',
-  CATALOG: '/catalog',
 
-  PRODUCT: '/product',
-  PRODUCT_VIEW: '/products/:id',
+  CATALOG: '/catalog',
+  CATALOG_CATEGORY: '/catalog/:category',
+  PRODUCT_VIEW: '/catalog/:category/:id',
 
   USERS: '/users',
 };

@@ -20,7 +20,7 @@ router.get(
   // hasRole([ROLES.ADMIN, ROLES.MANAGER, ROLES.USER]),
   async (req, res) => {
     try {
-      const products = await getProducts(req.query.search);
+      const products = await getProducts(req.query.search, req.query.category);
 
       res.send({
         data: products,

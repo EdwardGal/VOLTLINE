@@ -6,9 +6,10 @@ import { Tag } from '../tag/tag';
 
 import styles from './productCard.module.scss';
 import { Price } from '../price/price';
+import { LucideIcon } from '../lucideIcon/lucideIcon';
 
-export const ProductCard = ({ product, variant, onBuy }) => {
-  const { image, images = [], name, sku, tags, price, quantity, discount = 0, slug } = product;
+export const ProductCard = ({ product, variant, pathLink, onBuy }) => {
+  const { image, images = [], name, sku, tags, price, quantity, discount = 0 } = product;
 
   const variantClass = variant ? styles[`productCard--${variant}`] : null;
 
@@ -16,9 +17,14 @@ export const ProductCard = ({ product, variant, onBuy }) => {
 
   const isCatalog = variant === 'category';
 
-
   return (
-    <article className={clsx(styles.productCard, variantClass)}>
+    <article
+      className={clsx(
+        styles.productCard,
+        !quantity && styles[`productCard--disabled`],
+        variantClass
+      )}
+    >
       <div className={styles.productCard__cover}>
         <img className={styles.productCard__image} src={productImage} alt={name} />
 
@@ -30,7 +36,7 @@ export const ProductCard = ({ product, variant, onBuy }) => {
           </div>
         )}
 
-        <Link to={`/catalog/${slug}`} className={styles.productCard__link} aria-label={name} />
+        <Link to={pathLink} className={styles.productCard__link} />
       </div>
 
       <div className={styles.productCard__info}>
@@ -46,18 +52,26 @@ export const ProductCard = ({ product, variant, onBuy }) => {
 
         {!isCatalog && (
           <div className={styles.productCard__purchase}>
-            <Price price={price} discount={discount} />
+            <Price
+              className={styles.productCard__price}
+              variant={variant}
+              price={price}
+              discount={discount}
+            />
             <CustomButton
               className={styles.productCard__button}
-              name="Buy"
-              variant="productCard"
-              icon={{
-                name: 'ShoppingBasket',
-                color: '#05070F',
-                size: '20',
-              }}
+              variant={variant}
               onClick={() => onBuy?.(product)}
-            />
+            >
+              {variant !== 'catalog' ? (
+                <>
+                  <LucideIcon name="ShoppingBasket" size="20" color="#05070F" />
+                  Buy
+                </>
+              ) : (
+                <LucideIcon name="ShoppingBasket" size="20" color="#05070F" />
+              )}
+            </CustomButton>
           </div>
         )}
       </div>

@@ -1,0 +1,27 @@
+.productTableRow {
+  display: grid;
+  grid-template-columns: var(--table-products-columns);
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background-color: var(--background-button-2);
+  }
+
+  &:not(:last-child) {
+    border-bottom: toRem(1) solid var(--border);
+  }
+
+  align-items: center;
+  gap: toRem(10);
+  padding: toRem(10) toRem(24);
+
+  &__cell {
+    font-size: toRem(13);
+    &--title{
+      color: var(--headings-and-subheadings);
+    }
+  }
+}

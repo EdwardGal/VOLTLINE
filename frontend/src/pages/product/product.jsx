@@ -34,23 +34,19 @@ export const Product = () => {
   return (
     <section className={styles.product}>
       <PageContainer className={styles.product__container}>
-        {!isLoading && !serverErrorMessage && (
-          <Breadcrumbs className={styles.product__breadcrumbs} category={product.category} />
-        )}
-
-        <div className={styles.product__content}>
-          {isLoading ? (
-            <Loading />
-          ) : serverErrorMessage ? (
-            <ErrorMessage error={serverErrorMessage} />
-          ) : (
-            <>
+        {isLoading ? (
+          <Loading />
+        ) : serverErrorMessage ? (
+          <ErrorMessage error={serverErrorMessage} />
+        ) : (
+          <>
+            <Breadcrumbs className={styles.product__breadcrumbs} path={product.category} />
+            <div className={styles.product__content}>
               <Gallery images={product.images} name={product.name} tags={product.tags} />
-
               <Info product={product} />
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
       </PageContainer>
     </section>
   );
