@@ -1,0 +1,12 @@
+.catalogList {
+  display: grid;
+  gap: toRem(20);
+
+  &--grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &--list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

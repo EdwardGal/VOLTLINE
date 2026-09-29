@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { CustomButton, HeaderLogo } from '../../../../components';
+import { CustomButton, HeaderLogo, LucideIcon, PageContainer } from '../../../../components';
 import styles from './accountHeader.module.scss';
 import { selectUser } from '../../../../store/selectors';
 import { findRoleName } from '../../../../utils';
@@ -27,18 +27,20 @@ export const AccountHeader = () => {
 
   return (
     <header className={styles.accountHeader}>
-      <HeaderLogo />
-      <span className={styles.accountHeader__role}>{roleName}</span>
-      <div className={styles.accountHeader__user}>
-        <span className={styles.accountHeader__status}></span>
-        <span className={styles.accountHeader__email}>{email}</span>
-      </div>
-      <CustomButton
-        className={styles.accountHeader__button}
-        name="Logout"
-        icon={{ name: 'LogOut', size: '24' }}
-        onClick={onLogout}
-      />
+      <PageContainer>
+        <div className={styles.accountHeader__content}>
+          <HeaderLogo />
+          <span className={styles.accountHeader__role}>{roleName}</span>
+          <div className={styles.accountHeader__user}>
+            <span className={styles.accountHeader__status}></span>
+            <span className={styles.accountHeader__email}>{email}</span>
+          </div>
+          <CustomButton className={styles.accountHeader__button} onClick={onLogout}>
+            <LucideIcon name="LogOut" />
+            Logout
+          </CustomButton>
+        </div>
+      </PageContainer>
     </header>
   );
 };

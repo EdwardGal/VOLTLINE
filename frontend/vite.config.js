@@ -12,7 +12,11 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "@/styles/variables" as *;`,
+        additionalData: `
+        @use "@/styles/variables" as *;
+        @use "@/styles/mixins" as *;
+        @use "@/styles/common" as *;
+      `,
       },
     },
   },
@@ -23,8 +27,6 @@ export default defineConfig({
       '/uploads': {
         target: 'http://localhost:3001',
         changeOrigin: true,
-
-        
       },
       '/api': {
         target: 'http://localhost:3001',

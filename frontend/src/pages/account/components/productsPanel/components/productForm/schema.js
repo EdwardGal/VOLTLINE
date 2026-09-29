@@ -42,7 +42,6 @@ export const schema = yup.object({
   discount: yup
     .number()
     .typeError('Please enter a valid discount')
-    .required('Please enter product discount')
     .integer('Discount must be a whole number')
     .min(0, 'Discount cannot be negative')
     .max(100, 'Discount cannot be more than 100%'),

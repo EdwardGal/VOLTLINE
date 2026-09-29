@@ -9,6 +9,7 @@
   background: var(--background-2);
   border: toRem(1) solid var(--border);
   border-radius: toRem(100);
+  @include inputHover;
 
   &:disabled {
     cursor: not-allowed;
@@ -23,10 +24,10 @@
   }
 
   &--popular {
-    flex-direction: row-reverse;
     font-size: toRem(17);
     color: var(--background-main);
     background: var(--background-button-main);
+    border: none;
   }
 
   &--accent {
@@ -34,7 +35,7 @@
     background: var(--background-button-main);
   }
 
-   &--catalog {
+  &--catalog {
     color: var(--background-main);
     background: var(--background-button-main);
   }
@@ -46,15 +47,13 @@
     border-radius: toRem(8);
   }
 
+  &--pagination {
+    flex: 0 0 toRem(40);
+    height: toRem(40);
+  }
+
   &--ask {
-    flex-direction: row-reverse;
-    padding: 0;
     color: var(--background-button-main);
-    border: none;
-    background: none;
-    .customButton__name {
-      font-size: toRem(15);
-    }
   }
 
   &__name {

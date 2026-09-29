@@ -7,7 +7,6 @@
   &--checkbox {
     width: auto;
     padding: toRem(3);
-
   }
 
   &__label {
@@ -23,31 +22,24 @@
     border: toRem(1) solid var(--border);
     border-radius: toRem(16);
     font-size: toRem(14);
-    transition:
-      border-color 0.2s ease,
-      background-color 0.2s ease;
-
-    &:hover {
-      border-color: var(--headings-and-subheadings);
-    }
-
+    @include inputHover;
     &:focus {
       border-color: var(--background-button-2);
       background: var(--background-button-2);
     }
-
   }
 
   &__input,
   &__select {
     min-height: toRem(48);
     padding: toRem(4) toRem(16);
-    &[type='file'] {
-      padding: toRem(12);
-    }
   }
 
   &__input {
+    &[type='file'] {
+      padding: toRem(12);
+    }
+
     .formField__error & {
       border-radius: toRem(16) toRem(16) 0 0;
     }
@@ -80,17 +72,10 @@
     font-size: toRem(10);
     cursor: pointer;
     user-select: none;
-    transition:
-      border-color 0.2s ease,
-      background-color 0.2s ease,
-      color 0.2s ease;
 
-    &:hover {
-      border-color: var(--headings-and-subheadings);
-    }
+    @include inputHover;
 
     &:focus-within {
-      border-color: var(--background-button-2);
       outline: toRem(2) solid var(--headings-and-subheadings);
       outline-offset: toRem(2);
     }
@@ -119,10 +104,6 @@
       border-bottom: toRem(2) solid currentColor;
       transform: rotate(-45deg) scale(0);
       transition: transform 0.15s ease;
-    }
-
-    &:hover {
-      border-color: var(--headings-and-subheadings);
     }
 
     &:checked {

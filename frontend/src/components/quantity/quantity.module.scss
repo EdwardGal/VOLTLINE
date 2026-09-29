@@ -7,4 +7,5 @@
   background: var(--background-cards);
   border: toRem(1) solid var(--border);
   border-radius: toRem(100);
+  @include inputHover;
 }

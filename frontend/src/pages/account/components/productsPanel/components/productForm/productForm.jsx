@@ -247,6 +247,7 @@ export const ProductForm = ({ product, onConfirm }) => {
 
         <FormTextarea
           label="Description"
+          placeholder="Describe the product, its features and specifications.."
           error={errors.description?.message}
           {...register('description', { onChange: clearServerError })}
         />

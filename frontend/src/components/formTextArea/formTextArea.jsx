@@ -6,7 +6,7 @@ export const FormTextarea = ({ label, error, ...props }) => {
     <div className={styles.formTextarea}>
       <label className={styles.formTextarea__label}>{label}</label>
 
-      <textarea className={styles.formTextarea__input} {...props} />
+      <textarea className={styles.formTextarea__input} {...props} rows={2} />
 
       {error && <ErrorMessage error={error} />}
     </div>

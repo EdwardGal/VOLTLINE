@@ -10,9 +10,12 @@
   border: 1px solid var(--border);
   border-radius: toRem(100);
 
+  @include inputHover;
+
   &--accent {
     color: var(--background-main);
     background: var(--background-button-main);
+    border: none;
   }
 
   &--reverse {
@@ -27,7 +30,10 @@
     background: none;
     color: inherit;
     padding: 0;
+    min-height: auto;
+    @include linkHover;
   }
+
   &--breadcrumbs {
     border: none;
     background: none;

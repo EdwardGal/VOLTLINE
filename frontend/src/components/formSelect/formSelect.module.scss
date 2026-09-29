@@ -11,31 +11,22 @@
   }
 
   &__select {
-    min-height: toRem(48);
+    height: 100%;
+    min-width: toRem(120);
     padding: toRem(4) toRem(16);
-    font-size: toRem(14);
+    font-size: toRem(13);
+    line-height: 130%;
     border-radius: toRem(16);
-    background: var(--background-secondary);
     border: toRem(1) solid var(--border);
+    @include inputHover;
+
+    option {
+      color: var(--headings-and-subheadings);
+      background-color: var(--background-secondary);
+    }
 
     .formSelect__error & {
       border-radius: toRem(16) toRem(16) 0 0;
-    }
-
-    &[multiple] {
-      
-      padding: toRem(8);
-      cursor: pointer;
-
-      option {
-        padding: toRem(10) toRem(12);
-        border-radius: toRem(10);
-
-        &:checked {
-          background: var(--accent);
-          color: #fff;
-        }
-      }
     }
   }
 }

@@ -4,10 +4,11 @@ import { CustomLink } from '../../../customLink/customLink';
 import styles from './headerControlPanel.module.scss';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../../store/selectors';
-
+import { selectCartItems } from '../../../../store/cart/cartSelectors';
 
 export const HeaderControlPanel = ({ className }) => {
   const user = useSelector(selectUser);
+  const cartItems = useSelector(selectCartItems);
   const isLoggedIn = Boolean(user?.id);
 
   return (
@@ -18,11 +19,15 @@ export const HeaderControlPanel = ({ className }) => {
         to={isLoggedIn ? ROUTES.ACCOUNT : ROUTES.AUTH}
         name={isLoggedIn ? '' : 'Login'}
       />
-      <CustomLink className={styles.headerControlPanel__actionsLink} to="/contacts" name="Contacts" />
       <CustomLink
         className={styles.headerControlPanel__actionsLink}
-        to="/basket"
-        counter="4"
+        to="/contacts"
+        name="Contacts"
+      />
+      <CustomLink
+        className={styles.headerControlPanel__actionsLink}
+        to={ROUTES.CART}
+        counter={cartItems.length}
         name="Basket"
         variant="accent"
       />

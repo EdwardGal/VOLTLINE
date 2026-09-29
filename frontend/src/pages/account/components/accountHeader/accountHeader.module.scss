@@ -1,7 +1,18 @@
 .accountHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 120;
   display: flex;
   align-items: center;
   min-height: toRem(70);
+  background: var(--background-main);
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
 
   &__role {
     display: inline-flex;

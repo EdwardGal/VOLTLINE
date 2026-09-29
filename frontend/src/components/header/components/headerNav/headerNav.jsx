@@ -6,7 +6,12 @@ export const HeaderNav = () => {
   return (
     <div className={styles.headerNav}>
       {HEADER_NAV_LINKS.map(({ key, label }) => (
-        <CustomLink key={key} variant="default" to={key} name={label} />
+        <CustomLink
+          key={key}
+          variant="default"
+          to={key}
+          name={label}
+        />
       ))}
     </div>
   );

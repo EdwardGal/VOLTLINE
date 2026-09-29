@@ -1,6 +1,7 @@
 import styles from './navigation.module.scss';
 import { CustomLink } from '../../../customLink/customLink';
-import { NAVIGATION_DATA } from './navigation-data';
+import { NAVIGATION_DATA } from '../contacts.constants';
+
 
 export const Navigation = () => {
   return (

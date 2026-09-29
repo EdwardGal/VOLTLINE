@@ -1,0 +1,48 @@
+@mixin max-height-scroll($height) {
+  max-height: $height;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--background-main) var(--background-secondary);
+
+  &::-webkit-scrollbar {
+    width: toRem(6);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--background-main);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--background-secondary);
+    border-radius: toRem(6);
+  }
+}
+@mixin inputHover {
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--headings-and-subheadings);
+  }
+}
+
+@mixin linkHover {
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    color: var(--headings-and-subheadings);
+  }
+}
+
+@mixin rowHover {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background-color: var(--background-button-2);
+  }
+}

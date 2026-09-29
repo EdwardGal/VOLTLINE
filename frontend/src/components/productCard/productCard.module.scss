@@ -61,6 +61,7 @@
   }
 
   &__info {
+    
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
@@ -70,6 +71,7 @@
   }
 
   &__name {
+
     font-size: toRem(18);
     font-weight: 700;
     line-height: 130%;

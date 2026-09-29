@@ -2,14 +2,25 @@
   padding: toRem(115) 0 toRem(60);
   &__content {
     display: flex;
+    flex-direction: column;
+    gap: toRem(30);
+  }
+  &__head {
+    width: 100%;
+  }
+  &__inner {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
     gap: toRem(20);
-    align-items: start;
   }
-  &__controlPanel {
-    flex: 0 1 toRem(352);
+  &__panel {
+    flex: 0 0 toRem(352);
   }
-  &__productList {
-    flex: 0 1 toRem(1096);
-    flex-wrap: wrap;
+  &__products {
+    flex: 1 1 toRem(1096);
+  }
+  &__list{
+   
   }
 }

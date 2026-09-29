@@ -7,3 +7,4 @@ export * from './calc-quantity';
 export * from './calc-discount-price';
 export * from './format-price';
 export * from './create-slug';
+export * from './format-slug'

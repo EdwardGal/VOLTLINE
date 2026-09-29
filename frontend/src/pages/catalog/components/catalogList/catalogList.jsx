@@ -1,12 +1,20 @@
 import clsx from 'clsx';
+
 import { ProductCard } from '../../../../components';
-import styles from './productList.module.scss';
 import { ROUTES } from '../../../../constants';
 import { createSlug } from '../../../../utils';
 
-export const ProductList = ({ products, className }) => {
+import styles from './catalogList.module.scss';
+
+export const CatalogList = ({ products, viewMode, className }) => {
   return (
-    <div className={clsx(styles.productList, className)}>
+    <div
+      className={clsx(
+        styles.catalogList,
+        viewMode && styles[`catalogList--${viewMode}`],
+        className
+      )}
+    >
       {products.map((product) => (
         <ProductCard
           variant="catalog"

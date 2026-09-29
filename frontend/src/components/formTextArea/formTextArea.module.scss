@@ -1,4 +1,5 @@
 .formTextarea {
+  display: none;
   &__label {
     font-size: toRem(14);
   }
@@ -11,5 +12,6 @@
     padding: toRem(12);
     resize: vertical;
     background: var(--background-main);
+    display: none;
   }
 }

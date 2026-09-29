@@ -6,7 +6,6 @@
   &__head {
     margin-bottom: toRem(36);
   }
- 
 
   &__tabs {
     display: flex;
@@ -22,9 +21,9 @@
     font-family: var(--font-family-heading);
     font-weight: 600;
     border-bottom: toRem(2) solid var(--border);
-    &:hover {
-      color: var(--headings-and-subheadings);
-    }
+
+    @include linkHover;
+
     &.active {
       color: var(--background-button-main);
       border-color: var(--background-button-main);

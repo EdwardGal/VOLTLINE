@@ -1,0 +1,9 @@
+.deliveryForm {
+  display: flex;
+  flex-direction: column;
+  gap: toRem(6);
+  &__fields {
+    display: flex;
+    gap: toRem(6);
+  }
+}

@@ -1,4 +1,5 @@
-import { CONTACTS_DATA } from './contacts-data';
+
+import { CONTACTS_DATA } from '../contacts.constants';
 import styles from './contacts.module.scss';
 
 export const Contacts = () => {

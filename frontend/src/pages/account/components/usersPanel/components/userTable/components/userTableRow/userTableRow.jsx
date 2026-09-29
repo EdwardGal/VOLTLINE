@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 
 import { deleteUser, updateUser } from '../../../../../../../../api';
-import { CustomButton, LucideIcon } from '../../../../../../../../components';
+import { CustomButton, FormSelect, LucideIcon } from '../../../../../../../../components';
 import { useModal } from '../../../../../../../../components/modal';
 import { useToast } from '../../../../../../../../components/toast';
 import { ROLES } from '../../../../../../../../constants';
@@ -90,7 +90,7 @@ export const UserTableRow = ({ user, roles, removeUserHandler, updateUserHandler
           {findRoleName(selectedRoleId)}
         </span>
 
-        <select
+        <FormSelect
           className={styles.userTableRow__select}
           value={selectedRoleId}
           onChange={onRoleChange}
@@ -100,7 +100,7 @@ export const UserTableRow = ({ user, roles, removeUserHandler, updateUserHandler
               {name}
             </option>
           ))}
-        </select>
+        </FormSelect>
       </div>
 
       <div className={styles.userTableRow__actions}>

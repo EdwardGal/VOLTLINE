@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { Account, Auth, Catalog, Home, Product } from './pages';
+import { Account, Auth, Cart, Catalog, Home, NotFound, Product } from './pages';
 import { ROUTES } from './constants';
 import { MainLayout } from './layouts';
 
@@ -23,6 +23,14 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.PRODUCT_VIEW,
         element: <Product />,
+      },
+      {
+        path: ROUTES.CART,
+        element: <Cart />,
+      },
+      {
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },

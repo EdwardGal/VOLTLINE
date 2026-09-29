@@ -1,21 +1,30 @@
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { CustomButton } from '../customButton/customButton';
+import { LucideIcon } from '../lucideIcon/lucideIcon';
+import { Price } from '../price/price';
 import { Tag } from '../tag/tag';
 
-import styles from './productCard.module.scss';
-import { Price } from '../price/price';
-import { LucideIcon } from '../lucideIcon/lucideIcon';
+import { addToCart } from '../../store/cart/cartActions';
 
-export const ProductCard = ({ product, variant, pathLink, onBuy }) => {
-  const { image, images = [], name, sku, tags, price, quantity, discount = 0 } = product;
+import styles from './productCard.module.scss';
+
+export const ProductCard = ({ product, variant, pathLink }) => {
+  const { image, images = [], name, sku, tags = [], price, quantity, discount = 0 } = product;
+
+  const dispatch = useDispatch();
 
   const variantClass = variant ? styles[`productCard--${variant}`] : null;
 
   const productImage = image || images[0];
 
   const isCatalog = variant === 'category';
+
+  const handleBuy = () => {
+    dispatch(addToCart(product));
+  };
 
   return (
     <article
@@ -58,15 +67,16 @@ export const ProductCard = ({ product, variant, pathLink, onBuy }) => {
               price={price}
               discount={discount}
             />
+
             <CustomButton
               className={styles.productCard__button}
               variant={variant}
-              onClick={() => onBuy?.(product)}
+              onClick={handleBuy}
             >
-              {variant !== 'catalog' ? (
+              {variant === 'popular' ? (
                 <>
-                  <LucideIcon name="ShoppingBasket" size="20" color="#05070F" />
                   Buy
+                  <LucideIcon name="ShoppingBasket" size="20" color="#05070F" />
                 </>
               ) : (
                 <LucideIcon name="ShoppingBasket" size="20" color="#05070F" />

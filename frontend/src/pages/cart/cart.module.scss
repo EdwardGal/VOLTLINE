@@ -1,0 +1,29 @@
+.cart {
+  padding: toRem(115) 0 toRem(60);
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(30);
+  }
+  &__title {
+    font-size: toRem(40);
+    font-weight: 700;
+    line-height: 130%;
+  }
+  &__description {
+    font-size: toRem(18);
+    line-height: 130%;
+    margin-top: toRem(8);
+  }
+  &__layout {
+    display: flex;
+    align-items: flex-start;
+    gap: toRem(20);
+  }
+  &__main {
+    flex: 1 1 toRem(848);
+  }
+  &__summary {
+    flex: 1 1 toRem(600);
+  }
+}

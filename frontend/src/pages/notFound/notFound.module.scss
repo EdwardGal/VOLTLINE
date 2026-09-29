@@ -1,0 +1,28 @@
+.notFound {
+  &__content {
+    padding: toRem(130) 0 toRem(60);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  &__title {
+    flex: 0 1 toRem(844);
+    font-size: toRem(100);
+    font-weight: 700;
+    line-height: 130%;
+
+  }
+  &__cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

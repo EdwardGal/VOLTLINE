@@ -15,8 +15,7 @@
   }
 
   &__link {
-    &:hover {
-      opacity: 0.6;
-    }
+    font-size: toRem(17);
+    @include linkHover;
   }
 }

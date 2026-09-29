@@ -1,2 +1,4 @@
-export * from './controlPanel/controlPanel';
-export * from './productList/productList';
+export * from './catalogPanel/catalogPanel';
+export * from './catalogList/catalogList';
+export * from './catalogHead/catalogHead';
+export * from './catalogPagination/catalogPagination';

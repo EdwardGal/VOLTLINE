@@ -16,11 +16,4 @@
     flex-direction: column;
     gap: toRem(8);
   }
-  &__link {
-    transition: opacity 0.2s;
-
-    &:hover {
-      opacity: 0.6;
-    }
-  }
 }

@@ -1,41 +1,17 @@
-import { useState } from 'react';
+import { CustomButton, CustomLink, Delivery, H2, LucideIcon, Price } from '../../../../components';
 
-import { CustomButton, CustomLink, Delivery, H2, Price, Quantity } from '../../../../components';
-import { useToast } from '../../../../components/toast';
 import { ROUTES } from '../../../../constants';
 
 import styles from './info.module.scss';
 
 export const Info = ({ product }) => {
-  const {
-    name,
-    description,
-    price,
-    discount,
-    quantity: initialQuantity,
-    images,
-    id,
-    tags,
-    ...techs
-  } = product;
+  const { name, description, price, discount, quantity: initialQuantity } = product;
 
-  const [quantity, setQuantity] = useState(0);
-
-  const { showToast } = useToast();
-
-  const onQuantityChange = (value) => {
-    const newQuantity = quantity + value;
-
-    if (newQuantity > initialQuantity) {
-      showToast(`Only ${initialQuantity} left in stock`, 'error');
-      return;
-    }
-
-    if (newQuantity < 0) {
-      return;
-    }
-
-    setQuantity(newQuantity);
+  const techs = {
+    Brand: product.brand,
+    Warranty: product.warranty,
+    SKU: product.sku,
+    Category: product.category,
   };
 
   return (
@@ -54,15 +30,10 @@ export const Info = ({ product }) => {
       <div className={styles.info__actions}>
         {initialQuantity > 0 ? (
           <div className={styles.info__purchase}>
-            <CustomButton
-              name="Buy"
-              variant="productCard"
-              icon={{
-                name: 'ShoppingBasket',
-                color: '#05070F',
-                size: '20',
-              }}
-            />
+            <CustomButton variant="accent">
+              Buy
+              <LucideIcon name="ShoppingBasket" size="20" color="#05070F" />
+            </CustomButton>
           </div>
         ) : (
           <p className={styles.info__stockMessage}>Out of stock</p>

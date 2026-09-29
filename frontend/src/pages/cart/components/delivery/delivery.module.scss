@@ -1,0 +1,16 @@
+.delivery {
+  padding: toRem(20);
+  background: var(--background-secondary);
+  border-radius: toRem(20);
+  &__inner {
+    padding: toRem(20);
+    background: var(--background-main);
+    border-radius: toRem(20);
+  }
+  &__title {
+    font-size: toRem(24);
+    margin-bottom: toRem(24);
+  }
+  &__form {
+  }
+}

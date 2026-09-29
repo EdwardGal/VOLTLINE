@@ -16,14 +16,13 @@ export const UsersPanel = () => {
   useEffect(() => {
     setIsLoading(true);
     setServerErrorMessage(null);
-
+    
     Promise.all([getUsers(), getRoles()])
       .then(([usersRes, rolesRes]) => {
         if (usersRes.error || rolesRes.error) {
           setServerErrorMessage(usersRes.error || rolesRes.error);
           return;
         }
-
         setUsers(usersRes.data);
         setRoles(rolesRes.data);
       })
@@ -48,7 +47,7 @@ export const UsersPanel = () => {
           title="All accounts"
         />
 
-        <span className={styles.usersPanel__counter}>всего: {users.length}</span>
+        <span className={styles.usersPanel__counter}>Total: {users.length}</span>
       </div>
 
       <div className={styles.usersPanel__table}>

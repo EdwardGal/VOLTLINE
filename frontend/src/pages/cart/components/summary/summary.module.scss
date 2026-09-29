@@ -1,0 +1,53 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: toRem(20);
+  background: var(--background-secondary);
+  border-radius: toRem(20);
+
+  &__card {
+    padding: toRem(20);
+    background: var(--background-main);
+    border-radius: toRem(20);
+  }
+
+  &__title {
+    font-size: toRem(24);
+    margin-bottom: toRem(24);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(16);
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &_total {
+      margin-top: 8px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+
+      .summary__totalLabel,
+      .summary__totalValue {
+        font-size: toRem(18);
+        color: var(--headings-and-subheadings);
+      }
+    }
+  }
+
+  &__value {
+    color: var(--headings-and-subheadings);
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(12);
+  }
+}
