@@ -1,16 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getCategories } from '../../../../api/productService';
-import {
-  ErrorMessage,
-  Loading,
-  PageContainer,
-  ProductCard,
-  SectionHead,
-} from '../../../../components';
+import { ErrorMessage, Loading, PageContainer, SectionHead } from '../../../../components';
 
 import styles from './catalog.module.scss';
 import { ROUTES } from '../../../../constants';
 import { createSlug } from '../../../../utils';
+import { Card } from './components';
 
 export const Catalog = () => {
   const [categories, setCategories] = useState([]);
@@ -35,12 +30,10 @@ export const Catalog = () => {
         <div className={styles.catalog__content}>
           <SectionHead
             className={styles.catalog__head}
-            title="Catalog"
-            iconName="MoveRight"
-            iconLabel="Full catalog"
-            pathLink={ROUTES.CATALOG}
+            title="Full catalog"
+            to={ROUTES.CATALOG}
           />
-          <div className={styles.catalog__cards}>
+          <div className={styles.catalog__list}>
             {isLoading ? (
               <Loading />
             ) : serverErrorMessage ? (
@@ -48,11 +41,10 @@ export const Catalog = () => {
             ) : (
               <>
                 {categories.map((category) => (
-                  <ProductCard
+                  <Card
                     key={category.id}
-                    variant="category"
-                    product={category}
-                    pathLink={`${ROUTES.CATALOG}/${createSlug(category.name)}`}
+                    {...category}
+                    to={`${ROUTES.CATALOG}/${createSlug(category.name)}`}
                   />
                 ))}
               </>

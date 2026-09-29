@@ -4,11 +4,11 @@
   border: toRem(1) solid rgba(255, 255, 255, 0.04);
   border-radius: toRem(16);
   overflow: hidden;
+  @include rowHover;
 
   &__cover {
     flex: 0 0 toRem(104);
     overflow: hidden;
-    // border-radius: toRem(10);
     background: var(--background-main);
   }
 
@@ -59,8 +59,13 @@
   &__purchase {
     display: flex;
     flex-direction: column;
-    text-align: center;
     gap: toRem(8);
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: toRem(10);
   }
 
   &__quantity {

@@ -1,0 +1,25 @@
+.row {
+  display: grid;
+  grid-template-columns: var(--table-products-columns);
+  @include rowHover;
+
+  &:not(:last-child) {
+    border-bottom: toRem(1) solid var(--border);
+  }
+
+  align-items: center;
+  gap: toRem(10);
+  padding: toRem(10) toRem(24);
+
+  &__cell {
+    font-size: toRem(13);
+    &--title {
+      color: var(--headings-and-subheadings);
+    }
+  }
+  &__actions{
+    display: flex;
+    align-items: center;
+    gap: toRem(20);
+  }
+}

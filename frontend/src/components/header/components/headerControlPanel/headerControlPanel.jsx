@@ -4,33 +4,32 @@ import { CustomLink } from '../../../customLink/customLink';
 import styles from './headerControlPanel.module.scss';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../../store/selectors';
-import { selectCartItems } from '../../../../store/cart/cartSelectors';
+import { selectCartItemsCount } from '../../../../store/cart/cartSelectors';
+import { LucideIcon } from '../../../lucideIcon/lucideIcon';
 
 export const HeaderControlPanel = ({ className }) => {
   const user = useSelector(selectUser);
-  const cartItems = useSelector(selectCartItems);
+  const cartItemsCount = useSelector(selectCartItemsCount);
   const isLoggedIn = Boolean(user?.id);
 
   return (
     <div className={clsx(styles.headerControlPanel, className)}>
       <CustomLink
         className={styles.headerControlPanel__actionsLink}
-        icon={isLoggedIn ? { name: 'UserRound' } : null}
         to={isLoggedIn ? ROUTES.ACCOUNT : ROUTES.AUTH}
-        name={isLoggedIn ? '' : 'Login'}
-      />
-      <CustomLink
-        className={styles.headerControlPanel__actionsLink}
-        to="/contacts"
-        name="Contacts"
-      />
+      >
+        {isLoggedIn ? <LucideIcon name={isLoggedIn && 'UserRound'} /> : 'Login'}
+      </CustomLink>
+      <CustomLink className={styles.headerControlPanel__actionsLink} to={ROUTES.COMING_SOON}>
+        Contacts
+      </CustomLink>
       <CustomLink
         className={styles.headerControlPanel__actionsLink}
         to={ROUTES.CART}
-        counter={cartItems.length}
-        name="Basket"
         variant="accent"
-      />
+      >
+        Cart {cartItemsCount > 0 && cartItemsCount}
+      </CustomLink>
     </div>
   );
 };

@@ -7,12 +7,15 @@ import { Gallery, Info } from './components';
 
 import styles from './product.module.scss';
 
+
+
 export const Product = () => {
   const { id } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
   const [serverErrorMessage, setServerErrorMessage] = useState(null);
   const [product, setProduct] = useState(null);
+
 
   useEffect(() => {
     setIsLoading(true);

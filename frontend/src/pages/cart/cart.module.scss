@@ -5,16 +5,6 @@
     flex-direction: column;
     gap: toRem(30);
   }
-  &__title {
-    font-size: toRem(40);
-    font-weight: 700;
-    line-height: 130%;
-  }
-  &__description {
-    font-size: toRem(18);
-    line-height: 130%;
-    margin-top: toRem(8);
-  }
   &__layout {
     display: flex;
     align-items: flex-start;

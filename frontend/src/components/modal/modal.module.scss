@@ -21,7 +21,7 @@
   }
 
   &__icon {
-    width: toRem(44);
+    flex: 0 0 toRem(44);
     height: toRem(44);
     padding: toRem(10);
     background: var(--background-button-2);
@@ -42,7 +42,7 @@
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: toRem(600);
+    max-width: toRem(560);
     max-height: calc(100vh - toRem(60));
     overflow-y: auto;
     background: var(--background-secondary);
@@ -70,5 +70,12 @@
     border: toRem(1) solid var(--border);
     border-left: none;
     border-right: none;
+    &--success{
+      flex-direction: column;
+    }
+  }
+
+  &__btn {
+    @include inputHover;
   }
 }

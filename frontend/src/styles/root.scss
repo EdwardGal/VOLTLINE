@@ -65,3 +65,8 @@ html {
     flex: 1 1 auto;
   }
 }
+
+html:has(.modal-open),
+body:has(.modal-open) {
+  overflow: hidden;
+}

@@ -1,17 +1,18 @@
 .formTextarea {
-  display: none;
   &__label {
-    font-size: toRem(14);
+    font-size: toRem(12);
+    text-transform: uppercase;
+    color: var(--headings-and-subheadings);
   }
 
   &__input {
     display: block;
-    margin-top: toRem(8);
     width: 100%;
     min-height: toRem(140);
     padding: toRem(12);
     resize: vertical;
     background: var(--background-main);
-    display: none;
+    border: toRem(1) solid var(--border);
+    border-radius: toRem(16);
   }
 }

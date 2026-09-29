@@ -1,11 +1,14 @@
 import { CustomButton, CustomLink, Delivery, H2, LucideIcon, Price } from '../../../../components';
 
 import { ROUTES } from '../../../../constants';
+import { useAddToCart } from '../../../../hooks';
 
 import styles from './info.module.scss';
 
 export const Info = ({ product }) => {
   const { name, description, price, discount, quantity: initialQuantity } = product;
+
+  const { handleBuy, isMaxQuantity } = useAddToCart(product);
 
   const techs = {
     Brand: product.brand,
@@ -30,16 +33,16 @@ export const Info = ({ product }) => {
       <div className={styles.info__actions}>
         {initialQuantity > 0 ? (
           <div className={styles.info__purchase}>
-            <CustomButton variant="accent">
-              Buy
+            <CustomButton variant="accent" disabled={isMaxQuantity} onClick={handleBuy}>
+              {isMaxQuantity ? 'In cart' : 'Buy'}
               <LucideIcon name="ShoppingBasket" size="20" color="#05070F" />
             </CustomButton>
           </div>
         ) : (
-          <p className={styles.info__stockMessage}>Out of stock</p>
+          <span className={styles.info__stockMessage}>Out of stock</span>
         )}
 
-        <CustomLink name="Back to catalog" to={ROUTES.CATALOG} />
+        <CustomLink to={ROUTES.CATALOG}>Back to catalog</CustomLink>
       </div>
 
       <div className={styles.info__techs}>

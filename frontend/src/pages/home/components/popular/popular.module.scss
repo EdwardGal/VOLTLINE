@@ -1,14 +1,10 @@
 .popular {
   padding: toRem(30) 0 toRem(60);
-  &__content {
-  }
-  &__head {
-    margin-bottom: toRem(30);
-  }
 
-  &__cards {
-    display: flex;
-    flex-wrap: wrap;
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: toRem(20);
+    margin-top: toRem(30);
   }
 }

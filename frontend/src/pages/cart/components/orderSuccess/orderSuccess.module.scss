@@ -1,0 +1,29 @@
+.orderSuccess {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: toRem(16);
+  padding: toRem(20);
+  &__icon {
+    width: toRem(48);
+    height: toRem(48);
+    padding: toRem(10);
+    background: var(--background-button-main);
+    border-radius: 50%;
+  }
+  &__title {
+    font-size: toRem(40);
+    font-weight: 700;
+    line-height: 130%;
+  }
+  &__text {
+    font-size: toRem(18);
+    line-height: 130%;
+  }
+  &__order {
+    strong {
+      color: var(--headings-and-subheadings);
+    }
+  }
+}

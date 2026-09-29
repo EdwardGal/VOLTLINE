@@ -7,10 +7,14 @@
   min-height: toRem(32);
   color: var(--headings-and-subheadings);
   padding: 0 toRem(12);
-  border: 1px solid var(--border);
+  border: toRem(1) solid var(--border);
   border-radius: toRem(100);
 
   @include inputHover;
+
+  &__name {
+    font-size: toRem(17);
+  }
 
   &--accent {
     color: var(--background-main);
@@ -18,12 +22,12 @@
     border: none;
   }
 
-  &--reverse {
-    flex-direction: row-reverse;
-    gap: toRem(12);
-    border: none;
-    background: none;
-  }
+  // &--reverse {
+  //   flex-direction: row-reverse;
+  //   gap: toRem(12);
+  //   border: none;
+  //   background: none;
+  // }
 
   &--default {
     border: none;
@@ -34,18 +38,15 @@
     @include linkHover;
   }
 
-  &--breadcrumbs {
-    border: none;
-    background: none;
-    color: inherit;
-    padding: 0;
-    .customLink__name {
-      font-size: toRem(15);
-      text-transform: capitalize;
-    }
-  }
+  // &--breadcrumbs {
+  //   border: none;
+  //   background: none;
+  //   color: inherit;
+  //   padding: 0;
+  //   .customLink__name {
+  //     font-size: toRem(15);
+  //     text-transform: capitalize;
+  //   }
+  // }
 
-  &__name {
-    font-size: toRem(17);
-  }
 }

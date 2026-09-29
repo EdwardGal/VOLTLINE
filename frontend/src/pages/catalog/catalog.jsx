@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getCategories, getProducts } from '../../api/productService';
 import { Breadcrumbs, ErrorMessage, Loading, PageContainer } from '../../components';
 
-import { CatalogHead, CatalogList, CatalogPagination, CatalogPanel } from './components';
+import { Head, List, Pagination, Panel } from './components';
 import { MAX_PRICE } from './catalog.constants';
 import styles from './catalog.module.scss';
 
@@ -90,57 +90,55 @@ export const Catalog = () => {
   return (
     <section className={styles.catalog}>
       <PageContainer>
-        {isLoading ? (
-          <Loading />
-        ) : serverErrorMessage ? (
-          <ErrorMessage error={serverErrorMessage} />
-        ) : (
-          <div className={styles.catalog__content}>
-            <Breadcrumbs className={styles.catalog__breadcrumbs} />
+        <div className={styles.catalog__content}>
+          <Breadcrumbs className={styles.catalog__breadcrumbs} />
 
-            <CatalogHead
-              className={styles.catalog__head}
-              title={category ? category : 'All products'}
-              productsLength={filteredProducts.length}
-              onProductsHandler={onProductsHandler}
-              viewMode={viewMode}
-              onViewModeChange={setViewMode}
+          <Head
+            className={styles.catalog__head}
+            title={category ? category : 'All products'}
+            productsLength={filteredProducts.length}
+            onProductsHandler={onProductsHandler}
+            viewMode={viewMode}
+            onViewModeChange={setViewMode}
+          />
+
+          <div className={styles.catalog__inner}>
+            <Panel
+              className={styles.catalog__panel}
+              categories={categories}
+              selectedCategories={selectedCategories}
+              onCategoryChange={setSelectedCategories}
+              conditions={conditions}
+              onConditionsChange={setConditions}
+              priceRange={priceRange}
+              onPriceRangeChange={setPriceRange}
+              category={category}
             />
 
-            <div className={styles.catalog__inner}>
-              <CatalogPanel
-                className={styles.catalog__panel}
-                categories={categories}
-                selectedCategories={selectedCategories}
-                onCategoryChange={setSelectedCategories}
-                conditions={conditions}
-                onConditionsChange={setConditions}
-                priceRange={priceRange}
-                onPriceRangeChange={setPriceRange}
-                category={category}
-              />
-
-              {filteredProducts.length > 0 ? (
-                <div className={styles.catalog__products}>
-                  <CatalogList
-                    className={styles.catalog__list}
-                    products={filteredProducts}
-                    viewMode={viewMode}
-                  />
-
-                  <CatalogPagination className={styles.catalog__pagination} />
-                </div>
-              ) : (
-                <ErrorMessage
-                  error={{
-                    title: 'Products not found',
-                    description: 'There are no products matching the selected filters yet.',
-                  }}
+            {isLoading ? (
+              <Loading />
+            ) : serverErrorMessage ? (
+              <ErrorMessage error={serverErrorMessage} />
+            ) : filteredProducts.length > 0 ? (
+              <div className={styles.catalog__products}>
+                <List
+                  className={styles.catalog__list}
+                  products={filteredProducts}
+                  viewMode={viewMode}
                 />
-              )}
-            </div>
+
+                <Pagination className={styles.catalog__pagination} />
+              </div>
+            ) : (
+              <ErrorMessage
+                error={{
+                  title: 'Products not found',
+                  description: 'There are no products matching the selected filters yet.',
+                }}
+              />
+            )}
           </div>
-        )}
+        </div>
       </PageContainer>
     </section>
   );

@@ -14,4 +14,5 @@ export const ROUTES = {
   CART: '/cart',
 
   USERS: '/users',
+  COMING_SOON: '/coming-soon',
 };

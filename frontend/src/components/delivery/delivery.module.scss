@@ -8,4 +8,7 @@
   &__adress {
     flex: 0 0 toRem(225);
   }
+  &__btn {
+    @include inputHover;
+  }
 }

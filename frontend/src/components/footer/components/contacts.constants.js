@@ -4,15 +4,15 @@ export const CONTACTS_DATA = [
   },
   {
     value: '+7 495 118-40-60',
-    href: 'tel:+74951184060',
+    to: 'tel:+74951184060',
   },
   {
     value: 'hi@voltline.ru',
-    href: 'mailto:hi@voltline.ru',
+    to: 'mailto:hi@voltline.ru',
   },
   {
     value: 'Frequently asked questions',
-    href: '/faq',
+    to: '/faq',
   },
 ];
 
@@ -20,19 +20,19 @@ export const NAVIGATION_DATA = [
   {
     title: 'Shop',
     links: [
-      { label: 'Catalog', href: '/catalog' },
-      { label: 'Voltline Strix X', href: '/' },
-      { label: 'Cart', href: '/cart' },
-      { label: 'Contacts', href: '/contacts' },
+      { label: 'Catalog', to: '/catalog' },
+      { label: 'Voltline Strix X', to: '/' },
+      { label: 'Cart', to: '/cart' },
+      { label: 'Contacts', to: '/contacts' },
     ],
   },
   {
     title: 'For customers',
     links: [
-      { label: 'Delivery and payment', href: '/delivery' },
-      { label: 'Warranty and returns', href: '/warranty' },
-      { label: 'Installments', href: '/installments' },
-      { label: 'Frequently asked questions', href: '/faq' },
+      { label: 'Delivery and payment', to: '/delivery' },
+      { label: 'Warranty and returns', to: '/warranty' },
+      { label: 'Installments', to: '/installments' },
+      { label: 'Frequently asked questions', to: '/faq' },
     ],
   },
 ];

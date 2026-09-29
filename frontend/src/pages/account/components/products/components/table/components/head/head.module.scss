@@ -1,0 +1,13 @@
+.head {
+  display: grid;
+  grid-template-columns: var(--table-products-columns);
+  border-bottom: toRem(1) solid var(--border);
+
+  align-items: center;
+  gap: toRem(10);
+  padding: toRem(20) toRem(24);
+
+  > div{
+    color: var(--headings-and-subheadings);
+  }
+}

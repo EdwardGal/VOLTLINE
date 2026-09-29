@@ -14,9 +14,9 @@ export const Delivery = ({ className }) => {
       </div>
       <div className={styles.delivery__row}>
         <p className={styles.delivery__title}>Pay by card or in installments</p>
-        <CustomButton className={styles.delivery__button} variant="ask">
-          Ask a manager
+        <CustomButton className={styles.delivery__btn}>
           <LucideIcon name="MoveRight" color="#22d3ee" size="19" />
+          Ask a manager
         </CustomButton>
       </div>
     </div>

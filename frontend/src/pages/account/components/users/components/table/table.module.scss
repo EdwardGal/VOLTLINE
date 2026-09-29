@@ -1,0 +1,5 @@
+.table {
+  &__body {
+    @include max-height-scroll(toRem(400));
+  }
+}

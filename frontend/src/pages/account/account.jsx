@@ -1,31 +1,39 @@
 import styles from './account.module.scss';
-import { Access, PageContainer, TableHead } from '../../components';
-import { AccountHeader, ProductsPanel, UsersPanel } from './components';
+import { Access, CustomLink, PageContainer, TableHead } from '../../components';
+import { Head, Products, Users } from './components';
 import { ROLES } from '../../constants';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../store/selectors';
+import { ComingSoon } from '../сomingSoon/comingSoon';
 
 export const Account = () => {
+  const { roleId } = useSelector(selectUser);
 
   return (
     <div className={styles.account}>
       <PageContainer>
-        <AccountHeader />
+        <Head />
 
-        <div className={styles.account__content}>
-          <TableHead
-            className={styles.account__head}
-            eyebrow={'// Control panel'}
-            title={'Controls'}
-            description={'Users, roles, and stock levels in one place.'}
-          />
+        {roleId === ROLES.USER ? (
+          <ComingSoon />
+        ) : (
+          <div className={styles.account__content}>
+            <TableHead
+              className={styles.account__head}
+              eyebrow={'// Control panel'}
+              title={'Controls'}
+              description={'Users, roles, and stock levels in one place.'}
+            />
 
-          <Access roles={[ROLES.ADMIN]}>
-            <UsersPanel />
-          </Access>
+            <Access roles={[ROLES.ADMIN]}>
+              <Users />
+            </Access>
 
-          <Access roles={[ROLES.ADMIN, ROLES.MANAGER]}>
-            <ProductsPanel />
-          </Access>
-        </div>
+            <Access roles={[ROLES.ADMIN, ROLES.MANAGER]}>
+              <Products />
+            </Access>
+          </div>
+        )}
       </PageContainer>
     </div>
   );

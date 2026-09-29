@@ -34,14 +34,8 @@ export const Popular = () => {
       <section className={styles.popular}>
         <PageContainer className={styles.popular__container}>
           <div className={styles.popular__content}>
-            <SectionHead
-              className={styles.popular__head}
-              title="Popular"
-              iconName="MoveRight"
-              iconLabel="All products"
-              pathLink={ROUTES.CATALOG}
-            />
-            <div className={styles.popular__cards}>
+            <SectionHead className={styles.popular__head} title="Popular" to={ROUTES.CATALOG} />
+            <div className={styles.popular__list}>
               {isLoading ? (
                 <Loading />
               ) : serverErrorMessage ? (
@@ -51,7 +45,6 @@ export const Popular = () => {
                   {taggedProducts.map((product) => (
                     <ProductCard
                       key={product.id}
-                      variant="popular"
                       product={product}
                       pathLink={`${ROUTES.CATALOG}/${createSlug(product.category)}/${product.id}`}
                     />

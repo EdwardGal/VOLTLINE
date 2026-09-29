@@ -1,3 +1,3 @@
-export * from './accountHeader/accountHeader';
-export * from './usersPanel/usersPanel';
-export * from './productsPanel/productsPanel';
+export * from './head/head';
+export * from './users/users';
+export * from './products/products';

@@ -4,8 +4,8 @@ import heroImagePng2x from '../../../../assets/images/hero@2x.png';
 import heroImageWebp1x from '../../../../assets/images/hero.webp';
 import heroImageWebp2x from '../../../../assets/images/hero@2x.webp';
 import styles from './hero.module.scss';
-import { HERO_TAGS } from './hero-tags';
 import { ROUTES } from '../../../../constants';
+import { HERO_TAGS } from './hero.constants';
 
 export const Hero = () => {
   return (
@@ -18,8 +18,10 @@ export const Hero = () => {
               Real-world gaming tests, 3-year warranty, and no-cost upgrades
             </div>
             <div className={styles.hero__actions}>
-              <CustomLink name="Buy a PC" variant="accent" to={ROUTES.GAMING_PCS} />
-              <CustomLink name="Consultation" to="/" />
+              <CustomLink variant="accent" to={ROUTES.GAMING_PCS}>
+                Buy a PC
+              </CustomLink>
+              <CustomLink to={ROUTES.HOME}>Consultation</CustomLink>
             </div>
             <div className={styles.hero__tags}>
               {HERO_TAGS.map((tag) => (

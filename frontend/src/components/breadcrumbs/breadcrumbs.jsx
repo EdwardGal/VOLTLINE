@@ -13,7 +13,9 @@ export const Breadcrumbs = ({ path, className }) => {
   return (
     <nav className={clsx(styles.breadcrumbs, className)}>
       <div className={styles.breadcrumbs__item}>
-        <CustomLink to="/" className={styles.breadcrumbs__link} variant="breadcrumbs" name="Home" />
+        <CustomLink to="/" className={styles.breadcrumbs__link} variant="default">
+          Home
+        </CustomLink>
 
         <span className={styles.breadcrumbs__separator}>/</span>
       </div>
