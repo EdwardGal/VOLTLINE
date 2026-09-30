@@ -6,6 +6,7 @@
   margin-top: toRem(30);
 
   &__button {
+    @include inputHover;
     &--active {
       background-color: var(--background-button-main);
       color: var(--background-main);

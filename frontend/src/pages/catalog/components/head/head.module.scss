@@ -29,6 +29,7 @@
     margin-left: auto;
   }
   &__switcher {
+    @include inputHover;
     &--active {
       background: var(--background-button-main);
     }
