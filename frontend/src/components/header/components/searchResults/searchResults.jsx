@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
-
-import styles from './searchResults.module.scss';
 import { ErrorMessage } from '../../../errorMessage/errorMessage';
 import { createSlug } from '../../../../utils';
-
+import styles from './searchResults.module.scss';
 
 export const SearchResults = ({ products, message }) => {
   if (!products.length && !message) {

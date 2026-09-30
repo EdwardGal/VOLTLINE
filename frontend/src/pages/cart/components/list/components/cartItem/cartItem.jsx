@@ -1,17 +1,14 @@
 import { useDispatch } from 'react-redux';
-
-import {
-  increaseCartQuantity,
-  decreaseCartQuantity,
-  removeFromCart,
-} from '../../../../../../store/cart/cartActions';
-
+import { CustomButton, LucideIcon } from '../../../../../../components';
 import { Quantity } from '../../../../../../components/quantity/quantity';
 import { useToast } from '../../../../../../components/toast';
+import {
+  decreaseCartQuantity,
+  increaseCartQuantity,
+  removeFromCart,
+} from '../../../../../../store/cart/cartActions';
 import { formatPrice } from '../../../../../../utils';
-
 import styles from './cartItem.module.scss';
-import { CustomButton, LucideIcon } from '../../../../../../components';
 
 export const CartItem = ({ id, images, name, sku, quantity, counter, price }) => {
   const dispatch = useDispatch();
@@ -28,9 +25,14 @@ export const CartItem = ({ id, images, name, sku, quantity, counter, price }) =>
       return;
     }
 
-    if (value === -1) {
+    if (value === -1 && counter > 1) {
       dispatch(decreaseCartQuantity(id));
     }
+  };
+
+  const onItemRemove = () => {
+    dispatch(removeFromCart(id));
+    showToast('Product removed from cart', 'success');
   };
 
   return (
@@ -54,20 +56,12 @@ export const CartItem = ({ id, images, name, sku, quantity, counter, price }) =>
           <div className={styles.cartItem__controls}>
             <Quantity quantity={counter} onQuantityChange={onQuantityChange} />
 
-            <CustomButton
-              className={styles.cartItem__remove}
-              variant="form"
-              onClick={() => dispatch(removeFromCart(id))}
-            >
-              <LucideIcon
-                name="Trash2"
-                size="20"
-                color="rgba(139, 154, 192, 0.4)"
-              />
+            <CustomButton className={styles.cartItem__remove} variant="form" onClick={onItemRemove}>
+              <LucideIcon name="Trash2" size="20" color="rgba(139, 154, 192, 0.4)" />
             </CustomButton>
           </div>
 
-          <span className={styles.cartItem__price}>{formatPrice(price * counter)} ₽</span>
+          <span className={styles.cartItem__price}>{formatPrice(price * counter)}</span>
         </div>
       </div>
     </li>

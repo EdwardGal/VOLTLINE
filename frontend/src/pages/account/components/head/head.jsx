@@ -1,18 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { CustomButton, HeaderLogo, LucideIcon, PageContainer } from '../../../../components';
-import { selectUser } from '../../../../store/selectors';
-import { findRoleName } from '../../../../utils';
 import { useNavigate } from 'react-router-dom';
+import { CustomButton, HeaderLogo, LucideIcon, PageContainer } from '../../../../components';
 import { ROUTES } from '../../../../constants';
 import { logout } from '../../../../store/actions';
+import { selectUser } from '../../../../store/selectors';
 import { useToast } from '../../../../components/toast';
+import { findRoleName } from '../../../../utils';
 import styles from './head.module.scss';
 
 export const Head = () => {
   const { email, roleId } = useSelector(selectUser);
-
   const { showToast } = useToast();
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

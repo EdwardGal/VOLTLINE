@@ -1,10 +1,12 @@
 import clsx from 'clsx';
-import styles from './card.module.scss';
 import { Link } from 'react-router-dom';
+import styles from './card.module.scss';
 
 export const Card = ({ image, name, to, quantity }) => {
+  const isDisabled = quantity === 0;
+
   return (
-    <article className={clsx(styles.card, !quantity && styles[`card--disabled`])}>
+    <article className={clsx(styles.card, isDisabled && styles['card--disabled'])}>
       <div className={styles.card__cover}>
         <img className={styles.card__image} src={image} alt={name} />
 

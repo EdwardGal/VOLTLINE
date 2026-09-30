@@ -1,4 +1,5 @@
-import styles from './popular.module.scss';
+import { useEffect, useState } from 'react';
+import { getProductsWithTags } from '../../../../api/productService';
 import {
   ErrorMessage,
   Loading,
@@ -6,11 +7,9 @@ import {
   ProductCard,
   SectionHead,
 } from '../../../../components';
-
-import { useEffect, useState } from 'react';
-import { getProductsWithTags } from '../../../../api/productService';
 import { ROUTES } from '../../../../constants';
 import { createSlug } from '../../../../utils';
+import styles from './popular.module.scss';
 
 export const Popular = () => {
   const [taggedProducts, setTaggedProducts] = useState([]);
@@ -18,6 +17,8 @@ export const Popular = () => {
   const [serverErrorMessage, setServerErrorMessage] = useState(null);
 
   useEffect(() => {
+    setIsLoading(true);
+    setServerErrorMessage(null);
     getProductsWithTags()
       .then(({ data, error }) => {
         if (error) {

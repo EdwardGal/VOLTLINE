@@ -1,1 +1,5 @@
-export const formatPrice = (price) => Number(price).toLocaleString('ru-RU');
+export const formatPrice = (price) =>
+  new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(price);

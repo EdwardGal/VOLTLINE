@@ -1,16 +1,14 @@
+import { memo } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-
 import { useAddToCart } from '../../hooks';
-
 import { CustomButton } from '../customButton/customButton';
 import { LucideIcon } from '../lucideIcon/lucideIcon';
 import { Price } from '../price/price';
 import { Tag } from '../tag/tag';
-
 import styles from './productCard.module.scss';
 
-export const ProductCard = ({ product, pathLink }) => {
+export const ProductCard = memo(({ product, pathLink }) => {
   const { image, images, name, sku, tags, price, quantity, discount } = product;
   const { handleBuy, isMaxQuantity } = useAddToCart(product);
   const productImage = image || images[0];
@@ -32,7 +30,6 @@ export const ProductCard = ({ product, pathLink }) => {
       <div className={styles.productCard__info}>
         <div className={styles.productCard__infoHead}>
           <h3 className={styles.productCard__name}>{name}</h3>
-
           <span className={styles.productCard__sku}>{sku}</span>
         </div>
 
@@ -60,4 +57,4 @@ export const ProductCard = ({ product, pathLink }) => {
       </div>
     </article>
   );
-};
+});

@@ -1,18 +1,12 @@
 import { useState } from 'react';
-
+import clsx from 'clsx';
 import { deleteProduct, updateProduct } from '../../../../../../../../api/productService';
-
 import { CustomButton, LucideIcon, Quantity } from '../../../../../../../../components';
-
 import { useModal } from '../../../../../../../../components/modal';
 import { useToast } from '../../../../../../../../components/toast';
-
 import { formatPrice } from '../../../../../../../../utils';
-
 import { Form } from '../../../form/form';
-
 import styles from './row.module.scss';
-import clsx from 'clsx';
 
 export const Row = ({ product, removeProductHandler, updateProductHandler }) => {
   const [quantity, setQuantity] = useState(product.quantity);
@@ -94,7 +88,7 @@ export const Row = ({ product, removeProductHandler, updateProductHandler }) => 
       <span className={styles.row__cell}>{product.sku}</span>
       <span className={styles.row__cell}>{product.warranty}</span>
       <span className={styles.row__cell}>{product.category}</span>
-      <span className={styles.row__cell}>{formatPrice(product.price)} ₽</span>
+      <span className={styles.row__cell}>{formatPrice(product.price)}</span>
       <span className={styles.row__cell}>{product.discount}%</span>
       <span className={styles.row__cell}>{product.tags || '—'}</span>
       <Quantity quantity={quantity} onQuantityChange={onQuantityChange} />

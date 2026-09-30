@@ -1,11 +1,10 @@
 import { Table as TableLayout } from '../../../../../../components';
 import { Head, Row } from './components';
-
 import styles from './table.module.scss';
 
 export const Table = ({ products, removeProductHandler, updateProductHandler }) => {
   return (
-    <TableLayout >
+    <TableLayout>
       <div className={styles.table}>
         <Head />
 

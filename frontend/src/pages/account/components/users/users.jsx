@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
-
 import { getRoles, getUsers } from '../../../../api';
 import { ErrorMessage, Loading, TableHead } from '../../../../components';
-
 import { Table } from './components';
-
 import styles from './users.module.scss';
 
 export const Users = () => {

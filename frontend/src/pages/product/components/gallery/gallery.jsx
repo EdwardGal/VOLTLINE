@@ -1,7 +1,6 @@
 import { useState } from 'react';
-
-import styles from './gallery.module.scss';
 import { Tag } from '../../../../components';
+import styles from './gallery.module.scss';
 
 export const Gallery = ({ images, name, tags }) => {
   const [imageUrl, setImageUrl] = useState(images[0]);

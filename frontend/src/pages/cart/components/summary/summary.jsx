@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import styles from './summary.module.scss';
-import { CustomButton, CustomLink } from '../../../../components';
 import { useSelector } from 'react-redux';
+import { CustomButton, CustomLink } from '../../../../components';
+import { ROUTES } from '../../../../constants';
 import { selectCartItemsCount, selectCartTotal } from '../../../../store/cart/cartSelectors';
 import { formatPrice } from '../../../../utils';
 import { DELIVERY_PRICE, FREE_DELIVERY_THRESHOLD } from '../../delivery.constants';
-import { ROUTES } from '../../../../constants';
+import styles from './summary.module.scss';
 
 export const Summary = ({ className }) => {
   const totalPrice = useSelector(selectCartTotal);
@@ -25,13 +25,13 @@ export const Summary = ({ className }) => {
           <div className={styles.summary__row}>
             <dt className={styles.summary__label}>Delivery</dt>
             <dd className={styles.summary__value}>
-              {totalPrice >= FREE_DELIVERY_THRESHOLD ? 'delivery free' : `${DELIVERY_PRICE}$`}
+              {totalPrice >= FREE_DELIVERY_THRESHOLD ? 'free' : `${DELIVERY_PRICE}$`}
             </dd>
           </div>
 
           <div className={clsx(styles.summary__row, styles.summary__row_total)}>
             <dt className={styles.summary__totalLabel}>Total</dt>
-            <dd className={styles.summary__totalValue}>{formatPrice(totalPrice)} ₽</dd>
+            <dd className={styles.summary__totalValue}>{formatPrice(totalPrice)}</dd>
           </div>
         </dl>
       </div>
@@ -42,6 +42,7 @@ export const Summary = ({ className }) => {
           type="submit"
           form="delivery-form"
           variant="accent"
+          disabled={!itemsCount}
         >
           Place order
         </CustomButton>

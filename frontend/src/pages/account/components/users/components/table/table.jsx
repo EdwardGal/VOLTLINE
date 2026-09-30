@@ -1,6 +1,5 @@
 import { Table as TableLayout } from '../../../../../../components';
 import { Head, Row } from './components';
-
 import styles from './table.module.scss';
 
 export const Table = ({ users, roles, removeUserHandler, updateUserHandler }) => {

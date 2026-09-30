@@ -1,10 +1,8 @@
 import clsx from 'clsx';
-
 import { CustomButton, FormSelect, LucideIcon } from '../../../../components';
-
-import styles from './head.module.scss';
 import { PRODUCT_TAGS } from '../../../../constants';
 import { formatSlug } from '../../../../utils';
+import styles from './head.module.scss';
 
 export const Head = ({
   title,

@@ -4,11 +4,6 @@
   width: 100%;
   gap: toRem(2);
 
-  &--checkbox {
-    width: auto;
-    padding: toRem(3);
-  }
-
   &__label {
     color: var(--headings-and-subheadings);
     font-size: toRem(12);
@@ -23,6 +18,7 @@
     border-radius: toRem(16);
     font-size: toRem(14);
     @include inputHover;
+    background: var(--background-main);
     &:focus {
       border-color: var(--background-button-2);
       background: var(--background-button-2);
@@ -65,20 +61,13 @@
     gap: toRem(8);
     min-height: toRem(40);
     padding: 0 toRem(8);
+    font-size: toRem(10);
+    color: var(--headings-and-subheadings);
     border: toRem(1) solid var(--border);
     border-radius: toRem(12);
-    background: var(--background-secondary);
-    color: var(--headings-and-subheadings);
-    font-size: toRem(10);
+    background: var(--background-main);
     cursor: pointer;
-    user-select: none;
-
     @include inputHover;
-
-    &:focus-within {
-      outline: toRem(2) solid var(--headings-and-subheadings);
-      outline-offset: toRem(2);
-    }
   }
 
   &__checkbox {
@@ -87,7 +76,6 @@
     flex-shrink: 0;
     width: toRem(18);
     height: toRem(18);
-    margin: 0;
     appearance: none;
     border: toRem(1) solid currentColor;
     border-radius: toRem(5);
@@ -120,5 +108,10 @@
       outline: toRem(2) solid var(--headings-and-subheadings);
       outline-offset: toRem(2);
     }
+  }
+
+  &--checkbox {
+    width: auto;
+    padding: toRem(3);
   }
 }

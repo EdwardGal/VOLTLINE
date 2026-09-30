@@ -1,13 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-
 import { CustomButton } from '../../../../components';
-import { selectCartItemsCount, selectCartTotal } from '../../../../store/cart/cartSelectors';
-import { clearCart } from '../../../../store/cart/cartActions';
-
-import { DELIVERY_PRICE, FREE_DELIVERY_THRESHOLD } from '../../delivery.constants';
-
-import styles from './head.module.scss';
 import { useToast } from '../../../../components/toast';
+import { clearCart } from '../../../../store/cart/cartActions';
+import { selectCartItemsCount, selectCartTotal } from '../../../../store/cart/cartSelectors';
+import { DELIVERY_PRICE, FREE_DELIVERY_THRESHOLD } from '../../delivery.constants';
+import styles from './head.module.scss';
 
 export const Head = () => {
   const cartItemsCount = useSelector(selectCartItemsCount);

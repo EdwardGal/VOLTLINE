@@ -1,8 +1,7 @@
-import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-
+import { useLocation } from 'react-router-dom';
+import { ROUTES } from '../../constants/routes';
 import { CustomLink } from '../customLink/customLink';
-
 import styles from './breadcrumbs.module.scss';
 
 export const Breadcrumbs = ({ path, className }) => {
@@ -13,7 +12,7 @@ export const Breadcrumbs = ({ path, className }) => {
   return (
     <nav className={clsx(styles.breadcrumbs, className)}>
       <div className={styles.breadcrumbs__item}>
-        <CustomLink to="/" className={styles.breadcrumbs__link} variant="default">
+        <CustomLink to={ROUTES.HOME} className={styles.breadcrumbs__link} variant="default">
           Home
         </CustomLink>
 

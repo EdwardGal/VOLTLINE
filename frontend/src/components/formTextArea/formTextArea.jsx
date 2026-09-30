@@ -1,5 +1,5 @@
 import { ErrorMessage } from '../errorMessage/errorMessage';
-import styles from './formTextarea.module.scss';
+import styles from './formTextArea.module.scss';
 
 export const FormTextarea = ({ label, error, ...props }) => {
   return (

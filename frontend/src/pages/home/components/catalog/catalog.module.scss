@@ -9,7 +9,7 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
     gap: toRem(20);
     margin-top: toRem(30);
   }

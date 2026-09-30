@@ -10,8 +10,8 @@ export const Price = ({ price, discount, variant, className }) => {
 
   return (
     <div className={clsx(styles.price, variantClass, className)}>
-      <span className={styles.price__current}>{currentPrice} ₽</span>
-      {lastPrice && <del className={styles.price__old}>{lastPrice} ₽</del>}
+      <span className={styles.price__current}>{currentPrice}</span>
+      {lastPrice && <del className={styles.price__old}>{lastPrice}</del>}
     </div>
   );
 };

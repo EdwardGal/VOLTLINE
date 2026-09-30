@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import clsx from 'clsx';
-
+import { useState } from 'react';
 import { CustomButton, FormInput, LucideIcon } from '../../../../components';
-
-import styles from './panel.module.scss';
 import { MAX_PRICE } from '../../catalog.constants';
 import { formatPrice } from '../../../../utils';
+import styles from './panel.module.scss';
 
 export const Panel = ({
   categories,
@@ -129,7 +127,7 @@ export const Panel = ({
                 onChange={({ target }) => {
                   const value = Number(target.value);
 
-                  if (value < priceRange.max) {
+                  if (value <= priceRange.max) {
                     onPriceRangeChange((prev) => ({
                       ...prev,
                       min: value,
@@ -147,7 +145,7 @@ export const Panel = ({
                 onChange={({ target }) => {
                   const value = Number(target.value);
 
-                  if (value > priceRange.min) {
+                  if (value >= priceRange.min) {
                     onPriceRangeChange((prev) => ({
                       ...prev,
                       max: value,
@@ -158,8 +156,8 @@ export const Panel = ({
             </div>
 
             <div className={styles.panel__priceValues}>
-              <span>{formatPrice(priceRange.min)} ₽</span>
-              <span>{formatPrice(priceRange.max)} ₽</span>
+              <span>{formatPrice(priceRange.min)}</span>
+              <span>{formatPrice(priceRange.max)}</span>
             </div>
           </div>
         </div>

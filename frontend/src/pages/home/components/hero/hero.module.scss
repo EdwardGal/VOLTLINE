@@ -32,4 +32,7 @@
     display: flex;
     gap: toRem(8);
   }
+  &__btn {
+    @include inputHover;
+  }
 }

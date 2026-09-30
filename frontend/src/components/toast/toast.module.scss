@@ -1,63 +1,84 @@
 .toast {
-  position: fixed;
-  z-index: 1000;
-  right: toRem(24);
-  bottom: toRem(24);
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
   gap: toRem(12);
-  width: min(380px, calc(100vw - 48px));
-  padding: toRem(16);
-  pointer-events: none;
-  background: var(--background-secondary);
-  border: 1px solid var(--border);
+  padding: toRem(14) toRem(16);
+  min-width: toRem(280);
+  max-width: toRem(400);
+
+  background-color: var(--background-cards);
+  border: toRem(1) solid var(--border);
   border-radius: toRem(12);
-  box-shadow: 0 toRem(12) toRem(40) rgba(0, 0, 0, 0.45);
-  animation: toast-in 0.25s ease-out;
+  box-shadow: 0 toRem(8) toRem(24) rgba(0, 0, 0, 0.5);
+
+  position: fixed;
+  bottom: toRem(24);
+  right: toRem(24);
+  z-index: 9999;
+  transition: all 0.3s ease;
 
   &--error {
-    border-color: var(--error);
+    border-color: rgba(237, 50, 75, 0.4);
   }
 
   &--success {
-    border-color: var(--background-button-main);
+    border-color: rgba(34, 211, 238, 0.4);
   }
 
   &__content {
     display: flex;
-    flex: 1;
     flex-direction: column;
-    gap: toRem(4);
+    gap: toRem(2);
+    flex: 1;
   }
 
   &__title {
-    color: var(--headings-and-subheadings);
     font-size: toRem(14);
-    font-weight: 700;
-    line-height: 1.2;
+    font-weight: 600;
+    color: var(--headings-and-subheadings);
   }
 
   &__message {
-    color: var(--body);
     font-size: toRem(13);
     line-height: 1.4;
-    overflow-wrap: anywhere;
+    color: var(--body);
+  }
+
+  &__statusIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: toRem(2);
+
+    &--success {
+      color: var(--background-button-main);
+    }
+
+    &--error {
+      color: var(--error);
+    }
   }
 
   &__close {
-    align-self: start;
-    pointer-events: auto;
-  }
-}
+    background: transparent;
+    border: none;
+    padding: toRem(4);
+    color: var(--body);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: toRem(6);
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+    margin-top: toRem(-2);
+    margin-right: toRem(-4);
 
-@keyframes toast-in {
-  from {
-    opacity: 0;
-    transform: translateX(toRem(20));
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
+    &:hover {
+      color: var(--headings-and-subheadings);
+      background-color: var(--background-2);
+    }
   }
 }

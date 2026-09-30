@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-
-import { ErrorMessage, FormInput, FormSelect, FormTextarea } from '../../../../../../components';
 import { getCategories } from '../../../../../../api/productService';
+import { PRODUCT_TAGS } from '../../../../../../constants';
+import { ErrorMessage, FormInput, FormSelect, FormTextarea } from '../../../../../../components';
 import { request } from '../../../../../../utils';
-
 import { schema } from './schema';
 import styles from './form.module.scss';
-import { PRODUCT_TAGS } from '../../../../../../constants';
 
 export const Form = ({ product, onConfirm }) => {
   const [categories, setCategories] = useState([]);
@@ -97,10 +95,11 @@ export const Form = ({ product, onConfirm }) => {
     );
 
     if (error) {
-      serverErrorMessage(error);
+      setServerErrorMessage(error);
       return;
     }
 
+    setServerErrorMessage(null);
     onConfirm(data);
   };
 

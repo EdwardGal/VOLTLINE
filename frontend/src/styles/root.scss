@@ -39,28 +39,13 @@
 }
 
 html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--background-main) var(--background-secondary);
-
-  &::-webkit-scrollbar {
-    width: toRem(6);
-  }
-
-  &::-webkit-scrollbar-track {
-    background: var(--background-main);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--background-secondary);
-    border-radius: toRem(6);
-  }
+  @include max-height-scroll(auto);
 }
 
 #root {
   height: 100vh;
   display: flex;
   flex-direction: column;
-
   main {
     flex: 1 1 auto;
   }

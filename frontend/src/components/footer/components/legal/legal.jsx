@@ -1,5 +1,5 @@
-import styles from './legal.module.scss';
 import { CustomLink } from '../../../customLink/customLink';
+import styles from './legal.module.scss';
 
 export const Legal = () => {
   return (

@@ -1,15 +1,9 @@
-import { PageContainer } from '../pageContainer/pageContainer';
-import styles from './header.module.scss';
-import {
-  HeaderControlPanel,
-  HeaderNav,
-  HeaderSearch,
-  HeaderTopBar,
-  SearchResults,
-} from './components';
-import { HeaderLogo } from '../headerLogo/headerLogo';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { PageContainer } from '../pageContainer/pageContainer';
+import { HeaderLogo } from '../headerLogo/headerLogo';
+import { Actions, Nav, Search, TopBar, SearchResults } from './components';
+import styles from './header.module.scss';
 
 export const Header = () => {
   const location = useLocation();
@@ -27,20 +21,20 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <PageContainer className={styles.header__container}>
-        <HeaderTopBar className={styles.header__topBar} />
+        <TopBar className={styles.header__topBar} />
 
         <div className={styles.header__inner}>
           <HeaderLogo />
-          <HeaderNav />
+          <Nav />
 
-          <HeaderSearch
+          <Search
             searchValue={searchValue}
             setSearchValue={setSearchValue}
             setSearchResults={setSearchResults}
             setSearchMessage={setSearchMessage}
           />
 
-          <HeaderControlPanel className={styles.header__control} />
+          <Actions className={styles.header__control} />
 
           <SearchResults products={searchResults} message={searchMessage} />
         </div>

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import styles from './formInput.module.scss';
 import { ErrorMessage } from '../errorMessage/errorMessage';
+import styles from './formInput.module.scss';
 
 export const FormInput = ({ label, error, className, type = 'text', ...props }) => {
   const isCheckbox = type === 'checkbox';

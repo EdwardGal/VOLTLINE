@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
-import styles from './socials.module.scss';
 import { SOCIALS_DATA } from '../contacts.constants';
-
-
+import styles from './socials.module.scss';
 
 export const Social = () => {
   return (

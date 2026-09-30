@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getCategories } from '../../../../api/productService';
 import { ErrorMessage, Loading, PageContainer, SectionHead } from '../../../../components';
-
-import styles from './catalog.module.scss';
 import { ROUTES } from '../../../../constants';
 import { createSlug } from '../../../../utils';
 import { Card } from './components';
+import styles from './catalog.module.scss';
 
 export const Catalog = () => {
   const [categories, setCategories] = useState([]);
@@ -13,6 +12,8 @@ export const Catalog = () => {
   const [serverErrorMessage, setServerErrorMessage] = useState(null);
 
   useEffect(() => {
+    setIsLoading(true);
+    setServerErrorMessage(null);
     getCategories()
       .then(({ data, error }) => {
         if (error) {
@@ -28,11 +29,7 @@ export const Catalog = () => {
     <section className={styles.catalog}>
       <PageContainer className={styles.catalog__container}>
         <div className={styles.catalog__content}>
-          <SectionHead
-            className={styles.catalog__head}
-            title="Full catalog"
-            to={ROUTES.CATALOG}
-          />
+          <SectionHead className={styles.catalog__head} title="Full catalog" to={ROUTES.CATALOG} />
           <div className={styles.catalog__list}>
             {isLoading ? (
               <Loading />

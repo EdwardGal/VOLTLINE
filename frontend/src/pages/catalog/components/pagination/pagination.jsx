@@ -1,7 +1,5 @@
 import clsx from 'clsx';
-
 import { CustomButton } from '../../../../components';
-
 import styles from './pagination.module.scss';
 
 export const Pagination = ({ className, currentPage, totalPages, onPageChange }) => {

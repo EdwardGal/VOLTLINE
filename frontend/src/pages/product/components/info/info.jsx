@@ -1,14 +1,23 @@
-import { CustomButton, CustomLink, Delivery, H2, LucideIcon, Price } from '../../../../components';
+import {
+  
+  CustomButton,
+  CustomLink,
+  Delivery,
+  H2,
+  LucideIcon,
+  Price,
+} from '../../../../components';
 
 import { ROUTES } from '../../../../constants';
 import { useAddToCart } from '../../../../hooks';
-
 import styles from './info.module.scss';
 
 export const Info = ({ product }) => {
   const { name, description, price, discount, quantity: initialQuantity } = product;
 
   const { handleBuy, isMaxQuantity } = useAddToCart(product);
+
+
 
   const techs = {
     Brand: product.brand,

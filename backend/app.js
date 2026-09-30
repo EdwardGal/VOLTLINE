@@ -1,11 +1,12 @@
 import 'dotenv/config';
 
+import cookieParser from 'cookie-parser';
+import dns from 'dns';
 import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import cookieParser from 'cookie-parser';
-import dns from 'dns';
+
 import routes from './routes/index.js';
 
 dns.setServers(['1.1.1.1']);

@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react';
-
 import { ModalContext } from './modalContext';
-import { Modal } from './Modal';
+import { Modal } from './modal';
 
 export const ModalProvider = ({ children }) => {
   const [modal, setModal] = useState(null);

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import styles from './formSelect.module.scss';
 import { ErrorMessage } from '../errorMessage/errorMessage';
+import styles from './formSelect.module.scss';
 
 export const FormSelect = ({ label, error, className, children, ...props }) => {
   return (

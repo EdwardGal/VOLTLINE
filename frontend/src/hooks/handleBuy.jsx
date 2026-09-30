@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useToast } from '../components/toast';
 import { selectCartItemById } from '../store/cart/cartSelectors';
 import { addToCart } from '../store/cart/cartActions';
+import { useToast } from '../components/toast';
 
 export const useAddToCart = (product) => {
   const dispatch = useDispatch();

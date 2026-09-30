@@ -1,10 +1,10 @@
-import styles from './account.module.scss';
-import { Access, CustomLink, PageContainer, TableHead } from '../../components';
-import { Head, Products, Users } from './components';
-import { ROLES } from '../../constants';
 import { useSelector } from 'react-redux';
+import { Access, PageContainer, TableHead } from '../../components';
+import { ROLES } from '../../constants';
 import { selectUser } from '../../store/selectors';
 import { ComingSoon } from '../сomingSoon/comingSoon';
+import { Head, Products, Users } from './components';
+import styles from './account.module.scss';
 
 export const Account = () => {
   const { roleId } = useSelector(selectUser);

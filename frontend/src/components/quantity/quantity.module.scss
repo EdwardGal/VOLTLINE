@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   color: var(--headings-and-subheadings);
-  background: var(--background-cards);
+  background: var(--background-main);
   border: toRem(1) solid var(--border);
   border-radius: toRem(100);
   @include inputHover;

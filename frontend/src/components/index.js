@@ -21,3 +21,4 @@ export * from './price/price';
 export * from './delivery/delivery';
 export * from './breadcrumbs/breadcrumbs';
 export * from './table/table';
+export * from './askForm/askForm'

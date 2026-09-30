@@ -1,16 +1,11 @@
 import { useEffect, useState } from 'react';
-
 import { CustomButton, ErrorMessage, Loading, LucideIcon, TableHead } from '../../../../components';
-
-import { calcQuantity } from '../../../../utils';
-
-import { Form, Table } from './components';
-
-import styles from './products.module.scss';
-
-import { useToast } from '../../../../components/toast';
 import { useModal } from '../../../../components/modal';
+import { useToast } from '../../../../components/toast';
 import { getProducts } from '../../../../api/productService';
+import { calcQuantity } from '../../../../utils';
+import { Form, Table } from './components';
+import styles from './products.module.scss';
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
@@ -27,6 +22,7 @@ export const Products = () => {
           setServerErrorMessage(error);
           return;
         }
+
         setProducts(data);
       })
       .finally(() => setIsLoading(false));
@@ -58,7 +54,6 @@ export const Products = () => {
       prev.map((product) => (product.id === updatedProduct.id ? updatedProduct : product))
     );
   };
-
   return (
     <div className={styles.products}>
       <div className={styles.products__info}>

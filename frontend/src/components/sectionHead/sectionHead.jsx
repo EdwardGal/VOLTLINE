@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { CustomLink } from '../customLink/customLink';
 import { H2 } from '../h2/h2';
-import styles from './sectionHead.module.scss';
 import { LucideIcon } from '../lucideIcon/lucideIcon';
+import styles from './sectionHead.module.scss';
 
 export const SectionHead = ({ className, title, to }) => {
   return (

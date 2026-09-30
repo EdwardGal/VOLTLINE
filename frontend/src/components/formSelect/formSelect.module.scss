@@ -19,7 +19,7 @@
     border-radius: toRem(16);
     border: toRem(1) solid var(--border);
     @include inputHover;
-
+    background: var(--background-main);
     option {
       color: var(--headings-and-subheadings);
       background-color: var(--background-secondary);

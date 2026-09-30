@@ -1,1 +1,1 @@
-export * from './deliveryForm/deliveryForm'
+export * from './form/form'

@@ -1,9 +1,9 @@
-import { PageContainer } from '../../components';
-import { AuthForm, AuthHeader, AuthPromo } from './components';
-import styles from './auth.module.scss';
 import { Navigate } from 'react-router-dom';
+import { PageContainer } from '../../components';
 import { ROUTES } from '../../constants';
 import { checkSession } from '../../utils';
+import { Form, Header, Promo } from './components';
+import styles from './auth.module.scss';
 
 export const Auth = () => {
   const userData = checkSession();
@@ -15,10 +15,10 @@ export const Auth = () => {
   return (
     <section className={styles.auth}>
       <PageContainer>
-        <AuthHeader />
+        <Header />
         <div className={styles.auth__content}>
-          <AuthForm />
-          <AuthPromo />
+          <Form />
+          <Promo />
         </div>
       </PageContainer>
     </section>

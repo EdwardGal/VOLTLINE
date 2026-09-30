@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
-
 import { deleteUser, updateUser } from '../../../../../../../../api';
 import { CustomButton, FormSelect, LucideIcon } from '../../../../../../../../components';
 import { useModal } from '../../../../../../../../components/modal';
@@ -9,7 +8,6 @@ import { useToast } from '../../../../../../../../components/toast';
 import { ROLES } from '../../../../../../../../constants';
 import { selectUser } from '../../../../../../../../store/selectors';
 import { findRoleName, formattedDate } from '../../../../../../../../utils';
-
 import styles from './row.module.scss';
 
 export const Row = ({ user, roles, removeUserHandler, updateUserHandler }) => {
@@ -70,9 +68,7 @@ export const Row = ({ user, roles, removeUserHandler, updateUserHandler }) => {
         <div className={styles.row__info}>
           <span className={styles.row__email}>{user.email}</span>
 
-          {currentEmail === user.email && (
-            <span className={styles.row__meta}>That's you</span>
-          )}
+          {currentEmail === user.email && <span className={styles.row__meta}>That's you</span>}
         </div>
       </div>
 
@@ -81,20 +77,11 @@ export const Row = ({ user, roles, removeUserHandler, updateUserHandler }) => {
       <span className={styles.row__lastLoginAt}>{formattedDate(user.lastLoginAt)}</span>
 
       <div className={styles.row__roles}>
-        <span
-          className={clsx(
-            styles.row__badge,
-            isAdmin && styles['row__badge--active']
-          )}
-        >
+        <span className={clsx(styles.row__badge, isAdmin && styles['row__badge--active'])}>
           {findRoleName(selectedRoleId)}
         </span>
 
-        <FormSelect
-          className={styles.row__select}
-          value={selectedRoleId}
-          onChange={onRoleChange}
-        >
+        <FormSelect className={styles.row__select} value={selectedRoleId} onChange={onRoleChange}>
           {roles.map(({ id, name }) => (
             <option className={styles.row__option} key={id} value={id}>
               {name}
