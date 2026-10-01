@@ -3,6 +3,7 @@
   &__content {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: toRem(52);
   }
   &__info {
@@ -17,19 +18,27 @@
     font-family: var(--font-family-heading);
     font-size: toRem(100);
     margin-bottom: toRem(16);
+    @media (max-width: $mobile) {
+      font-size: toRem(52);
+    }
   }
   &__subtitle {
     font-size: toRem(18);
-    line-height: 130%;
+  line-height: var(--line-height-heading);
     margin-bottom: toRem(30);
+    @media (max-width: $mobile) {
+      font-size: toRem(18);
+    }
   }
   &__actions {
     display: flex;
     gap: toRem(12);
     margin-bottom: toRem(20);
   }
+
   &__tags {
     display: flex;
+    flex-wrap: wrap;
     gap: toRem(8);
   }
   &__btn {

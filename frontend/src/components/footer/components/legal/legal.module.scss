@@ -7,7 +7,7 @@
   border-top: toRem(1) solid var(--border);
   &__copy {
     font-size: toRem(15);
-    line-height: 130%;
+   line-height: var(--line-height-heading);
   }
   &__links {
     display: flex;

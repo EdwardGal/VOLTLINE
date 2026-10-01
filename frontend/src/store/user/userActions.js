@@ -8,3 +8,9 @@ export const logout = () => {
     type: ACTION_TYPE.LOGOUT,
   };
 };
+
+
+export const setUser = (user) => ({
+  type: ACTION_TYPE.SET_USER,
+  payload: user,
+});

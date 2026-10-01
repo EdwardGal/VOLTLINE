@@ -2,18 +2,25 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: toRem(40);
+
   &__column {
     display: flex;
     flex-direction: column;
     gap: toRem(16);
   }
+
   &__title {
     font-size: toRem(18);
-    font-weight: 600;
+   font-weight: var(--font-weight-semibold);
   }
+
   &__list {
     display: flex;
     flex-direction: column;
     gap: toRem(8);
+  }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

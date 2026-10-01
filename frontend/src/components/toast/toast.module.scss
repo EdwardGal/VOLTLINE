@@ -1,21 +1,18 @@
 .toast {
+  position: fixed;
+  bottom: toRem(24);
+  left: 50%;
+  z-index: 9999;
   display: flex;
   align-items: flex-start;
   gap: toRem(12);
   padding: toRem(14) toRem(16);
-  min-width: toRem(280);
-  max-width: toRem(400);
-
   background-color: var(--background-cards);
   border: toRem(1) solid var(--border);
   border-radius: toRem(12);
   box-shadow: 0 toRem(8) toRem(24) rgba(0, 0, 0, 0.5);
-
-  position: fixed;
-  bottom: toRem(24);
-  right: toRem(24);
-  z-index: 9999;
-  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  animation: toastSlideUp 0.35s ease-out;
 
   &--error {
     border-color: rgba(237, 50, 75, 0.4);
@@ -27,28 +24,28 @@
 
   &__content {
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: toRem(2);
-    flex: 1;
   }
 
   &__title {
     font-size: toRem(14);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     color: var(--headings-and-subheadings);
   }
 
   &__message {
     font-size: toRem(13);
-    line-height: 1.4;
+    line-height: var(--line-height-base);
     color: var(--body);
   }
 
   &__statusIcon {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
     margin-top: toRem(2);
 
     &--success {
@@ -61,24 +58,21 @@
   }
 
   &__close {
-    background: transparent;
-    border: none;
     padding: toRem(4);
     color: var(--body);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: toRem(6);
-    transition:
-      color 0.2s ease,
-      background-color 0.2s ease;
-    margin-top: toRem(-2);
-    margin-right: toRem(-4);
+    background: transparent;
+    border: none;
+  }
+}
 
-    &:hover {
-      color: var(--headings-and-subheadings);
-      background-color: var(--background-2);
-    }
+@keyframes toastSlideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(toRem(30));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
 }

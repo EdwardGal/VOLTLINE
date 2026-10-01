@@ -37,8 +37,8 @@
     overflow: hidden;
     color: var(--headings-and-subheadings);
     font-size: toRem(18);
-    font-weight: 600;
-    line-height: 130%;
+    font-weight: var(--font-weight-semibold);
+   line-height: var(--line-height-heading);
     white-space: nowrap;
     text-overflow: ellipsis;
   }
@@ -47,7 +47,7 @@
     overflow: hidden;
     color: var(--text-secondary);
     font-size: toRem(15);
-    line-height: 130%;
+   line-height: var(--line-height-heading);
     white-space: nowrap;
     text-overflow: ellipsis;
   }
@@ -71,13 +71,13 @@
   &__quantity {
     color: var(--text-secondary);
     font-size: toRem(10);
-    line-height: 130%;
+    line-height: var(--line-height-heading);
   }
 
   &__price {
     color: var(--headings-and-subheadings);
     font-size: toRem(18);
-    font-weight: 600;
-    line-height: 130%;
+   font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-heading);
   }
 }

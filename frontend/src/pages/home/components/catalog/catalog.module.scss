@@ -3,14 +3,20 @@
 
   &__link {
     font-size: toRem(14);
-    line-height: 130%;
+    line-height: var(--line-height-heading);
     color: var(--background-button-main);
   }
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: toRem(20);
     margin-top: toRem(30);
+    @media (max-width: $pc) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    @media (max-width: $tablet) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 }

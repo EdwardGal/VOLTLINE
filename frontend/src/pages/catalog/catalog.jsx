@@ -34,7 +34,6 @@ export const Catalog = () => {
       .then(([productsRes, categoriesRes]) => {
         if (productsRes.error || categoriesRes.error) {
           setServerErrorMessage(productsRes.error || categoriesRes.error);
-
           return;
         }
 

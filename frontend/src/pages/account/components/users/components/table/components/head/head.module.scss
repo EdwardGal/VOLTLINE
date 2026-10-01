@@ -3,12 +3,10 @@
   grid-template-columns: var(--table-users-columns);
   align-items: center;
   gap: toRem(16);
-
   padding: toRem(20) toRem(24);
-
   font-size: toRem(12);
-  font-weight: 600;
-  line-height: 130%;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
   text-transform: uppercase;
   color: var(--headings-and-subheadings);
 }

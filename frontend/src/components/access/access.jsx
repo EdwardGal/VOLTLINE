@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../store/selectors';
+import { selectUser } from '../../store/user/userSelectors';
 import { checkAccess } from '../../utils';
 
 export const Access = ({ roles, children }) => {

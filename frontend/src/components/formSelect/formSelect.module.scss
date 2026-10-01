@@ -15,7 +15,7 @@
     min-width: toRem(120);
     padding: toRem(4) toRem(16);
     font-size: toRem(13);
-    line-height: 130%;
+    line-height: var(--line-height-heading);
     border-radius: toRem(16);
     border: toRem(1) solid var(--border);
     @include inputHover;

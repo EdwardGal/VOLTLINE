@@ -2,7 +2,7 @@
   flex: 0 1 toRem(600);
   &__description {
     font-size: toRem(15);
-    line-height: 130%;
+   line-height: var(--line-height-heading);
     margin-top: toRem(16);
   }
   &__price {

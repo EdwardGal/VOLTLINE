@@ -4,9 +4,17 @@ import styles from './formInput.module.scss';
 
 export const FormInput = ({ label, error, className, type = 'text', ...props }) => {
   const isCheckbox = type === 'checkbox';
+  const isSearch = type === 'search';
 
   return (
-    <div className={clsx(styles.formField, isCheckbox && styles[`formField--checkbox`], className)}>
+    <div
+      className={clsx(
+        styles.formField,
+        isSearch && styles['formField--search'],
+        isCheckbox && styles['formField--checkbox'],
+        className
+      )}
+    >
       {isCheckbox ? (
         <label className={styles.formField__checkboxLabel}>
           <input className={styles.formField__checkbox} type="checkbox" {...props} />

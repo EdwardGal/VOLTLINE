@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../../../constants';
 import { request } from '../../../../utils/request';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../../../store/actions';
+import { setUser } from '../../../../store/user/userActions';
 import { useToast } from '../../../../components/toast';
 
 export const Form = () => {

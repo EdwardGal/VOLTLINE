@@ -25,34 +25,7 @@
     border-radius: toRem(100);
   }
 
-  &__rows {
-    max-height: toRem(360);
-    overflow: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--background-main) var(--background-secondary);
-
-    &::-webkit-scrollbar {
-      width: toRem(6);
-    }
-
-    &::-webkit-scrollbar-track {
-      background: var(--background-main);
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: var(--background-secondary);
-      border-radius: toRem(6);
-    }
-  }
-
-  &__addTitle{
+  &__addTitle {
     font-size: toRem(12);
   }
-  // &__error {
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   min-height: 200px;
-  //   padding: 30px;
-  // }
 }

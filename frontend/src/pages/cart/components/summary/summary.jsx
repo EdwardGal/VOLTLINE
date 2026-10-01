@@ -38,7 +38,7 @@ export const Summary = ({ className }) => {
 
       <div className={styles.summary__actions}>
         <CustomButton
-          className={clsx(styles.button, styles.button_primary, styles.summary__btn)}
+          className={styles.summary__btn}
           type="submit"
           form="delivery-form"
           variant="accent"

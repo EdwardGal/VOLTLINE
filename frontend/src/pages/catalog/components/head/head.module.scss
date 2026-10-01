@@ -10,7 +10,7 @@
   }
   &__description {
     font-size: toRem(18);
-    line-height: 130%;
+  line-height: var(--line-height-heading);
     margin-top: toRem(8);
   }
   &__actions {

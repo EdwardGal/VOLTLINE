@@ -6,12 +6,12 @@
 
   &__title {
     font-size: toRem(40);
-    font-weight: 700;
-    line-height: 130%;
+    font-weight: var(--font-weight-bold);
+   line-height: var(--line-height-heading);
   }
   &__description {
     font-size: toRem(18);
-    line-height: 130%;
+    line-height: var(--line-height-heading);
     margin-top: toRem(8);
   }
 }

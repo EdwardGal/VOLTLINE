@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Access, PageContainer, TableHead } from '../../components';
 import { ROLES } from '../../constants';
-import { selectUser } from '../../store/selectors';
+import { selectUser } from '../../store/user/userSelectors';
 import { ComingSoon } from '../сomingSoon/comingSoon';
 import { Head, Products, Users } from './components';
 import styles from './account.module.scss';

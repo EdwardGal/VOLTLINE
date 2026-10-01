@@ -108,12 +108,29 @@ export const updateProduct = async (id, productData, files = []) => {
   return mapProduct(updatedProduct);
 };
 
+
 export const deleteProduct = async (id) => {
-  const product = await Product.findByIdAndDelete(id);
+  const product = await Product.findById(id);
 
   if (!product) {
     throw new Error('Product not found');
   }
+
+  await Promise.all(
+    product.images.map(async (image) => {
+      const filePath = path.join(process.cwd(), image);
+
+      try {
+        await fs.unlink(filePath);
+      } catch (error) {
+        if (error.code !== 'ENOENT') {
+          throw error;
+        }
+      }
+    })
+  );
+
+  await product.deleteOne();
 
   return product;
 };

@@ -19,7 +19,7 @@
     align-items: center;
     min-height: toRem(44);
     font-family: var(--font-family-heading);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     border-bottom: toRem(2) solid var(--border);
 
     @include linkHover;

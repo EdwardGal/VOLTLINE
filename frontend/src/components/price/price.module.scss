@@ -6,13 +6,13 @@
 
   &__current {
     font-size: toRem(18);
-    font-weight: 700;
-    line-height: 130%;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
     color: var(--headings-and-subheadings);
   }
   &__old {
     font-size: toRem(15);
-    line-height: 130%;
+    line-height: var(--line-height-heading);
   }
 
   &--productCard {

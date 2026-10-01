@@ -13,6 +13,7 @@ export const Search = ({ searchValue, setSearchValue, setSearchResults, setSearc
     if (!search) {
       setSearchResults([]);
       setSearchMessage(null);
+
       return;
     }
 
@@ -22,6 +23,7 @@ export const Search = ({ searchValue, setSearchValue, setSearchResults, setSearc
         title: 'Enter More Characters',
         description: 'Search starts after entering three characters',
       });
+
       return;
     }
 
@@ -32,6 +34,7 @@ export const Search = ({ searchValue, setSearchValue, setSearchResults, setSearc
           title: 'Search Error',
           description: 'Unable to perform the search',
         });
+
         return;
       }
 
@@ -41,13 +44,14 @@ export const Search = ({ searchValue, setSearchValue, setSearchResults, setSearc
           title: 'Nothing Found',
           description: 'Try rephrasing your search or look for something else',
         });
+
         return;
       }
 
       setSearchResults(data);
       setSearchMessage(null);
     });
-  }, [debouncedSearch]);
+  }, [debouncedSearch, setSearchMessage, setSearchResults]);
 
   return (
     <FormInput

@@ -74,8 +74,8 @@
 
   &__name {
     font-size: toRem(18);
-    font-weight: 700;
-    line-height: 130%;
+   font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
     color: var(--headings-and-subheadings);
   }
 
@@ -83,7 +83,7 @@
     display: inline-block;
     margin-top: toRem(8);
     font-size: toRem(15);
-    line-height: 130%;
+    line-height: var(--line-height-heading);
     color: var(--body);
     transition: color 0.3s ease;
   }

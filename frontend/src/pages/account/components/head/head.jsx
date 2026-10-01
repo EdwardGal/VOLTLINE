@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { CustomButton, HeaderLogo, LucideIcon, PageContainer } from '../../../../components';
 import { ROUTES } from '../../../../constants';
-import { logout } from '../../../../store/actions';
-import { selectUser } from '../../../../store/selectors';
+import { logout } from '../../../../store/user/userActions';
+import { selectUser } from '../../../../store/user/userSelectors';
 import { useToast } from '../../../../components/toast';
 import { findRoleName } from '../../../../utils';
 import styles from './head.module.scss';
+
 
 export const Head = () => {
   const { email, roleId } = useSelector(selectUser);

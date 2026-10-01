@@ -21,7 +21,7 @@
     flex: 0 0 toRem(40);
     height: toRem(40);
     font-size: toRem(14);
-    font-weight: 600;
+   font-weight: var(--font-weight-semibold);
     text-transform: uppercase;
     border-radius: 50%;
     color: var(--background-button-main);
@@ -36,7 +36,7 @@
 
   &__email {
     font-size: toRem(14);
-    line-height: 130%;
+   line-height: var(--line-height-heading);
     color: var(--headings-and-subheadings);
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -45,14 +45,14 @@
 
   &__meta {
     font-size: toRem(12);
-    line-height: 130%;
+    line-height: var(--line-height-heading);
     color: var(--background-button-main);
   }
 
   &__createdAt,
   &__lastLoginAt {
     font-size: toRem(13);
-    line-height: 130%;
+    line-height: var(--line-height-heading);
   }
 
   &__roles {
@@ -68,8 +68,8 @@
     padding: toRem(5) toRem(9);
     border-radius: toRem(5);
     font-size: toRem(13);
-    font-weight: 600;
-    line-height: 120%;
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-base);
     color: var(--headings-and-subheadings);
     background: var(--background-button-hover-2);
     white-space: nowrap;

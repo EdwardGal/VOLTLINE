@@ -17,6 +17,5 @@ export const schema = yup.object({
   question: yup
     .string()
     .trim()
-    .min(10, 'Question must contain at least 10 characters')
     .max(500, 'Question must contain no more than 500 characters'),
 });

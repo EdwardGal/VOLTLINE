@@ -9,9 +9,8 @@
   &__title {
     flex: 0 1 toRem(844);
     font-size: toRem(100);
-    font-weight: 700;
-    line-height: 130%;
-
+    font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
   }
   &__cover {
     position: absolute;

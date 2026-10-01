@@ -14,11 +14,11 @@
   &__select,
   &__textarea {
     width: 100%;
+    font-size: toRem(14);
     border: toRem(1) solid var(--border);
     border-radius: toRem(16);
-    font-size: toRem(14);
-    @include inputHover;
     background: var(--background-main);
+    @include inputHover;
     &:focus {
       border-color: var(--background-button-2);
       background: var(--background-button-2);
@@ -113,5 +113,18 @@
   &--checkbox {
     width: auto;
     padding: toRem(3);
+  }
+
+  &--search {
+    flex-direction: row;
+    justify-content: flex-end;
+    .formField__input {
+      max-width: toRem(478);
+      width: 100%;
+      min-height: toRem(32);
+      padding: 0 toRem(16);
+      font-size: toRem(14);
+      background: var(--background-2);
+    }
   }
 }

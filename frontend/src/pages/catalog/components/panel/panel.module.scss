@@ -39,8 +39,8 @@
   }
 
   &__sectionTitle {
-    font-weight: 700;
-    line-height: 130%;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
     color: var(--headings-and-subheadings);
   }
 
@@ -171,7 +171,7 @@
     margin-top: toRem(16);
 
     font-size: toRem(14);
-    line-height: 130%;
+    line-height: var(--line-height-heading);
     color: var(--headings-and-subheadings);
   }
 
@@ -191,7 +191,7 @@
 
   &__conditionLabel {
     font-size: toRem(14);
-    line-height: 130%;
+   line-height: var(--line-height-heading);
     color: var(--headings-and-subheadings);
   }
 

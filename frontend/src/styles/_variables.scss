@@ -1,13 +1,11 @@
 @use 'sass:math';
 
-// Математические константы
 $minWidth: 360;
 $maxWidth: 1920;
 $maxWidthContainer: 1498;
 $containerPadding: 30;
 $containerWidth: $maxWidthContainer + $containerPadding;
 
-// Функции
 @function toRem($px, $current: 16) {
   $result: math.div($px, $current) + rem;
   @return $result;
@@ -23,7 +21,6 @@ $containerWidth: $maxWidthContainer + $containerPadding;
   @return $result;
 }
 
-// Брейкпоинты для медиа-запросов
 $pc: em($containerWidth);
 $tablet: em(959.98);
 $mobile: em(767.98);

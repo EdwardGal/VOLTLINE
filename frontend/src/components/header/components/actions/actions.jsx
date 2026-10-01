@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { ROUTES } from '../../../../constants';
-import { selectUser } from '../../../../store/selectors';
+import { selectUser } from '../../../../store/user/userSelectors';
 import { selectCartItemsCount } from '../../../../store/cart/cartSelectors';
 import { CustomLink } from '../../../customLink/customLink';
 import { LucideIcon } from '../../../lucideIcon/lucideIcon';

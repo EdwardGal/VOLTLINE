@@ -1,12 +1,11 @@
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './store/store';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routing';
-
-import './styles/root.scss';
-import { ToastProvider } from './components/toast';
+import { store } from './store/store';
 import { ModalProvider } from './components/modal';
+import { ToastProvider } from './components/toast';
+import './styles/root.scss';
 
 const root = createRoot(document.getElementById('root'));
 

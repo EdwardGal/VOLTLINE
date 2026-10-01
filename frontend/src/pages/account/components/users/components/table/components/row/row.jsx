@@ -6,7 +6,7 @@ import { CustomButton, FormSelect, LucideIcon } from '../../../../../../../../co
 import { useModal } from '../../../../../../../../components/modal';
 import { useToast } from '../../../../../../../../components/toast';
 import { ROLES } from '../../../../../../../../constants';
-import { selectUser } from '../../../../../../../../store/selectors';
+import { selectUser } from '../../../../../../../../store/user/userSelectors';
 import { findRoleName, formattedDate } from '../../../../../../../../utils';
 import styles from './row.module.scss';
 

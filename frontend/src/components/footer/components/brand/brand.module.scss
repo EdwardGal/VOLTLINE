@@ -1,7 +1,7 @@
 .brand{
   &__description {
     font-size: toRem(15);
-    line-height: 130%;
+  line-height: var(--line-height-heading);
     margin-top: toRem(22);
   }
 }
