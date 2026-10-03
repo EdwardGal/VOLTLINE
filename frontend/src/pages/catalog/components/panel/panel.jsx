@@ -1,11 +1,23 @@
 import clsx from 'clsx';
 import { useState } from 'react';
-import { CustomButton, FormInput, LucideIcon } from '../../../../components';
-import { MAX_PRICE } from '../../catalog.constants';
+import { FormInput } from '../../../../components';
 import { formatPrice } from '../../../../utils';
+import { FilterSection } from './components';
 import styles from './panel.module.scss';
 
+const conditionOptions = [
+  {
+    key: 'inStock',
+    label: 'In stock',
+  },
+  {
+    key: 'onSale',
+    label: 'On sale',
+  },
+];
+
 export const Panel = ({
+  products,
   categories,
   selectedCategories,
   onCategoryChange,
@@ -22,6 +34,8 @@ export const Panel = ({
     conditions: false,
   });
 
+  const maxPrice = Math.max(...products.map(({ price }) => price), 0);
+
   const toggleSection = (section) => {
     setOpenSections((prev) => ({
       ...prev,
@@ -30,191 +44,132 @@ export const Panel = ({
   };
 
   const toggleCategory = (categoryName) => {
-    onCategoryChange((current) =>
-      current.includes(categoryName)
-        ? current.filter((name) => name !== categoryName)
-        : [...current, categoryName]
-    );
+    const nextCategories = selectedCategories.includes(categoryName)
+      ? selectedCategories.filter((name) => name !== categoryName)
+      : [...selectedCategories, categoryName];
+
+    onCategoryChange(nextCategories);
   };
 
   const toggleCondition = (condition) => {
-    onConditionsChange((prev) => ({
-      ...prev,
-      [condition]: !prev[condition],
-    }));
+    onConditionsChange({
+      ...conditions,
+      [condition]: !conditions[condition],
+    });
   };
+
+  const minPercent = maxPrice ? (priceRange.min / maxPrice) * 100 : 0;
+
+  const maxPercent = maxPrice ? (priceRange.max / maxPrice) * 100 : 100;
 
   return (
     <aside className={clsx(styles.panel, className)}>
       {!category && (
-        <div
-          className={clsx(
-            styles.panel__section,
-            openSections.category && styles['panel__section--open']
-          )}
+        <FilterSection
+          title="Category"
+          isOpen={openSections.category}
+          onToggle={() => toggleSection('category')}
         >
-          <CustomButton
-            className={styles.panel__sectionHeader}
-            onClick={() => toggleSection('category')}
-          >
-            <span className={styles.panel__sectionTitle}>Category</span>
-
-            <LucideIcon
-              className={styles.panel__chevron}
-              name={openSections.category ? 'ChevronUp' : 'ChevronDown'}
-              size="24"
-              color="#22d3ee"
-            />
-          </CustomButton>
-
-          <div className={styles.panel__content}>
-            <div className={styles.panel__options}>
-              {categories.map(({ id, name }) => (
-                <FormInput
-                  className={styles.panel__option}
-                  key={id}
-                  type="checkbox"
-                  value={name}
-                  label={name}
-                  checked={selectedCategories.includes(name)}
-                  onChange={() => toggleCategory(name)}
-                />
-              ))}
-            </div>
+          <div className={styles.panel__options}>
+            {categories.map(({ id, name }) => (
+              <FormInput
+                className={styles.panel__option}
+                key={id}
+                type="checkbox"
+                value={name}
+                label={name}
+                checked={selectedCategories.includes(name)}
+                onChange={() => toggleCategory(name)}
+              />
+            ))}
           </div>
-        </div>
+        </FilterSection>
       )}
 
-      <div
-        className={clsx(
-          styles.panel__section,
-          openSections.price && styles['panel__section--open']
-        )}
+      <FilterSection
+        title="Price"
+        isOpen={openSections.price}
+        onToggle={() => toggleSection('price')}
       >
-        <CustomButton
-          className={styles.panel__sectionHeader}
-          onClick={() => toggleSection('price')}
-        >
-          <span className={styles.panel__sectionTitle}>Price</span>
+        <div className={styles.panel__price}>
+          <div className={styles.panel__priceRange}>
+            <div className={styles.panel__priceTrack} />
 
-          <LucideIcon
-            className={styles.panel__chevron}
-            name={openSections.price ? 'ChevronUp' : 'ChevronDown'}
-            size="24"
-            color="#22d3ee"
-          />
-        </CustomButton>
+            <div
+              className={styles.panel__priceProgress}
+              style={{
+                left: `${minPercent}%`,
+                right: `${100 - maxPercent}%`,
+              }}
+            />
 
-        <div className={styles.panel__content}>
-          <div className={styles.panel__price}>
-            <div className={styles.panel__priceRange}>
-              <div className={styles.panel__priceTrack} />
+            <input
+              className={clsx(styles.panel__priceSlider, styles['panel__priceSlider--min'])}
+              type="range"
+              min={0}
+              max={maxPrice}
+              value={priceRange.min}
+              onChange={({ target }) => {
+                const value = Number(target.value);
 
-              <div
-                className={styles.panel__priceProgress}
-                style={{
-                  left: `${(priceRange.min / MAX_PRICE) * 100}%`,
-                  right: `${100 - (priceRange.max / MAX_PRICE) * 100}%`,
-                }}
-              />
+                if (value <= priceRange.max) {
+                  onPriceRangeChange({
+                    ...priceRange,
+                    min: value,
+                  });
+                }
+              }}
+            />
 
-              <input
-                className={styles.panel__priceSlider}
-                type="range"
-                min="0"
-                max={MAX_PRICE}
-                value={priceRange.min}
-                onChange={({ target }) => {
-                  const value = Number(target.value);
+            <input
+              className={clsx(styles.panel__priceSlider, styles['panel__priceSlider--max'])}
+              type="range"
+              min={0}
+              max={maxPrice}
+              value={priceRange.max}
+              onChange={({ target }) => {
+                const value = Number(target.value);
 
-                  if (value <= priceRange.max) {
-                    onPriceRangeChange((prev) => ({
-                      ...prev,
-                      min: value,
-                    }));
-                  }
-                }}
-              />
+                if (value >= priceRange.min) {
+                  onPriceRangeChange({
+                    ...priceRange,
+                    max: value,
+                  });
+                }
+              }}
+            />
+          </div>
 
-              <input
-                className={styles.panel__priceSlider}
-                type="range"
-                min="0"
-                max={MAX_PRICE}
-                value={priceRange.max}
-                onChange={({ target }) => {
-                  const value = Number(target.value);
-
-                  if (value >= priceRange.min) {
-                    onPriceRangeChange((prev) => ({
-                      ...prev,
-                      max: value,
-                    }));
-                  }
-                }}
-              />
-            </div>
-
-            <div className={styles.panel__priceValues}>
-              <span>{formatPrice(priceRange.min)}</span>
-              <span>{formatPrice(priceRange.max)}</span>
-            </div>
+          <div className={styles.panel__priceValues}>
+            <span>{formatPrice(priceRange.min)}</span>
+            <span>{formatPrice(priceRange.max)}</span>
           </div>
         </div>
-      </div>
+      </FilterSection>
 
-      <div
-        className={clsx(
-          styles.panel__section,
-          openSections.conditions && styles['panel__section--open']
-        )}
+      <FilterSection
+        title="Conditions"
+        isOpen={openSections.conditions}
+        onToggle={() => toggleSection('conditions')}
       >
-        <CustomButton
-          className={styles.panel__sectionHeader}
-          onClick={() => toggleSection('conditions')}
-        >
-          <span className={styles.panel__sectionTitle}>Conditions</span>
-
-          <LucideIcon
-            className={styles.panel__chevron}
-            name={openSections.conditions ? 'ChevronUp' : 'ChevronDown'}
-            size="24"
-            color="#22d3ee"
-          />
-        </CustomButton>
-
-        <div className={styles.panel__content}>
-          <ul className={styles.panel__conditions}>
-            <li className={styles.panel__condition}>
-              <span className={styles.panel__conditionLabel}>In stock</span>
+        <ul className={styles.panel__conditions}>
+          {conditionOptions.map(({ key, label }) => (
+            <li className={styles.panel__condition} key={key}>
+              <span className={styles.panel__conditionLabel}>{label}</span>
 
               <button
                 className={clsx(
                   styles.panel__conditionToggle,
-                  conditions.inStock && styles['panel__conditionToggle--active']
+                  conditions[key] && styles['panel__conditionToggle--active']
                 )}
-                onClick={() => toggleCondition('inStock')}
+                onClick={() => toggleCondition(key)}
               >
                 <span />
               </button>
             </li>
-
-            <li className={styles.panel__condition}>
-              <span className={styles.panel__conditionLabel}>On sale</span>
-
-              <button
-                className={clsx(
-                  styles.panel__conditionToggle,
-                  conditions.onSale && styles['panel__conditionToggle--active']
-                )}
-                onClick={() => toggleCondition('onSale')}
-              >
-                <span />
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
+          ))}
+        </ul>
+      </FilterSection>
     </aside>
   );
 };

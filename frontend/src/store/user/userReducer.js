@@ -1,4 +1,5 @@
 import { ACTION_TYPE } from '../../constants';
+import { checkSession } from '../../utils';
 
 const EMPTY_USER = {
   id: '',
@@ -8,7 +9,7 @@ const EMPTY_USER = {
 };
 
 const getInitialUserState = () => {
-  const userData = sessionStorage.getItem('userData');
+  const userData = checkSession();
 
   return userData ? JSON.parse(userData) : EMPTY_USER;
 };

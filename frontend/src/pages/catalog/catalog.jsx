@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCategories, getProducts } from '../../api/productService';
 import { Breadcrumbs, ErrorMessage, Loading, PageContainer } from '../../components';
-import { MAX_PRICE, PRODUCTS_PER_PAGE } from './catalog.constants';
+import { filterProducts } from '../../utils';
+import { PRODUCTS_PER_PAGE } from './catalog.constants';
 import { Head, List, Pagination, Panel } from './components';
 import styles from './catalog.module.scss';
 
@@ -22,7 +23,7 @@ export const Catalog = () => {
   });
   const [priceRange, setPriceRange] = useState({
     min: 0,
-    max: MAX_PRICE,
+    max: 0,
   });
 
   useEffect(() => {
@@ -37,8 +38,14 @@ export const Catalog = () => {
           return;
         }
 
+        const maxPrice = Math.max(...productsRes.data.map(({ price }) => price), 0);
+
         setProducts(productsRes.data);
         setCategories(categoriesRes.data);
+        setPriceRange({
+          min: 0,
+          max: maxPrice,
+        });
       })
       .finally(() => {
         setIsLoading(false);
@@ -47,33 +54,11 @@ export const Catalog = () => {
 
   const filteredProducts = useMemo(
     () =>
-      products.filter((product) => {
-        if (selectedCategories.length > 0 && !selectedCategories.includes(product.category)) {
-          return false;
-        }
-
-        if (filterParams && !product.tags.includes(filterParams.toLowerCase())) {
-          return false;
-        }
-
-        if (conditions.inStock && product.quantity <= 0) {
-          return false;
-        }
-
-        if (conditions.onSale && (!product.discount || product.discount <= 0)) {
-          return false;
-        }
-
-        const productPrice =
-          product.discount > 0
-            ? product.price - (product.price * product.discount) / 100
-            : product.price;
-
-        if (productPrice < priceRange.min || productPrice > priceRange.max) {
-          return false;
-        }
-
-        return true;
+      filterProducts(products, {
+        selectedCategories,
+        filterParams,
+        conditions,
+        priceRange,
       }),
     [products, selectedCategories, filterParams, conditions, priceRange]
   );
@@ -126,6 +111,7 @@ export const Catalog = () => {
           <div className={styles.catalog__inner}>
             <Panel
               className={styles.catalog__panel}
+              products={products}
               categories={categories}
               selectedCategories={selectedCategories}
               onCategoryChange={onCategoryChange}

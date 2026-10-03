@@ -3,65 +3,6 @@
   flex-direction: column;
   gap: toRem(8);
 
-  &__section {
-    padding: toRem(8) toRem(16);
-    background: var(--background-secondary);
-    border: toRem(1) solid transparent;
-    border-radius: toRem(20);
-
-    &--open {
-      .panel__content {
-        grid-template-rows: 1fr;
-      }
-
-      .panel__sectionHeader {
-        margin-bottom: toRem(16);
-      }
-
-      .panel__chevron {
-        transform: rotate(180deg);
-      }
-    }
-  }
-
-  &__sectionHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0;
-
-    border: 0;
-    background: transparent;
-
-    cursor: pointer;
-    text-align: left;
-  }
-
-  &__sectionTitle {
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-heading);
-    color: var(--headings-and-subheadings);
-  }
-
-  &__chevron {
-    flex-shrink: 0;
-
-    transition: transform 0.2s ease;
-  }
-
-  &__content {
-    display: grid;
-    grid-template-rows: 0fr;
-
-    transition: grid-template-rows 0.2s ease;
-  }
-
-  &__content > * {
-    min-height: 0;
-    overflow: hidden;
-  }
-
   &__options {
     display: flex;
     flex-wrap: wrap;
@@ -91,10 +32,14 @@
     right: 0;
     left: 0;
 
+    z-index: 1;
+
     background: var(--border);
   }
 
   &__priceProgress {
+    z-index: 2;
+
     background: var(--background-button-main);
   }
 
@@ -116,6 +61,14 @@
 
     &:focus {
       outline: none;
+    }
+
+    &--min {
+      z-index: 4;
+    }
+
+    &--max {
+      z-index: 5;
     }
 
     &::-webkit-slider-thumb {
@@ -175,13 +128,12 @@
     color: var(--headings-and-subheadings);
   }
 
-  // CONDITIONS
-
   &__conditions {
     display: flex;
     flex-direction: column;
     gap: toRem(8);
   }
+
   &__condition {
     display: flex;
     align-items: center;
@@ -191,7 +143,7 @@
 
   &__conditionLabel {
     font-size: toRem(14);
-   line-height: var(--line-height-heading);
+    line-height: var(--line-height-heading);
     color: var(--headings-and-subheadings);
   }
 

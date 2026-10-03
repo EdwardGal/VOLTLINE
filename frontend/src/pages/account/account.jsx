@@ -1,13 +1,23 @@
 import { useSelector } from 'react-redux';
+
 import { Access, PageContainer, TableHead } from '../../components';
-import { ROLES } from '../../constants';
+import { ROLES, ROUTES } from '../../constants';
+
 import { selectUser } from '../../store/user/userSelectors';
+
 import { ComingSoon } from '../сomingSoon/comingSoon';
 import { Head, Products, Users } from './components';
+
 import styles from './account.module.scss';
+import { Navigate } from 'react-router-dom';
+import { checkSession } from '../../utils';
 
 export const Account = () => {
   const { roleId } = useSelector(selectUser);
+
+  if (!checkSession()) {
+    return <Navigate to={ROUTES.AUTH} replace />;
+  }
 
   return (
     <div className={styles.account}>
